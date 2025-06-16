@@ -70,10 +70,17 @@ function App() {
         <div className="project-item">
           <div className="project-content right-image">
             <div className="project-text">
-              <h3>Quantum Eraser Demo</h3>
+              <h3>File Compression/Decompression</h3>
               <p>Built an interactive quantum eraser simulation using Qiskit and Python to demonstrate quantum entanglement to students.</p>
             </div>
-            <img src="/images/quantum-eraser.png" alt="Quantum Eraser Demo" className="project-image" />
+            <div className="carousel auto-carousel">
+              <div className="carousel-track">
+                <img src="/images/Compress1.bmp" alt="Compression Screenshot 1" className="project-image" />
+                <img src="/images/Compress2.png" alt="Compression Screenshot 2" className="project-image" />
+                <img src="/images/Compress1.bmp" alt="Compression Screenshot 1" className="project-image" />
+                <img src="/images/Compress2.png" alt="Compression Screenshot 2" className="project-image" />
+              </div>
+            </div>
           </div>
         </div>
         <div className="project-item">

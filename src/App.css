@@ -165,7 +165,7 @@
 
 .carousel-track img {
   width: 600px;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   flex-shrink: 0;
 }
