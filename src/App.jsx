@@ -20,13 +20,13 @@ function App() {
           <a href="https://github.com/elischiffler" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FaGithub />
           </a>
-          <a href="mailto:eli.schiffler@gmail.com" className="social-icon">
+          <a href="mailto:eschiffler1122@gmail.com" className="social-icon">
             <FaEnvelope />
           </a>
-          <a href="https://linkedin.com/in/elischiffler" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://linkedin.com/in/eli-schiffler-93a69a298" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FaLinkedin />
           </a>
-          <a href="/resume.pdf" download className="resume-button">
+          <a href="/EliSchifflerResume.pdf" download className="resume-button">
             <FaDownload style={{ marginRight: '0.3rem' }} /> Resume
           </a>
         </div>
