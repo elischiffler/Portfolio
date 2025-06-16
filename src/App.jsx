@@ -46,6 +46,46 @@ function App() {
           <span className="skill-item"><FiZap /> FastAPI</span>
         </p>
       </div>
+      <div className="projects">
+        <div className="project-item">
+          <div className="project-content left-image">
+            <div className="carousel auto-carousel">
+              <div className="carousel-track">
+                <img src="/images/JourneyGenie1.png" alt="Journey Genie Screenshot 1" className="project-image" />
+                <img src="/images/JourneyGenie2.png" alt="Journey Genie Screenshot 2" className="project-image" />
+                <img src="/images/JourneyGenie3.png" alt="Journey Genie Screenshot 3" className="project-image" />
+                <img src="/images/JourneyGenie4.png" alt="Journey Genie Screenshot 4" className="project-image" />
+                <img src="/images/JourneyGenie1.png" alt="Journey Genie Screenshot 1" className="project-image" />
+                <img src="/images/JourneyGenie2.png" alt="Journey Genie Screenshot 2" className="project-image" />
+                <img src="/images/JourneyGenie3.png" alt="Journey Genie Screenshot 3" className="project-image" />
+                <img src="/images/JourneyGenie4.png" alt="Journey Genie Screenshot 4" className="project-image" />
+              </div>
+            </div>
+            <div className="project-text">
+              <h3>Roadtrip Planner</h3>
+              <p>Developed a full-stack web application that calculates optimized roadtrip routes using React, Node.js, and Google Maps API.</p>
+            </div>
+          </div>
+        </div>
+        <div className="project-item">
+          <div className="project-content right-image">
+            <div className="project-text">
+              <h3>Quantum Eraser Demo</h3>
+              <p>Built an interactive quantum eraser simulation using Qiskit and Python to demonstrate quantum entanglement to students.</p>
+            </div>
+            <img src="/images/quantum-eraser.png" alt="Quantum Eraser Demo" className="project-image" />
+          </div>
+        </div>
+        <div className="project-item">
+          <div className="project-content left-image">
+            <img src="/images/portfolio.png" alt="Portfolio Website" className="project-image" />
+            <div className="project-text">
+              <h3>Portfolio Website</h3>
+              <p>This site! Built with React and custom CSS to showcase skills and projects.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
