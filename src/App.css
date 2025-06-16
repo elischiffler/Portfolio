@@ -38,3 +38,43 @@
   vertical-align: middle;
   font-size: 1.2rem; /* adjust size of icons */
 }
+
+.social-links {
+  display: flex;
+  justify-content: left;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.resume-button {
+  color: white;
+  font-size: 1rem;
+  padding: 0.2rem 1.5rem;
+  height: 1.75rem;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.resume-button:hover {
+  transform: scale(1.1) rotate(3deg);
+  background: rgba(0, 255, 200, 0.2);
+  color: #7EB8D6FF;
+  border-color: #7EB8D6FF;
+}
+
+.social-icon {
+  color: white;
+  font-size: 2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+  color: #7EB8D6FF;
+}

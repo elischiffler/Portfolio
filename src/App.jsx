@@ -4,6 +4,7 @@ import { SiQiskit, SiCplusplus, SiPostman, SiAmazon } from 'react-icons/si'
 import { GiAtom } from 'react-icons/gi'
 import { FiZap } from 'react-icons/fi'
 import CosmicDustBackground from './components/CosmicDustBackground'
+import { FaGithub, FaEnvelope, FaLinkedin, FaDownload } from 'react-icons/fa'
 
 function App() {
 
@@ -15,6 +16,20 @@ function App() {
         <h2 style={{ marginTop: 0, fontSize: '1.2rem', fontWeight: 'normal' }}>
           Software Developer / Quantum Computing
         </h2>
+        <div className="social-links">
+          <a href="https://github.com/elischiffler" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <FaGithub />
+          </a>
+          <a href="mailto:eli.schiffler@gmail.com" className="social-icon">
+            <FaEnvelope />
+          </a>
+          <a href="https://linkedin.com/in/elischiffler" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <FaLinkedin />
+          </a>
+          <a href="/resume.pdf" download className="resume-button">
+            <FaDownload style={{ marginRight: '0.3rem' }} /> Resume
+          </a>
+        </div>
       </div>
       <div className="skills-box">
         <p>
