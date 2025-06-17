@@ -6,6 +6,7 @@ import { FiZap } from 'react-icons/fi'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import CosmicDustBackground from './components/CosmicDustBackground'
 import { FaGithub, FaEnvelope, FaLinkedin, FaDownload } from 'react-icons/fa'
+import { Globe } from "./components/magicui/globe";
 
 function App() {
 
@@ -49,7 +50,22 @@ function App() {
           </p>
         </div>
       </div>
-      <div style={{ height: '100vh' }}></div>
+      <div
+        className="globe-section"
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '50vh',
+          overflow: 'hidden',
+          marginTop: 'auto',
+          display: 'flex',
+          alignItems: 'flex-end'
+        }}
+      >
+        <div style={{ width: '100%', height: '200%', transform: 'translateY(-50%)' }}>
+          <Globe />
+        </div>
+      </div>
       <div className="projects">
         <div className="project-item">
           <div className="project-content left-image" style={{ flexWrap: 'wrap' }}>
