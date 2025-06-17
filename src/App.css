@@ -8,29 +8,52 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.header {
-  position: absolute;
+.header-skills-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding: 2rem 4rem;
+}
+
+.header-skills-container .header {
   padding: 2rem;
-  top: 0rem;
-  left: 2rem;
   display: inline-block;
   color: rgba(239, 239, 239);
   font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  flex: 1 1 40%;
+  min-width: 399px;
   text-align: left;
+  padding-right: 1rem;
 }
 
-.skills-box {
-  position: absolute;
+.header-skills-container .skills-box {
+  flex: 1 1 55%;
+  min-width: 300px;
+  text-align: center;
   padding: 2rem;
-  top: 2rem;
-  right: 2rem;
-  width: 40%;
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.1rem;
   line-height: 1.6;
-  text-align: center;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .header-skills-container {
+    flex-direction: column;
+    text-align: center !important;
+  }
+  .header-skills-container .header {
+    text-align: center !important;
+    padding-right: 0 !important;
+    margin-bottom: 2rem;
+  }
+  .header-skills-container .skills-box {
+    text-align: center !important;
+  }
 }
 
 .skill-item {
@@ -88,8 +111,9 @@ body::-webkit-scrollbar {
 
 .projects {
   position: relative;
-  margin-top: 60vh; /* Start around the bottom third of the screen */
+  margin-top: 2rem; /* Start around the bottom third of the screen */
   padding: 2rem;
+  padding-top: 4rem;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   border-radius: 8px;
