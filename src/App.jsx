@@ -85,10 +85,19 @@ function App() {
         </div>
         <div className="project-item">
           <div className="project-content left-image">
-            <img src="/images/portfolio.png" alt="Portfolio Website" className="project-image" />
+            <div className="carousel auto-carousel">
+              <div className="carousel-track">
+                <img src="/images/JavaGame1.png" alt="Java Game Screenshot 1" className="project-image" />
+                <img src="/images/JavaGame2.png" alt="Java Game Screenshot 2" className="project-image" />
+                <img src="/images/JavaGame3.png" alt="Java Game Screenshot 3" className="project-image" />
+                <img src="/images/JavaGame1.png" alt="Java Game Screenshot 1" className="project-image" />
+                <img src="/images/JavaGame2.png" alt="Java Game Screenshot 2" className="project-image" />
+                <img src="/images/JavaGame3.png" alt="Java Game Screenshot 3" className="project-image" />
+              </div>
+            </div>
             <div className="project-text">
-              <h3>Portfolio Website</h3>
-              <p>This site! Built with React and custom CSS to showcase skills and projects.</p>
+              <h3>Roadtrip Planner</h3>
+              <p>Developed a full-stack web application that calculates optimized roadtrip routes using React, Node.js, and Google Maps API.</p>
             </div>
           </div>
         </div>

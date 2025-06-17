@@ -115,14 +115,13 @@
   padding-bottom: 1rem;
 }
 
-.carousel img {
-  scroll-snap-align: start;
+.carousel-track img {
   width: 100%;
   max-width: 600px;
   height: auto;
-  border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
+  border-radius: 8px;
 }
 
 .project-content {
@@ -140,21 +139,10 @@
   flex-direction: row;
 }
 
-@media (max-width: 768px) {
-  .project-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .carousel img {
-    max-width: 90vw;
-  }
-}
-
 .auto-carousel {
   overflow: hidden;
-  width: 100%;
-  max-width: 600px;
+  width: 90vw;
+  max-width: 768px;
   border-radius: 8px;
 }
 
@@ -164,8 +152,8 @@
 }
 
 .carousel-track img {
-  width: 600px;
-  height: 100%;
+  width: 50vw;
+  height: auto;
   object-fit: cover;
   flex-shrink: 0;
 }
