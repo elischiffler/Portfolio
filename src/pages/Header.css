@@ -1,0 +1,100 @@
+.header-skills-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding: 2rem 4rem;
+}
+
+.header-skills-container .header {
+  padding: 2rem;
+  display: inline-block;
+  color: rgba(239, 239, 239);
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  flex: 1 1 40%;
+  min-width: 399px;
+  text-align: left;
+  padding-right: 1rem;
+}
+
+.header-skills-container .skills-box {
+  flex: 1 1 55%;
+  min-width: 300px;
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .header-skills-container {
+    flex-direction: column;
+    text-align: center !important;
+  }
+  .header-skills-container .header {
+    text-align: center !important;
+    padding-right: 0 !important;
+    margin-bottom: 2rem;
+  }
+  .header-skills-container .skills-box {
+    text-align: center !important;
+  }
+}
+
+.skill-item {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-right: 1rem;
+}
+
+.skill-item svg {
+  vertical-align: middle;
+  font-size: 1.2rem; /* adjust size of icons */
+}
+
+.social-links {
+  display: flex;
+  justify-content: left;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.resume-button {
+  color: white;
+  font-size: 1rem;
+  padding: 0.2rem 1.5rem;
+  height: 1.75rem;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.resume-button:hover {
+  transform: scale(1.1) rotate(3deg);
+  background: rgba(0, 255, 200, 0.2);
+  color: #7EB8D6FF;
+  border-color: #7EB8D6FF;
+}
+
+.social-icon {
+  color: white;
+  font-size: 2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+  color: #7EB8D6FF;
+}

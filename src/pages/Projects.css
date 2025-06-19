@@ -1,0 +1,105 @@
+.projects {
+  position: relative;
+  margin-top: 2rem; /* Start around the bottom third of the screen */
+  padding: 2rem;
+  padding-top: 4rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-item {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.project-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #7EB8D6FF;
+}
+
+.project-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+
+.carousel-track img {
+  width: 45vw;
+  height: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.project-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.left-image {
+  flex-direction: row;
+}
+
+.right-image {
+  flex-direction: row;
+}
+
+.auto-carousel {
+  overflow: hidden;
+  width: 45vw;
+  border-radius: 8px;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.project-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link-button {
+  color: white;
+  padding: 0.3rem 1rem;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: transparent;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.project-link-button:hover {
+  transform: scale(1.05);
+  background: rgba(0, 255, 200, 0.2);
+  color: #7EB8D6FF;
+  border-color: #7EB8D6FF;
+}
+
+.project-text {
+  flex: 1 1 calc(55% - 2rem);
+  min-width: 250px;
+}
