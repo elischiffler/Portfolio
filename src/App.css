@@ -1,6 +1,7 @@
 html, body {
   overflow-y: scroll;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar,
