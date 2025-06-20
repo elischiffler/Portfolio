@@ -28,7 +28,7 @@ const Contact = () => (
         <FaGithub className="contact-icon" />
       </a>
       <a
-        href="https://instagram.com/YOUR_INSTAGRAM_USERNAME"
+        href="https://www.instagram.com/elischiffler/"
         aria-label="Instagram"
         target="_blank"
         rel="noopener noreferrer"
