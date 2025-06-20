@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+  overflow-x: hidden;
+}
+
+.landing-page{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  color: #93a6c0;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3rem;
+  padding-top: 0;
+}
+
+.profile-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.skills-nav-column{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.skills-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+.skills-list .item {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-right: 1rem;
+}
+
+.skills-list .item svg {
+  vertical-align: middle;
+  font-size: 2rem; /* adjust size of icons */
+}

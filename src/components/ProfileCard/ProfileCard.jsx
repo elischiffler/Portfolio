@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
-import { FaGithub, FaEnvelope, FaLinkedin, FaDownload } from 'react-icons/fa';
+import { FaGithub, FaEnvelope, FaLinkedin, FaFileDownload } from 'react-icons/fa';
 import "./ProfileCard.css";
 
 const DEFAULT_BEHIND_GRADIENT =
@@ -265,8 +265,8 @@ const ProfileCardComponent = ({
                       <a href="https://linkedin.com/in/eli-schiffler-93a69a298" target="_blank" rel="noopener noreferrer" className="social-icon">
                         <FaLinkedin />
                       </a>
-                      <a href="/EliSchifflerResume.pdf" download className="resume-button">
-                        <FaDownload style={{ marginRight: '0.3rem' }} /> Resume
+                      <a href="/EliSchifflerResume.pdf" download className="social-icon">
+                        <FaFileDownload />
                       </a>
                     </div>
                   </div>

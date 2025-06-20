@@ -194,7 +194,7 @@
 
 .pc-card:hover .pc-shine,
 .pc-card.active .pc-shine {
-  filter: brightness(0.85) contrast(1.5) saturate(0.5);
+  filter: brightness(0.5) contrast(1.5) saturate(0.5);
   animation: none;
 }
 
@@ -334,9 +334,10 @@
 
 .pc-user-text {
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-grow: 1;
 }
 
 .pc-handle {
@@ -421,13 +422,12 @@
 
 .pc-buttons {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  justify-content: center; /* or flex-start/flex-end depending on layout */
+  padding: 1.3rem, 0;
+  gap: 1rem;
 }
-
+.pc-buttons a,
 .pc-buttons button {
-  padding: 0.5rem 1rem;
+  pointer-events: auto;
   background-color: #60496e;
   color: white;
   border: none;
@@ -609,37 +609,22 @@
 }
 
 .pc-buttons .social-icon {
-  font-size: 1.5rem;
-  color: white;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
+  color: white;
+  font-size: 1.8rem;
   transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
 }
+
 
 .pc-buttons .social-icon:hover {
   background-color: rgba(255, 255, 255, 0.3);
   transform: scale(1.1);
-}
-
-.pc-buttons .resume-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.5rem 1rem;
-  background-color: #60496e;
-  color: white;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.pc-buttons .resume-button:hover {
-  background-color: #50365e;
-  transform: translateY(-2px);
 }
