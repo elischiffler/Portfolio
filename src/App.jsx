@@ -4,6 +4,7 @@ import CosmicDustBackground from './components/Backgrounds/CosmicDustBackground'
 import LandingPage from './pages/LandingPage';
 import Projects from './pages/Projects';
 import AboutMe from './pages/AboutMe';
+import Contact from './pages/Contact';
 
 function App() {
   const projectsRef = useRef(null);
@@ -31,6 +32,9 @@ function App() {
       </div>
       <div ref={aboutRef}>
         <AboutMe />
+      </div>
+      <div ref={contactRef}>
+        <Contact />
       </div>
     </>
   );

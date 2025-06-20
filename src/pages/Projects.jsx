@@ -163,74 +163,74 @@ const Projects = () => (
         </div>
     </div>
     <div className="project-item">
-        <div className="carousel auto-carousel">
-          <div className="carousel-track">
-            <img
-              src="/images/JavaGame1.png"
-              alt="Java Game Screenshot 1"
-              className="project-image"
-            />
-            <img
-              src="/images/JavaGame2.png"
-              alt="Java Game Screenshot 2"
-              className="project-image"
-            />
-            <img
-              src="/images/JavaGame3.png"
-              alt="Java Game Screenshot 3"
-              className="project-image"
-            />
-            <img
-              src="/images/JavaGame1.png"
-              alt="Java Game Screenshot 1"
-              className="project-image"
-            />
-            <img
-              src="/images/JavaGame2.png"
-              alt="Java Game Screenshot 2"
-              className="project-image"
-            />
-            <img
-              src="/images/JavaGame3.png"
-              alt="Java Game Screenshot 3"
-              className="project-image"
-            />
-          </div>
+      <div className="carousel auto-carousel">
+        <div className="carousel-track">
+          <img
+            src="/images/JavaGame1.png"
+            alt="Java Game Screenshot 1"
+            className="project-image"
+          />
+          <img
+            src="/images/JavaGame2.png"
+            alt="Java Game Screenshot 2"
+            className="project-image"
+          />
+          <img
+            src="/images/JavaGame3.png"
+            alt="Java Game Screenshot 3"
+            className="project-image"
+          />
+          <img
+            src="/images/JavaGame1.png"
+            alt="Java Game Screenshot 1"
+            className="project-image"
+          />
+          <img
+            src="/images/JavaGame2.png"
+            alt="Java Game Screenshot 2"
+            className="project-image"
+          />
+          <img
+            src="/images/JavaGame3.png"
+            alt="Java Game Screenshot 3"
+            className="project-image"
+          />
         </div>
-        <div className="project-text">
-          <div className ="project-title">
+      </div>
+      <div className="project-text">
+        <div className ="project-title">
           <BlurText
             text="Java Platformer Game"
             delay={30}
             animateBy="letters"
             direction="top"
           />
-          </div>
-          <div className="project-description">
-            <BlurText
-              text="Developed a 2D platformer game in Java while learning refactoring techniques for cleaner, modular code. Gained experience with sprite animation, collision detection, and procedural environment generation."
-              delay={30}
-              animateBy="words"
-              direction="top"
-            />
-            <BlurText
-            text="Technologies: Java, Object-Oriented Programming, Game Development"
+        </div>
+        <div className="project-description">
+          <BlurText
+            text="Developed a 2D platformer game in Java while learning refactoring techniques for cleaner, modular code. Gained experience with sprite animation, collision detection, and procedural environment generation."
             delay={30}
             animateBy="words"
             direction="top"
-            />
-          </div>
-          <div className="project-links">
-            <a
-              href="https://github.com/elischiffler/PokemonGame"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link-button"
-            >
-              <FaGithub style={{ marginRight: "0.3rem" }} /> GitHub
-            </a>
-          </div>
+          />
+          <BlurText
+          text="Technologies: Java, Object-Oriented Programming, Game Development"
+          delay={30}
+          animateBy="words"
+          direction="top"
+          />
         </div>
+        <div className="project-links">
+          <a
+            href="https://github.com/elischiffler/PokemonGame"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link-button"
+          >
+            <FaGithub style={{ marginRight: "0.3rem" }} /> GitHub
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 );
