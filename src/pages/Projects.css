@@ -1,40 +1,49 @@
 .projects {
   position: relative;
   padding: 2rem;
-  padding-top: 4rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
   color: white;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.projects h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
 .project-item {
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+}
+
+.project-text {
+  width: 50%;
   text-align: left;
 }
 
-.project-item h3 {
-  font-size: 1.5rem;
+.project-title {
+  font-size: 1.75rem;
+  font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #7EB8D6FF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #93a6c0;
 }
 
-.project-item p {
+.project-description {
   font-size: 1rem;
   line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #b0bec5;
 }
 
+
 .carousel {
+  width: 50%;
   display: flex;
   overflow-x: auto;
   gap: 1rem;
   scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
 }
 
 .carousel-track img {
@@ -42,21 +51,6 @@
   height: auto;
   object-fit: cover;
   flex-shrink: 0;
-}
-
-.project-content {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.left-image {
-  flex-direction: row;
-}
-
-.right-image {
-  flex-direction: row;
 }
 
 .auto-carousel {
@@ -96,9 +90,4 @@
   background: rgba(0, 255, 200, 0.2);
   color: #7EB8D6FF;
   border-color: #7EB8D6FF;
-}
-
-.project-text {
-  flex: 1 1 calc(55% - 2rem);
-  min-width: 250px;
 }

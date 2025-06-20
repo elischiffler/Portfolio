@@ -39,7 +39,7 @@ const AboutMe = () => {
           <div className="title">
             <BlurText
               text="About Me"
-              delay={150}
+              delay={30}
               animateBy="letters"
               direction="top"
               className="text-2xl mb-8"
