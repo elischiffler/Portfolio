@@ -22,8 +22,8 @@ const LandingPage = ({ onProjectsClick, onAboutClick, onContactClick }) => {
         <div className="title">
           <BlurText
           text="Nice to Meet You — Let’s Get Started"
-          delay={150}
-          animateBy="words"
+          delay={30}
+          animateBy="letters"
           direction="top"
           className="text-2xl mb-8"
         />

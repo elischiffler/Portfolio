@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import './App.css';
-import CosmicDustBackground from './components/CosmicDustBackground';
+import CosmicDustBackground from './components/Backgrounds/CosmicDustBackground';
 import LandingPage from './pages/LandingPage';
 import Projects from './pages/Projects';
+import AboutMe from './pages/AboutMe';
 
 function App() {
   const projectsRef = useRef(null);
@@ -27,6 +28,9 @@ function App() {
       <LandingPage onProjectsClick={scrollToProjects} onAboutClick={scrollToAbout} onContactClick={scrollToContact} />
       <div ref={projectsRef}>
         <Projects />
+      </div>
+      <div ref={aboutRef}>
+        <AboutMe />
       </div>
     </>
   );
