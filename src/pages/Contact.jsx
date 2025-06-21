@@ -27,14 +27,6 @@ const Contact = () => (
       >
         <FaGithub className="contact-icon" />
       </a>
-      <a
-        href="https://www.instagram.com/elischiffler/"
-        aria-label="Instagram"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaInstagram className="contact-icon" />
-      </a>
     </div>
   </div>
 );
