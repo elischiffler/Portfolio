@@ -259,7 +259,7 @@ const ProfileCardComponent = ({
                       <a href="https://github.com/elischiffler" target="_blank" rel="noopener noreferrer" className="social-icon">
                         <FaGithub />
                       </a>
-                      <a href="mailto:eschiffler1122@gmail.com" className="social-icon">
+                      <a href="mailto:schifflereli@gmail.com" className="social-icon">
                         <FaEnvelope />
                       </a>
                       <a href="https://linkedin.com/in/eli-schiffler-93a69a298" target="_blank" rel="noopener noreferrer" className="social-icon">

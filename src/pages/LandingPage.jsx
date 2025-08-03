@@ -1,4 +1,4 @@
-import { FiFileText, FiUser, FiPhone } from 'react-icons/fi';
+import { FiBriefcase, FiFileText, FiUser, FiPhone } from 'react-icons/fi';
 import { DiReact, DiPython, DiJava, DiJavascript1, DiDatabase } from 'react-icons/di';
 import { SiCplusplus, SiAmazon, SiPostman, SiQiskit } from 'react-icons/si';
 import { GiAtom } from 'react-icons/gi';
@@ -10,12 +10,34 @@ import BlurText from "../components/BlurText/BlurText";
 import "./LandingPage.css";
 
 
-const LandingPage = ({ onProjectsClick, onAboutClick, onContactClick }) => {
+const LandingPage = ({ onWorkClick, onProjectsClick, onAboutClick, onContactClick }) => {
   const items = [
-    { icon: <FiFileText />, color: 'blue', label: 'Projects', onClick: onProjectsClick },
-    { icon: <FiUser />, color: 'blue', label: 'About Me', onClick: onAboutClick },
-    { icon: <FiPhone />, color: 'blue', label: 'Contact', onClick: onContactClick },
+    {
+      icon: <FiBriefcase />,
+      color: "blue",
+      label: "Work",
+      onClick: onWorkClick,
+    },
+    {
+      icon: <FiFileText />,
+      color: "blue",
+      label: "Projects",
+      onClick: onProjectsClick,
+    },
+    {
+      icon: <FiUser />,
+      color: "blue",
+      label: "About Me",
+      onClick: onAboutClick,
+    },
+    {
+      icon: <FiPhone />,
+      color: "blue",
+      label: "Contact",
+      onClick: onContactClick,
+    },
   ];
+  
   return (
     <div>
       <div className="landing-page">

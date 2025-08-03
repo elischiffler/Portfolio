@@ -1,7 +1,9 @@
 .icon-btns {
-  display: grid;
-  grid-gap: 5em;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
   margin: auto;
   padding: 3em 0;
   overflow: visible;
@@ -90,8 +92,3 @@
   transform: translateY(20%);
 }
 
-@media (min-width: 768px) {
-  .icon-btns {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}

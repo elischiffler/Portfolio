@@ -1,6 +1,6 @@
 import "./Contact.css";
 import BlurText from "../components/BlurText/BlurText";
-import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Contact = () => (
   <div className="contact">
@@ -8,7 +8,7 @@ const Contact = () => (
       <BlurText text="Contact" delay={30} animateBy="letters" direction="top" />
     </div>
     <div className="contact-link">
-      <a href="mailto:eschiffler1122@gmail.com" aria-label="Email">
+      <a href="mailto:schifflereli@gmail.com" aria-label="Email">
         <FaEnvelope className="contact-icon" />
       </a>
       <a
