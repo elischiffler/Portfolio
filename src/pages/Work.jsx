@@ -60,7 +60,7 @@ const Work = () => (
       <div className="work-text">
         <div className="work-title">
           <BlurText
-            text="Quantum Experimentalist Intern"
+            text="Quantum Intern"
             delay={30}
             animateBy="letters"
             direction="top"
