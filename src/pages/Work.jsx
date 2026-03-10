@@ -69,7 +69,7 @@ const Work = () => (
 
         <div className="work-description">
           <BlurText
-            text="Collaborated with researchers to design and align intricate laser beam paths used to trap and cool individual ions, a critical step for scalable quantum computing experiments at Sandia National Labs. Gained practical experience in maintaining optical stability, adjusting mirror mounts, and ensuring beam coherence through complex setups."
+            text="I focused on the precise alignment of optical systems used for trapping and cooling barium ions. This task required significant attention to detail when managing laser beam paths to maintain experimental stability. I also specialized in the optimization of optical fibers and achieved an efficiency of 80 percent through a rigorous process of trial and error. Daily collaboration with doctoral researchers provided opportunities to troubleshoot technical issues and enhance the performance of the quantum hardware."
             delay={30}
             animateBy="words"
             direction="top"
