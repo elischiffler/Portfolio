@@ -13,12 +13,12 @@
   --icon: none;
   --behind-gradient: none;
   --inner-gradient: none;
-  --sunpillar-1: hsl(2, 100%, 73%);
-  --sunpillar-2: hsl(53, 100%, 69%);
-  --sunpillar-3: hsl(93, 100%, 69%);
-  --sunpillar-4: hsl(176, 100%, 76%);
-  --sunpillar-5: hsl(228, 100%, 74%);
-  --sunpillar-6: hsl(283, 100%, 73%);
+  --sunpillar-1: hsl(215, 100%, 73%);
+  --sunpillar-2: hsl(200, 100%, 69%);
+  --sunpillar-3: hsl(230, 100%, 69%);
+  --sunpillar-4: hsl(190, 100%, 76%);
+  --sunpillar-5: hsl(210, 100%, 74%);
+  --sunpillar-6: hsl(220, 100%, 73%);
   --sunpillar-clr-1: var(--sunpillar-1);
   --sunpillar-clr-2: var(--sunpillar-2);
   --sunpillar-clr-3: var(--sunpillar-3);
@@ -82,19 +82,19 @@
   background-image:
     radial-gradient(
       farthest-side circle at var(--pointer-x) var(--pointer-y),
-      hsla(266, 100%, 90%, var(--card-opacity)) 4%,
-      hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%,
-      hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%,
-      hsla(266, 0%, 60%, 0) 100%
+      hsla(215, 100%, 90%, var(--card-opacity)) 4%,
+      hsla(215, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%,
+      hsla(215, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%,
+      hsla(215, 0%, 60%, 0) 100%
     ),
-    radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%),
-    radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%),
+    radial-gradient(35% 52% at 55% 20%, #7eb8d6c4 0%, #93a6c000 100%),
+    radial-gradient(100% 100% at 50% 50%, #93a6c0ff 1%, #93a6c000 76%),
     conic-gradient(
       from 124deg at 50% 50%,
-      #c137ffff 0%,
-      #07c6ffff 40%,
-      #07c6ffff 60%,
-      #c137ffff 100%
+      #93a6c0ff 0%,
+      #7eb8d6ff 40%,
+      #7eb8d6ff 60%,
+      #93a6c0ff 100%
     );
   overflow: hidden;
 }
@@ -398,7 +398,7 @@
   margin: 0;
   font-size: min(5svh, 3em);
   margin: 0;
-  background-image: linear-gradient(to bottom, #fff, #6f6fbe);
+  background-image: linear-gradient(to bottom, #fff, #93a6c0);
   background-size: 1em 1.5em;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -413,7 +413,7 @@
   font-size: 16px;
   margin: 0 auto;
   width: min-content;
-  background-image: linear-gradient(to bottom, #fff, #4a4ac0);
+  background-image: linear-gradient(to bottom, #fff, #7eb8d6);
   background-size: 1em 1.5em;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -428,7 +428,7 @@
 .pc-buttons a,
 .pc-buttons button {
   pointer-events: auto;
-  background-color: #60496e;
+  background-color: #1a202c;
   color: white;
   border: none;
   border-radius: 4px;
@@ -437,7 +437,7 @@
 }
 
 .pc-buttons button:hover {
-  background-color: #50365e;
+  background-color: #2d3748;
 }
 
 @keyframes glow-bg {
