@@ -1,4 +1,4 @@
-import { FiBriefcase, FiFileText, FiUser, FiPhone, FiLayers, FiRepeat } from 'react-icons/fi';
+import { FiBriefcase, FiFileText, FiUser, FiLayers, FiRepeat } from 'react-icons/fi';
 import { DiReact, DiPython, DiJava, DiJavascript1, DiDatabase } from 'react-icons/di';
 import { SiCplusplus, SiAmazon, SiPostman, SiQiskit, SiVite, SiGithub, SiJson, SiHtml5, SiLinux, SiNodedotjs, SiFastapi, SiJest, SiGithubactions } from 'react-icons/si';
 import { GiAtom } from 'react-icons/gi';
@@ -9,7 +9,7 @@ import BlurText from "../components/BlurText/BlurText";
 import "./LandingPage.css";
 
 
-const LandingPage = ({ onWorkClick, onProjectsClick, onAboutClick, onContactClick }) => {
+const LandingPage = ({ onWorkClick, onProjectsClick, onAboutClick, }) => {
   const items = [
     {
       icon: <FiBriefcase />,
@@ -29,16 +29,10 @@ const LandingPage = ({ onWorkClick, onProjectsClick, onAboutClick, onContactClic
       label: "About Me",
       onClick: onAboutClick,
     },
-    {
-      icon: <FiPhone />,
-      color: "blue",
-      label: "Contact",
-      onClick: onContactClick,
-    },
   ];
   
   return (
-    <div>
+    <div className="snap-section">
       <div className="landing-page">
         <div className="title">
           <BlurText

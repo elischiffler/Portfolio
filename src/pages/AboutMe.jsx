@@ -1,6 +1,7 @@
 import Beams from '../components/Backgrounds/Beams/Beams';
 import Stack from '../components/Stack/Stack';
 import BlurText from '../components/BlurText/BlurText';
+import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 import './AboutMe.css';
 
 const AboutMe = () => {
@@ -26,26 +27,27 @@ const AboutMe = () => {
         />
       </div>
       <div className="about-content">
-        <div className="picture-container">
-          <Stack
-            randomRotation={true}
-            sensitivity={180}
-            sendToBackOnClick={false}
-            cardDimensions={{ width: 300, height: 400 }}
-            cardsData={images}
+        <div className="title">
+          <BlurText
+            text="About Me"
+            delay={30}
+            animateBy="letters"
+            direction="top"
+            className="text-2xl mb-4"
           />
         </div>
-        <div className="text-container">
-          <div className="title">
-            <BlurText
-              text="About Me"
-              delay={30}
-              animateBy="letters"
-              direction="top"
-              className="text-2xl mb-8"
+        <div className="about-body">
+          <div className="picture-container">
+            <Stack
+              randomRotation={true}
+              sensitivity={180}
+              sendToBackOnClick={false}
+              cardDimensions={{ width: 300, height: 400 }}
+              cardsData={images}
             />
           </div>
-          <div className="description">
+          <div className="text-container">
+            <div className="description">
             <BlurText
               text="Hi, I’m Eli Schiffler. I’m from Minnesota and currently earning my Bachelor’s in Computer Science at Cal Poly."
               delay={50}
@@ -64,6 +66,33 @@ const AboutMe = () => {
               animateBy="words"
               direction="top"
             />
+            </div>
+          </div>
+        </div>
+        <div className="contact-container">
+          <div className="contact-title">
+            <BlurText text="Contact" delay={30} animateBy="letters" direction="top" />
+          </div>
+          <div className="contact-links">
+            <a href="mailto:schifflereli@gmail.com" aria-label="Email">
+              <FaEnvelope className="contact-icon" />
+            </a>
+            <a
+              href="https://linkedin.com/in/eli-schiffler-93a69a298"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin className="contact-icon" />
+            </a>
+            <a
+              href="https://github.com/elischiffler"
+              aria-label="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub className="contact-icon" />
+            </a>
           </div>
         </div>
       </div>

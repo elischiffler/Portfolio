@@ -10,7 +10,7 @@ const Projects = () => (
         delay={30}
         animateBy="letters"
         direction="top"
-        className="text-2xl mb-8"
+        className="text-2xl mb-4"
       />
     </div>
     <div className="project-item">
