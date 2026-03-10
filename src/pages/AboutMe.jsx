@@ -58,19 +58,19 @@ const AboutMe = () => {
           <div className="text-container">
             <div className="description">
               <BlurText
-                text="Hi, I’m Eli Schiffler. I’m from Minnesota and currently earning my Bachelor’s in Computer Science at Cal Poly."
+                text="I am Eli Schiffler, a Computer Science student at California Polytechnic State University and President of the Cal Poly Quantum Computing Club."
                 delay={50}
                 animateBy="words"
                 direction="top"
               />
               <BlurText
-                text="I’m passionate about technology and aim to build a career as a software engineer with a focus on quantum computing."
+                text="My background includes a Quantum Engineering internship at Sandia National Laboratories and building full stack applications for the local community."
                 delay={100}
                 animateBy="words"
                 direction="top"
               />
               <BlurText
-                text="Outside of tech, I love to travel, produce music, spend time on the water, and hit the gym."
+                text="When I am not developing software or exploring quantum systems, I spend my time producing music, traveling, and staying active at the gym."
                 delay={150}
                 animateBy="words"
                 direction="top"
