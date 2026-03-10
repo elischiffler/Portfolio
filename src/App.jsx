@@ -25,6 +25,9 @@ function App() {
 
   // Set initial opacity on mount in case of page reload at a lower position
   useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
     handleScroll();
   }, []);
 
