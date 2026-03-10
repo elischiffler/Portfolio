@@ -77,6 +77,11 @@ const BlurText = ({
     stepCount === 1 ? 0 : i / (stepCount - 1)
   );
 
+  const animateKeyframes = useMemo(
+    () => buildKeyframes(fromSnapshot, toSnapshots),
+    [fromSnapshot, toSnapshots]
+  );
+
   return (
     <p
       ref={ref}
@@ -84,8 +89,6 @@ const BlurText = ({
       style={{ display: 'flex', flexWrap: 'wrap' }}
     >
       {elements.map((segment, index) => {
-        const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
-
         const spanTransition = {
           duration: totalDuration,
           times,
