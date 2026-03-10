@@ -1,8 +1,7 @@
-import { FiBriefcase, FiFileText, FiUser, FiPhone } from 'react-icons/fi';
+import { FiBriefcase, FiFileText, FiUser, FiPhone, FiLayers, FiRepeat } from 'react-icons/fi';
 import { DiReact, DiPython, DiJava, DiJavascript1, DiDatabase } from 'react-icons/di';
-import { SiCplusplus, SiAmazon, SiPostman, SiQiskit } from 'react-icons/si';
+import { SiCplusplus, SiAmazon, SiPostman, SiQiskit, SiVite, SiGithub, SiJson, SiHtml5, SiLinux, SiNodedotjs, SiFastapi, SiJest, SiGithubactions } from 'react-icons/si';
 import { GiAtom } from 'react-icons/gi';
-import { FiZap } from 'react-icons/fi';
 import ProfileCard from '../components/ProfileCard/ProfileCard';
 import ShinyText from '../components/ShinyText/ShinyText';
 import GlassIcons from '../components/GlassIcons/GlassIcons';
@@ -65,17 +64,27 @@ const LandingPage = ({ onWorkClick, onProjectsClick, onAboutClick, onContactClic
             <GlassIcons items={items}/>
             <div className="skills-list">
               <p>
-                <span className="item"><DiReact /><ShinyText text="React" disabled={false} speed={3} /></span>
                 <span className="item"><DiPython /><ShinyText text="Python" disabled={false} speed={3} /></span>
-                <span className="item"><DiJava /><ShinyText text="Java" disabled={false} speed={3} /></span>
                 <span className="item"><DiJavascript1 /><ShinyText text="JavaScript" disabled={false} speed={3} /></span>
-                <span className="item"><SiCplusplus /><ShinyText text="C++" disabled={false} speed={3} /></span>
-                <span className="item"><DiDatabase /><ShinyText text="MySQL" disabled={false} speed={3} /></span>
-                <span className="item"><SiAmazon /><ShinyText text="AWS" disabled={false} speed={3} /></span>
-                <span className="item"><SiPostman /><ShinyText text="REST API" disabled={false} speed={3} /></span>
-                <span className="item"><FiZap /><ShinyText text="FastAPI" disabled={false} speed={3} /></span>
+                <span className="item"><SiCplusplus /><ShinyText text="C/C++" disabled={false} speed={3} /></span>
+                <span className="item"><DiJava /><ShinyText text="Java" disabled={false} speed={3} /></span>
+                <span className="item"><DiDatabase /><ShinyText text="SQL" disabled={false} speed={3} /></span>
+                <span className="item"><DiReact /><ShinyText text="React" disabled={false} speed={3} /></span>
+                <span className="item"><SiVite /><ShinyText text="Vite" disabled={false} speed={3} /></span>
                 <span className="item"><SiQiskit /><ShinyText text="Qiskit" disabled={false} speed={3} /></span>
+                <span className="item"><SiGithub /><ShinyText text="Github" disabled={false} speed={3} /></span>
+                <span className="item"><SiAmazon /><ShinyText text="AWS" disabled={false} speed={3} /></span>
+                <span className="item"><FiLayers /><ShinyText text="Full-Stack" disabled={false} speed={3} /></span>
+                <span className="item"><FiRepeat /><ShinyText text="Agile" disabled={false} speed={3} /></span>
+                <span className="item"><SiPostman /><ShinyText text="REST APIs" disabled={false} speed={3} /></span>
+                <span className="item"><SiJson /><ShinyText text="JSON" disabled={false} speed={3} /></span>
                 <span className="item"><GiAtom /><ShinyText text="Ion Trapping" disabled={false} speed={3} /></span>
+                <span className="item"><SiGithubactions /><ShinyText text="CI/CD" disabled={false} speed={3} /></span>
+                <span className="item"><SiHtml5 /><ShinyText text="HTML" disabled={false} speed={3} /></span>
+                <span className="item"><SiLinux /><ShinyText text="UNIX" disabled={false} speed={3} /></span>
+                <span className="item"><SiNodedotjs /><ShinyText text="Node" disabled={false} speed={3} /></span>
+                <span className="item"><SiFastapi /><ShinyText text="FastAPI" disabled={false} speed={3} /></span>
+                <span className="item"><SiJest /><ShinyText text="Jest" disabled={false} speed={3} /></span>
               </p>
             </div>
           </div>

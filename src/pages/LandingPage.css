@@ -49,7 +49,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
 }
 
 .skills-list .item {
@@ -62,5 +62,5 @@ body {
 
 .skills-list .item svg {
   vertical-align: middle;
-  font-size: 2rem; /* adjust size of icons */
+  font-size: 1.5rem; /* adjust size of icons */
 }
