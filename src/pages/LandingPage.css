@@ -4,7 +4,7 @@ body {
   overflow-x: hidden;
 }
 
-.landing-page{
+.landing-page {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -36,7 +36,7 @@ body {
   width: 50%;
 }
 
-.skills-nav-column{
+.skills-nav-column {
   display: flex;
   flex-direction: column;
   width: 50%;

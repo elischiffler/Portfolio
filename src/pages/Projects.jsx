@@ -1,5 +1,5 @@
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import BlurText from "../components/BlurText/BlurText";
+import BlurText from '../components/BlurText/BlurText';
 import './Projects.css';
 
 const Projects = () => (
@@ -89,7 +89,7 @@ const Projects = () => (
             rel="noopener noreferrer"
             className="project-link-button"
           >
-            <FaExternalLinkAlt style={{ marginRight: "0.3rem" }} /> Live Site
+            <FaExternalLinkAlt style={{ marginRight: '0.3rem' }} /> Live Site
           </a>
           <a
             href="https://github.com/Roadtrip-Planner"
@@ -97,7 +97,7 @@ const Projects = () => (
             rel="noopener noreferrer"
             className="project-link-button"
           >
-            <FaGithub style={{ marginRight: "0.3rem" }} /> GitHub
+            <FaGithub style={{ marginRight: '0.3rem' }} /> GitHub
           </a>
         </div>
       </div>
@@ -133,7 +133,7 @@ const Projects = () => (
             rel="noopener noreferrer"
             className="project-link-button"
           >
-            <FaGithub style={{ marginRight: "0.3rem" }} /> GitHub
+            <FaGithub style={{ marginRight: '0.3rem' }} /> GitHub
           </a>
         </div>
       </div>
@@ -227,7 +227,7 @@ const Projects = () => (
             rel="noopener noreferrer"
             className="project-link-button"
           >
-            <FaGithub style={{ marginRight: "0.3rem" }} /> GitHub
+            <FaGithub style={{ marginRight: '0.3rem' }} /> GitHub
           </a>
         </div>
       </div>

@@ -1,15 +1,15 @@
 import Beams from '../components/Backgrounds/Beams/Beams';
 import Stack from '../components/Stack/Stack';
 import BlurText from '../components/BlurText/BlurText';
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import './AboutMe.css';
 
 const AboutMe = () => {
   const images = [
-    { id: 1, img: "/images/AboutMe1.png" },
-    { id: 2, img: "/images/AboutMe2.png" },
-    { id: 3, img: "/images/AboutMe3.png" },
-    { id: 4, img: "/images/AboutMe4.png" }
+    { id: 1, img: '/images/AboutMe1.png' },
+    { id: 2, img: '/images/AboutMe2.png' },
+    { id: 3, img: '/images/AboutMe3.png' },
+    { id: 4, img: '/images/AboutMe4.png' },
   ];
 
   return (
@@ -48,30 +48,35 @@ const AboutMe = () => {
           </div>
           <div className="text-container">
             <div className="description">
-            <BlurText
-              text="Hi, I’m Eli Schiffler. I’m from Minnesota and currently earning my Bachelor’s in Computer Science at Cal Poly."
-              delay={50}
-              animateBy="words"
-              direction="top"
-            />
-            <BlurText
-              text="I’m passionate about technology and aim to build a career as a software engineer with a focus on quantum computing."
-              delay={100}
-              animateBy="words"
-              direction="top"
-            />
-            <BlurText
-              text="Outside of tech, I love to travel, produce music, spend time on the water, and hit the gym."
-              delay={150}
-              animateBy="words"
-              direction="top"
-            />
+              <BlurText
+                text="Hi, I’m Eli Schiffler. I’m from Minnesota and currently earning my Bachelor’s in Computer Science at Cal Poly."
+                delay={50}
+                animateBy="words"
+                direction="top"
+              />
+              <BlurText
+                text="I’m passionate about technology and aim to build a career as a software engineer with a focus on quantum computing."
+                delay={100}
+                animateBy="words"
+                direction="top"
+              />
+              <BlurText
+                text="Outside of tech, I love to travel, produce music, spend time on the water, and hit the gym."
+                delay={150}
+                animateBy="words"
+                direction="top"
+              />
             </div>
           </div>
         </div>
         <div className="contact-container">
           <div className="contact-title">
-            <BlurText text="Contact" delay={30} animateBy="letters" direction="top" />
+            <BlurText
+              text="Contact"
+              delay={30}
+              animateBy="letters"
+              direction="top"
+            />
           </div>
           <div className="contact-links">
             <a href="mailto:schifflereli@gmail.com" aria-label="Email">

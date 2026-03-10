@@ -1,5 +1,5 @@
-import BlurText from "../components/BlurText/BlurText";
-import "./Work.css";
+import BlurText from '../components/BlurText/BlurText';
+import './Work.css';
 
 const Work = () => (
   <div className="work">

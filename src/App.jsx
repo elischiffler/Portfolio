@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   const scrollToWork = () => {
-    workRef.current?.scrollIntoView({ behavior: "smooth" });
+    workRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToProjects = () => {
@@ -44,8 +44,17 @@ function App() {
     <>
       <CosmicDustBackground />
       <div ref={overlayRef} className="scroll-overlay" />
-      <div ref={containerRef} className="snap-container" onScroll={handleScroll}>
-        <LandingPage onWorkClick={scrollToWork} onProjectsClick={scrollToProjects} onAboutClick={scrollToAbout} onContactClick={scrollToAbout} />
+      <div
+        ref={containerRef}
+        className="snap-container"
+        onScroll={handleScroll}
+      >
+        <LandingPage
+          onWorkClick={scrollToWork}
+          onProjectsClick={scrollToProjects}
+          onAboutClick={scrollToAbout}
+          onContactClick={scrollToAbout}
+        />
         <div ref={workRef} className="snap-section">
           <Work />
         </div>

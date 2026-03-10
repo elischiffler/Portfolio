@@ -1,6 +1,7 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useState } from "react";
-import "./Stack.css";
+// eslint-disable-next-line no-unused-vars
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import './Stack.css';
 
 function CardRotate({ children, onSendToBack, sensitivity }) {
   const x = useMotionValue(0);
@@ -27,7 +28,7 @@ function CardRotate({ children, onSendToBack, sensitivity }) {
       drag
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={0.6}
-      whileTap={{ cursor: "grabbing" }}
+      whileTap={{ cursor: 'grabbing' }}
       onDragEnd={handleDragEnd}
     >
       {children}
@@ -49,21 +50,21 @@ export default function Stack({
       : [
           {
             id: 1,
-            img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format",
+            img: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format',
           },
           {
             id: 2,
-            img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
+            img: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format',
           },
           {
             id: 3,
-            img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
+            img: 'https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format',
           },
           {
             id: 4,
-            img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format",
+            img: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format',
           },
-        ],
+        ]
   );
 
   const sendToBack = (id) => {
@@ -100,11 +101,11 @@ export default function Stack({
               animate={{
                 rotateZ: (cards.length - index - 1) * 4 + randomRotate,
                 scale: 1 + index * 0.06 - cards.length * 0.06,
-                transformOrigin: "90% 90%",
+                transformOrigin: '90% 90%',
               }}
               initial={false}
               transition={{
-                type: "spring",
+                type: 'spring',
                 stiffness: animationConfig.stiffness,
                 damping: animationConfig.damping,
               }}

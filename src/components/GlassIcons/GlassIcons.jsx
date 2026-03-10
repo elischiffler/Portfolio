@@ -1,7 +1,7 @@
-import "./GlassIcons.css";
+import './GlassIcons.css';
 
 const gradientMapping = {
-  blue: "linear-gradient(hsl(223, 90%, 50%), hsl(208, 90%, 50%))",
+  blue: 'linear-gradient(hsl(223, 90%, 50%), hsl(208, 90%, 50%))',
 };
 
 const GlassIcons = ({ items, className }) => {
@@ -13,12 +13,12 @@ const GlassIcons = ({ items, className }) => {
   };
 
   return (
-    <div className={`icon-btns ${className || ""}`}>
+    <div className={`icon-btns ${className || ''}`}>
       {items.map((item, index) => (
         <button
           key={index}
           onClick={item.onClick}
-          className={`icon-btn ${item.customClass || ""}`}
+          className={`icon-btn ${item.customClass || ''}`}
           aria-label={item.label}
           type="button"
         >

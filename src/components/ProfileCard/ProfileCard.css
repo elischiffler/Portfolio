@@ -36,7 +36,7 @@
 }
 
 .pc-card-wrapper::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: -10px;
   background: inherit;
@@ -185,7 +185,7 @@
 
 .pc-shine::before,
 .pc-shine::after {
-  content: "";
+  content: '';
   background-position: center;
   background-size: cover;
   grid-area: 1/1;
@@ -278,7 +278,7 @@
 }
 
 .pc-avatar-content::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -619,10 +619,11 @@
   justify-content: center;
   color: white;
   font-size: 1.8rem;
-  transition: background-color 0.3s, transform 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
   cursor: pointer;
 }
-
 
 .pc-buttons .social-icon:hover {
   background-color: rgba(255, 255, 255, 0.3);

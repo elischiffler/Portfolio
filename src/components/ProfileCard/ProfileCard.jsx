@@ -1,12 +1,17 @@
-import React, { useEffect, useRef, useCallback, useMemo } from "react";
-import { FaGithub, FaEnvelope, FaLinkedin, FaFileDownload } from 'react-icons/fa';
-import "./ProfileCard.css";
+import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import {
+  FaGithub,
+  FaEnvelope,
+  FaLinkedin,
+  FaFileDownload,
+} from 'react-icons/fa';
+import './ProfileCard.css';
 
 const DEFAULT_BEHIND_GRADIENT =
-  "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)";
+  'radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)';
 
 const DEFAULT_INNER_GRADIENT =
-  "linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)";
+  'linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)';
 
 const ANIMATION_CONFIG = {
   SMOOTH_DURATION: 600,
@@ -27,19 +32,18 @@ const easeInOutCubic = (x) =>
   x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 
 const ProfileCardComponent = ({
-  avatarUrl = "<Placeholder for avatar URL>",
-  iconUrl = "<Placeholder for icon URL>",
-  grainUrl = "<Placeholder for grain URL>",
+  avatarUrl = '<Placeholder for avatar URL>',
+  iconUrl = '<Placeholder for icon URL>',
+  grainUrl = '<Placeholder for grain URL>',
   behindGradient,
   innerGradient,
   showBehindGradient = true,
-  className = "",
+  className = '',
   enableTilt = true,
   miniAvatarUrl,
-  name = "Javi A. Torres",
-  title = "Software Engineer",
+  name = 'loading',
+  title = 'Software Engineer',
   showUserInfo = true,
-  onContactClick,
 }) => {
   const wrapRef = useRef(null);
   const cardRef = useRef(null);
@@ -60,15 +64,15 @@ const ProfileCardComponent = ({
       const centerY = percentY - 50;
 
       const properties = {
-        "--pointer-x": `${percentX}%`,
-        "--pointer-y": `${percentY}%`,
-        "--background-x": `${adjust(percentX, 0, 100, 35, 65)}%`,
-        "--background-y": `${adjust(percentY, 0, 100, 35, 65)}%`,
-        "--pointer-from-center": `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
-        "--pointer-from-top": `${percentY / 100}`,
-        "--pointer-from-left": `${percentX / 100}`,
-        "--rotate-x": `${round(-(centerX / 5))}deg`,
-        "--rotate-y": `${round(centerY / 4)}deg`,
+        '--pointer-x': `${percentX}%`,
+        '--pointer-y': `${percentY}%`,
+        '--background-x': `${adjust(percentX, 0, 100, 35, 65)}%`,
+        '--background-y': `${adjust(percentY, 0, 100, 35, 65)}%`,
+        '--pointer-from-center': `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
+        '--pointer-from-top': `${percentY / 100}`,
+        '--pointer-from-left': `${percentX / 100}`,
+        '--rotate-x': `${round(-(centerX / 5))}deg`,
+        '--rotate-y': `${round(centerY / 4)}deg`,
       };
 
       Object.entries(properties).forEach(([property, value]) => {
@@ -123,10 +127,10 @@ const ProfileCardComponent = ({
         event.clientX - rect.left,
         event.clientY - rect.top,
         card,
-        wrap,
+        wrap
       );
     },
-    [animationHandlers],
+    [animationHandlers]
   );
 
   const handlePointerEnter = useCallback(() => {
@@ -136,8 +140,8 @@ const ProfileCardComponent = ({
     if (!card || !wrap || !animationHandlers) return;
 
     animationHandlers.cancelAnimation();
-    wrap.classList.add("active");
-    card.classList.add("active");
+    wrap.classList.add('active');
+    card.classList.add('active');
   }, [animationHandlers]);
 
   const handlePointerLeave = useCallback(
@@ -152,12 +156,12 @@ const ProfileCardComponent = ({
         event.offsetX,
         event.offsetY,
         card,
-        wrap,
+        wrap
       );
-      wrap.classList.remove("active");
-      card.classList.remove("active");
+      wrap.classList.remove('active');
+      card.classList.remove('active');
     },
-    [animationHandlers],
+    [animationHandlers]
   );
 
   useEffect(() => {
@@ -172,9 +176,9 @@ const ProfileCardComponent = ({
     const pointerEnterHandler = handlePointerEnter;
     const pointerLeaveHandler = handlePointerLeave;
 
-    card.addEventListener("pointerenter", pointerEnterHandler);
-    card.addEventListener("pointermove", pointerMoveHandler);
-    card.addEventListener("pointerleave", pointerLeaveHandler);
+    card.addEventListener('pointerenter', pointerEnterHandler);
+    card.addEventListener('pointermove', pointerMoveHandler);
+    card.addEventListener('pointerleave', pointerLeaveHandler);
 
     const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
     const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
@@ -185,13 +189,13 @@ const ProfileCardComponent = ({
       initialX,
       initialY,
       card,
-      wrap,
+      wrap
     );
 
     return () => {
-      card.removeEventListener("pointerenter", pointerEnterHandler);
-      card.removeEventListener("pointermove", pointerMoveHandler);
-      card.removeEventListener("pointerleave", pointerLeaveHandler);
+      card.removeEventListener('pointerenter', pointerEnterHandler);
+      card.removeEventListener('pointermove', pointerMoveHandler);
+      card.removeEventListener('pointerleave', pointerLeaveHandler);
       animationHandlers.cancelAnimation();
     };
   }, [
@@ -204,19 +208,15 @@ const ProfileCardComponent = ({
 
   const cardStyle = useMemo(
     () => ({
-      "--icon": iconUrl ? `url(${iconUrl})` : "none",
-      "--grain": grainUrl ? `url(${grainUrl})` : "none",
-      "--behind-gradient": showBehindGradient
+      '--icon': iconUrl ? `url(${iconUrl})` : 'none',
+      '--grain': grainUrl ? `url(${grainUrl})` : 'none',
+      '--behind-gradient': showBehindGradient
         ? (behindGradient ?? DEFAULT_BEHIND_GRADIENT)
-        : "none",
-      "--inner-gradient": innerGradient ?? DEFAULT_INNER_GRADIENT,
+        : 'none',
+      '--inner-gradient': innerGradient ?? DEFAULT_INNER_GRADIENT,
     }),
-    [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient],
+    [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient]
   );
-
-  const handleContactClick = useCallback(() => {
-    onContactClick?.();
-  }, [onContactClick]);
 
   return (
     <div
@@ -232,11 +232,11 @@ const ProfileCardComponent = ({
             <img
               className="avatar"
               src={avatarUrl}
-              alt={`${name || "User"} avatar`}
+              alt={`${name || 'User'} avatar`}
               loading="lazy"
               onError={(e) => {
                 const target = e.target;
-                target.style.display = "none";
+                target.style.display = 'none';
               }}
             />
             {showUserInfo && (
@@ -245,27 +245,44 @@ const ProfileCardComponent = ({
                   <div className="pc-mini-avatar">
                     <img
                       src={miniAvatarUrl || avatarUrl}
-                      alt={`${name || "User"} mini avatar`}
+                      alt={`${name || 'User'} mini avatar`}
                       loading="lazy"
                       onError={(e) => {
                         const target = e.target;
-                        target.style.opacity = "0.5";
+                        target.style.opacity = '0.5';
                         target.src = avatarUrl;
                       }}
                     />
                   </div>
                   <div className="pc-user-text">
                     <div className="pc-buttons">
-                      <a href="https://github.com/elischiffler" target="_blank" rel="noopener noreferrer" className="social-icon">
+                      <a
+                        href="https://github.com/elischiffler"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-icon"
+                      >
                         <FaGithub />
                       </a>
-                      <a href="mailto:schifflereli@gmail.com" className="social-icon">
+                      <a
+                        href="mailto:schifflereli@gmail.com"
+                        className="social-icon"
+                      >
                         <FaEnvelope />
                       </a>
-                      <a href="https://linkedin.com/in/eli-schiffler-93a69a298" target="_blank" rel="noopener noreferrer" className="social-icon">
+                      <a
+                        href="https://linkedin.com/in/eli-schiffler-93a69a298"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-icon"
+                      >
                         <FaLinkedin />
                       </a>
-                      <a href="/EliSchifflerResume.pdf" download className="social-icon">
+                      <a
+                        href="/EliSchifflerResume.pdf"
+                        download
+                        className="social-icon"
+                      >
                         <FaFileDownload />
                       </a>
                     </div>
