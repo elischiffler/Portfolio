@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Beams from '../components/Backgrounds/Beams/Beams';
 import Stack from '../components/Stack/Stack';
 import BlurText from '../components/BlurText/BlurText';
@@ -5,12 +6,20 @@ import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import './AboutMe.css';
 
 const AboutMe = () => {
+  const [copied, setCopied] = useState(false);
   const images = [
     { id: 1, img: '/images/AboutMe1.png' },
     { id: 2, img: '/images/AboutMe2.png' },
     { id: 3, img: '/images/AboutMe3.png' },
     { id: 4, img: '/images/AboutMe4.png' },
   ];
+
+  const handleCopyEmail = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText('schifflereli@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="about-page">
@@ -79,9 +88,16 @@ const AboutMe = () => {
             />
           </div>
           <div className="contact-links">
-            <a href="mailto:schifflereli@gmail.com" aria-label="Email">
-              <FaEnvelope className="contact-icon" />
-            </a>
+            <div className="email-container">
+              <a
+                href="mailto:schifflereli@gmail.com"
+                aria-label="Email"
+                onClick={handleCopyEmail}
+              >
+                <FaEnvelope className="contact-icon" />
+              </a>
+              {copied && <span className="tooltip">Copied!</span>}
+            </div>
             <a
               href="https://linkedin.com/in/eli-schiffler-93a69a298"
               aria-label="LinkedIn"

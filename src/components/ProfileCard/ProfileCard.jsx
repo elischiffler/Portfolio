@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 import {
   FaGithub,
   FaEnvelope,
@@ -47,6 +53,14 @@ const ProfileCardComponent = ({
 }) => {
   const wrapRef = useRef(null);
   const cardRef = useRef(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText('schifflereli@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const animationHandlers = useMemo(() => {
     if (!enableTilt) return null;
@@ -264,12 +278,41 @@ const ProfileCardComponent = ({
                       >
                         <FaGithub />
                       </a>
-                      <a
-                        href="mailto:schifflereli@gmail.com"
-                        className="social-icon"
+                      <div
+                        style={{
+                          position: 'relative',
+                          display: 'inline-block',
+                        }}
                       >
-                        <FaEnvelope />
-                      </a>
+                        <a
+                          href="mailto:schifflereli@gmail.com"
+                          className="social-icon"
+                          onClick={handleCopyEmail}
+                        >
+                          <FaEnvelope />
+                        </a>
+                        {copied && (
+                          <span
+                            style={{
+                              position: 'absolute',
+                              top: '-40px',
+                              left: '50%',
+                              transform: 'translateX(-50%)',
+                              backgroundColor: '#333',
+                              color: 'white',
+                              padding: '5px 10px',
+                              borderRadius: '5px',
+                              fontSize: '0.9rem',
+                              whiteSpace: 'nowrap',
+                              pointerEvents: 'none',
+                              zIndex: 10,
+                              animation: 'fadeIn 0.2s ease-in-out',
+                            }}
+                          >
+                            Copied!
+                          </span>
+                        )}
+                      </div>
                       <a
                         href="https://linkedin.com/in/eli-schiffler-93a69a298"
                         target="_blank"
