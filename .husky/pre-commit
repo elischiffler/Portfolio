@@ -1,2 +1,5 @@
+# Help GUI Git clients find the npm executable
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+
 npm run lint
 npm run format

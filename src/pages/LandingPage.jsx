@@ -129,7 +129,7 @@ const LandingPage = ({ onWorkClick, onProjectsClick, onAboutClick }) => {
                 </span>
                 <span className="item">
                   <FiRepeat />
-                  <ShinyText text="Agile" disabled={false} speed={3} />
+                  <ShinyText text="AGILE" disabled={false} speed={3} />
                 </span>
                 <span className="item">
                   <SiPostman />

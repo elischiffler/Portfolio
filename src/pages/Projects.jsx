@@ -75,6 +75,26 @@ const Projects = () => (
             animateBy="words"
             direction="top"
           />
+          <div className="dummy-login">
+            <BlurText
+              text="Try My Login!"
+              delay={30}
+              animateBy="words"
+              direction="top"
+            />
+            <BlurText
+              text="Email: schifflereli@gmail.com"
+              delay={30}
+              animateBy="words"
+              direction="top"
+            />
+            <BlurText
+              text="Password: Testing1!"
+              delay={30}
+              animateBy="words"
+              direction="top"
+            />
+          </div>
           <BlurText
             text="Technologies: React, AWS, Python, JavaScript, FastAPI, REST API, SQL, CI/CD"
             delay={30}
@@ -229,6 +249,76 @@ const Projects = () => (
           >
             <FaGithub style={{ marginRight: '0.3rem' }} /> GitHub
           </a>
+        </div>
+      </div>
+    </div>
+    <div className="project-item">
+      <div className="project-text">
+        <div className="project-title">
+          <BlurText
+            text="IBM Quantum Benchmarking Tool"
+            delay={30}
+            animateBy="letters"
+            direction="top"
+          />
+        </div>
+        <div className="project-description">
+          <BlurText
+            text="Developed a Python command-line tool to automate randomized benchmarking (RB) experiments on IBM Quantum computers. Built robust cross-platform setup scripts and integrated the IBM Quantum API to securely run jobs and export data to CSV."
+            delay={30}
+            animateBy="words"
+            direction="top"
+          />
+          <BlurText
+            text="Technologies: Python, Qiskit, IBM Quantum API, CLI"
+            delay={30}
+            animateBy="words"
+            direction="top"
+          />
+        </div>
+        <div className="project-links">
+          <a
+            href="https://github.com/elischiffler/QCC-IBM-ErrorCode-Project"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link-button"
+          >
+            <FaGithub style={{ marginRight: '0.3rem' }} /> GitHub
+          </a>
+        </div>
+      </div>
+      <div className="carousel auto-carousel">
+        <div className="carousel-track">
+          <img
+            src="/images/QCC-Script1.png"
+            alt="Quantum Script Code"
+            className="project-image contain-image"
+          />
+          <img
+            src="/images/QCC-Script2.png"
+            alt="Quantum Script CSV Results"
+            className="project-image contain-image"
+          />
+          <img
+            src="/images/QCC-Script3.png"
+            alt="Quantum Script Terminal Output"
+            className="project-image contain-image"
+          />
+          <img
+            src="/images/QCC-Script1.png"
+            alt="Quantum Script Code"
+            className="project-image contain-image"
+          />
+          <img
+            src="/images/QCC-Script2.png"
+            alt="Quantum Script CSV Results"
+            className="project-image contain-image"
+          />
+          <img
+            src="/images/QCC-Script3.png"
+            alt="Quantum Script Terminal Output"
+            className="project-image contain-image"
+          />
         </div>
       </div>
     </div>

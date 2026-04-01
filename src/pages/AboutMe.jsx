@@ -12,6 +12,7 @@ const AboutMe = () => {
     { id: 2, img: '/images/AboutMe2.png' },
     { id: 3, img: '/images/AboutMe3.png' },
     { id: 4, img: '/images/AboutMe4.png' },
+    { id: 5, img: '/images/AboutMe5.png' },
   ];
 
   const handleCopyEmail = (e) => {

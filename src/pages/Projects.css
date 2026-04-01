@@ -48,6 +48,17 @@
   color: #b0bec5;
 }
 
+.dummy-login {
+  margin: 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dummy-login > * {
+  margin: 0;
+}
+
 .carousel {
   width: 50%;
   display: flex;
@@ -61,6 +72,10 @@
   height: auto;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+.carousel-track img.contain-image {
+  object-fit: contain;
 }
 
 .auto-carousel {
