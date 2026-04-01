@@ -6,7 +6,7 @@
   "homepage": "https://elischiffler.github.io/Portfolio/",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "HUSKY=0 gh-pages -d dist",
     "dev": "vite",
     "format": "prettier --write .",
     "build": "NODE_OPTIONS=--max-old-space-size=4096 vite build",
@@ -15,7 +15,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@emotion/resact": "^11.14.0",
+    "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^7.1.1",
     "@react-three/drei": "^10.3.0",
