@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Stack from '../components/Stack/Stack';
-import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaUser } from 'react-icons/fa';
 import './AboutMe.css';
 
 const AboutMe = () => {
@@ -22,7 +22,13 @@ const AboutMe = () => {
 
   return (
     <div className="about-page">
-      <p className="page-title">About Me</p>
+      <div className="page-header">
+        <h1 className="page-title">
+          About Me
+          <FaUser className="page-header-icon" aria-hidden="true" />
+        </h1>
+        <div className="page-header-line" />
+      </div>
 
       <div className="about-body">
         <div className="picture-container">

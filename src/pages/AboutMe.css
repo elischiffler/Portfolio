@@ -8,16 +8,33 @@
   box-sizing: border-box;
 }
 
+.page-header {
+  padding-bottom: 1rem;
+  flex-shrink: 0;
+}
+
 .page-title {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-mocha);
-  margin: 0 0 2rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: 'Poppins', sans-serif;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--color-sage);
+}
+
+.page-header-icon {
+  color: var(--color-espresso);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.page-header-line {
+  height: 1px;
+  background: var(--color-sage);
+  width: 100%;
 }
 
 .about-body {

@@ -1,17 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
   FaFileDownload,
+  FaHome,
+  FaBriefcase,
+  FaLaptopCode,
+  FaUser,
 } from 'react-icons/fa';
 import './Sidebar.css';
 
 const sections = [
-  { id: 'section-landing', label: 'Home' },
-  { id: 'section-work', label: 'Work' },
-  { id: 'section-projects', label: 'Projects' },
-  { id: 'section-about', label: 'About' },
+  { id: 'section-landing', label: 'Home', icon: <FaHome /> },
+  { id: 'section-work', label: 'Work', icon: <FaBriefcase /> },
+  { id: 'section-projects', label: 'Projects', icon: <FaLaptopCode /> },
+  { id: 'section-about', label: 'About', icon: <FaUser /> },
 ];
 
 const socials = [
@@ -44,6 +48,7 @@ const socials = [
 
 const Sidebar = () => {
   const [activeSection, setActiveSection] = useState('section-landing');
+  const isNavigating = useRef(false);
 
   useEffect(() => {
     const observers = [];
@@ -54,11 +59,10 @@ const Sidebar = () => {
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !isNavigating.current) {
             setActiveSection(id);
           }
         },
-        // Fire when the section covers at least 50% of the viewport
         { threshold: 0.5 }
       );
 
@@ -70,7 +74,13 @@ const Sidebar = () => {
   }, []);
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setActiveSection(id);
+    isNavigating.current = true;
+    window.dispatchEvent(new CustomEvent('navigate-section', { detail: id }));
+    // Release the lock after the animation completes (2s duration + buffer)
+    setTimeout(() => {
+      isNavigating.current = false;
+    }, 2200);
   };
 
   return (
@@ -80,7 +90,7 @@ const Sidebar = () => {
 
       {/* Section dots */}
       <nav className="sidebar-nav" aria-label="Page sections">
-        {sections.map(({ id, label }) => (
+        {sections.map(({ id, label, icon }) => (
           <button
             key={id}
             className={`sidebar-nav-item${activeSection === id ? ' active' : ''}`}
@@ -88,7 +98,7 @@ const Sidebar = () => {
             aria-label={`Go to ${label}`}
             type="button"
           >
-            <span className="sidebar-dot" />
+            <span className="sidebar-nav-icon">{icon}</span>
             <span className="sidebar-label" aria-hidden="true">
               {label}
             </span>

@@ -1,4 +1,4 @@
-import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaLaptopCode } from 'react-icons/fa';
 import './Projects.css';
 
 const projects = [
@@ -96,8 +96,13 @@ const projects = [
 
 const Projects = () => (
   <div className="projects">
-    <p className="page-title">Projects</p>
-
+    <div className="page-header">
+      <h1 className="page-title">
+        Projects
+        <FaLaptopCode className="page-header-icon" aria-hidden="true" />
+      </h1>
+      <div className="page-header-line" />
+    </div>{' '}
     <div className="project-grid">
       {projects.map((project) => {
         // Duplicate images for seamless loop

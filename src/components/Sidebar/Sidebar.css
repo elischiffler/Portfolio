@@ -45,26 +45,28 @@
   border-radius: 0 !important;
 }
 
-/* Dot — cream ring punches through the line */
-.sidebar-dot {
+/* Nav icon */
+.sidebar-nav-icon {
   position: absolute;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: var(--color-mocha);
-  box-shadow: 0 0 0 3px var(--color-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--color-mocha);
   transition:
     opacity 0.15s ease,
-    transform 0.15s ease;
+    transform 0.15s ease,
+    color 0.15s ease;
 }
 
-.sidebar-nav-item:hover .sidebar-dot {
+.sidebar-nav-item:hover .sidebar-nav-icon {
   opacity: 0;
   transform: scale(0.4);
 }
 
-.sidebar-nav-item.active .sidebar-dot {
-  opacity: 0;
+.sidebar-nav-item.active .sidebar-nav-icon {
+  color: var(--color-espresso);
+  font-size: 1.25rem;
 }
 
 /* ── Nav label ── */
@@ -88,12 +90,6 @@
 }
 
 .sidebar-nav-item:hover .sidebar-label {
-  opacity: 1;
-  transform: scale(1);
-  color: var(--color-espresso);
-}
-
-.sidebar-nav-item.active .sidebar-label {
   opacity: 1;
   transform: scale(1);
   color: var(--color-espresso);

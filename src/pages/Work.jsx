@@ -1,41 +1,46 @@
+import { FaBriefcase } from 'react-icons/fa';
 import './Work.css';
 
 const Work = () => (
-  <div className="work">
-    <p className="page-title">Work Experience</p>
+  <section className="work">
+    {/* Header */}
+    <div className="work-header">
+      <h1 className="work-section-title">
+        Work Experience
+        <FaBriefcase className="work-header-icon" aria-hidden="true" />
+      </h1>
+      <div className="work-header-line" />
+    </div>
 
-    <div className="work-item">
-      <div className="auto-carousel">
-        <div className="carousel-track">
-          <img src="/images/Quantum1.png" alt="Sandia quantum lab 1" />
-          <img src="/images/Quantum2.png" alt="Sandia quantum lab 2" />
-          <img src="/images/Quantum3.png" alt="Sandia quantum lab 3" />
-          <img src="/images/Quantum4.png" alt="Sandia quantum lab 4" />
-          <img src="/images/Quantum1.png" alt="Sandia quantum lab 1" />
-          <img src="/images/Quantum2.png" alt="Sandia quantum lab 2" />
-          <img src="/images/Quantum3.png" alt="Sandia quantum lab 3" />
-          <img src="/images/Quantum4.png" alt="Sandia quantum lab 4" />
+    {/* Entry — Sandia National Laboratories */}
+    <div className="work-entries">
+      <div className="work-item">
+        <img
+          src="/images/SandiaLaser.jpg"
+          alt="Laser optics system at Sandia National Laboratories"
+          className="work-image"
+        />
+
+        <div className="work-text">
+          <h2 className="work-title">Sandia National Laboratories</h2>
+          <p className="work-subtitle">Quantum Engineering Intern</p>
+          <p className="work-date">Summer 2024 · Albuquerque, NM</p>
+          <p className="work-description">
+            Focused on the precise alignment of optical systems used for
+            trapping and cooling barium ions. Managed laser beam paths to
+            maintain experimental stability and specialized in optimization of
+            optical fibers, achieving 80% efficiency. Collaborated daily with
+            doctoral researchers to troubleshoot technical issues and enhance
+            quantum hardware performance.
+          </p>
+          <p className="work-skills">
+            Optics · Ion Trapping · Laser Alignment · Optical Fiber Coupling ·
+            Data Analysis · Beam Path Optimization
+          </p>
         </div>
       </div>
-
-      <div className="work-text">
-        <h2 className="work-title">Sandia National Laboratories</h2>
-        <p className="work-subtitle">Quantum Engineering Intern</p>
-        <p className="work-description">
-          Focused on the precise alignment of optical systems used for trapping
-          and cooling barium ions. Managed laser beam paths to maintain
-          experimental stability and specialized in optimization of optical
-          fibers, achieving 80% efficiency. Collaborated daily with doctoral
-          researchers to troubleshoot technical issues and enhance quantum
-          hardware performance.
-        </p>
-        <p className="work-skills">
-          Optics · Ion Trapping · Laser Alignment · Quantum Physics ·
-          Experimental Design
-        </p>
-      </div>
     </div>
-  </div>
+  </section>
 );
 
 export default Work;

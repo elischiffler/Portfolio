@@ -1,97 +1,109 @@
+/* ── Work section ── */
 .work {
-  position: relative;
-  padding: 2rem;
+  height: 100%;
   min-height: 100vh;
+  padding: 3rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: var(--color-cream);
+  gap: 2.5rem;
   box-sizing: border-box;
 }
 
-.page-title {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-mocha);
-  margin: 0 0 2rem 0;
-  font-family: 'Poppins', sans-serif;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--color-sage);
+/* ── Center the entry vertically in remaining space ── */
+.work-entries {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.work-item {
+/* ── Header ── */
+.work-header {
+  padding-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.work-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.2;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.work-header-icon {
+  color: var(--color-espresso);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.work-header-line {
+  height: 1px;
+  background: var(--color-sage);
+  width: 100%;
+}
+
+/* ── Single work entry ── */
+.work-item {
+  display: grid;
+  grid-template-columns: 340px 1fr;
   align-items: center;
   gap: 3rem;
+  width: 100%;
+}
+/* ── Work image ── */
+.work-image {
+  width: 340px;
+  height: 100%;
+  min-height: 200px;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--color-sage);
+  display: block;
+  align-self: stretch;
 }
 
+/* ── Work text ── */
 .work-text {
-  width: 50%;
-  text-align: left;
+  flex: 1;
+  min-width: 0;
 }
 
 .work-title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 0.25rem;
-  font-family: 'Poppins', sans-serif;
   color: var(--color-espresso);
+  margin: 0 0 0.25rem 0;
 }
 
 .work-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-mocha);
-  margin-bottom: 1rem;
-  font-family: 'Poppins', sans-serif;
+  margin: 0 0 0.2rem 0;
+}
+
+.work-date {
+  font-size: 0.8rem;
+  color: var(--color-sage);
+  margin: 0 0 1.2rem 0;
 }
 
 .work-description {
   font-size: 0.95rem;
   line-height: 1.7;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
   color: var(--color-espresso);
+  margin: 0 0 1rem 0;
 }
 
 .work-skills {
-  margin-top: 1rem;
   font-size: 0.85rem;
-  color: var(--color-mocha);
-  font-family: 'Poppins', sans-serif;
   font-weight: 500;
-}
-
-/* Carousel */
-.auto-carousel {
-  overflow: hidden;
-  width: 45vw;
-  border-radius: 8px;
-  border: 1px solid var(--color-sage);
-  flex-shrink: 0;
-}
-
-.carousel-track {
-  display: flex;
-  animation: scroll 20s linear infinite;
-}
-
-.carousel-track img {
-  width: 45vw;
-  height: auto;
-  object-fit: cover;
-  flex-shrink: 0;
-  display: block;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  color: var(--color-mocha);
+  margin: 0;
 }

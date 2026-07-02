@@ -8,12 +8,11 @@ body {
 .snap-container {
   height: 100vh;
   overflow-y: scroll;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scrollbar-width: none;
   position: relative;
   z-index: 1;
   background-color: var(--color-cream);
-  /* offset for the fixed sidebar */
   margin-left: 72px;
 }
 
@@ -22,7 +21,12 @@ body {
 }
 
 .snap-section {
-  --fade-progress: 0;
-  overflow: hidden;
-  opacity: calc(1 - var(--fade-progress) * 1.5);
+  min-height: 100vh;
+  scroll-snap-align: start;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.snap-section.is-visible {
+  opacity: 1;
 }
