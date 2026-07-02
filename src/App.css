@@ -8,7 +8,6 @@ body {
 .snap-container {
   height: 100vh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
   position: relative;
@@ -23,6 +22,7 @@ body {
 }
 
 .snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  --fade-progress: 0;
+  overflow: hidden;
+  opacity: calc(1 - var(--fade-progress) * 1.5);
 }

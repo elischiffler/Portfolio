@@ -51,17 +51,14 @@ const skills = [
 const LandingPage = () => {
   return (
     <div className="landing-page">
-      {/* Header */}
-      <div className="landing-header">
-        <h1 className="landing-name">Eli Schiffler</h1>
-        <p className="landing-tagline">
-          Software Engineer &nbsp;·&nbsp; Quantum Computing
-        </p>
-      </div>
+      {/* Decorative watermark */}
+      <span className="landing-watermark" aria-hidden="true">
+        ES
+      </span>
 
-      {/* Body */}
-      <div className="landing-body">
-        {/* Headshot */}
+      {/* Main layout */}
+      <div className="landing-inner">
+        {/* Left: photo */}
         <div className="landing-photo-col">
           <img
             src="/images/Headshot.png"
@@ -70,16 +67,31 @@ const LandingPage = () => {
           />
         </div>
 
-        {/* Skills */}
-        <div className="landing-right-col">
-          <p className="landing-skills-label">Skills</p>
-          <div className="skills-grid">
-            {skills.map(({ icon, label }) => (
-              <span key={label} className="skill-tag">
-                {icon}
-                {label}
-              </span>
-            ))}
+        {/* Right: identity + skills */}
+        <div className="landing-content-col">
+          <div className="landing-intro">
+            <h1 className="landing-name">
+              Eli
+              <br />
+              Schiffler
+            </h1>
+            <p className="landing-tagline">
+              Software Engineer · Quantum Computing
+            </p>
+          </div>
+
+          <div className="landing-divider" />
+
+          <div className="landing-skills-section">
+            <p className="landing-skills-label">Skills</p>
+            <div className="skills-grid">
+              {skills.map(({ icon, label }) => (
+                <span key={label} className="skill-tag">
+                  {icon}
+                  {label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
