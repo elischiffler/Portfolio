@@ -1,92 +1,65 @@
 .projects {
   position: relative;
-  padding: 0 2rem 2rem 2rem;
-  color: white;
+  padding: 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: var(--color-cream);
+  box-sizing: border-box;
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 3rem;
-  font-weight: 700;
-  font-family: 'Poppins', sans-serif;
-  color: #93a6c0;
-}
-
-.project-item {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 3rem;
-}
-
-.project-text {
-  width: 50%;
-  text-align: left;
-}
-
-.project-title {
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-family: 'Poppins', sans-serif;
+.page-title {
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #93a6c0;
-}
-
-.project-description {
-  font-size: 1rem;
-  line-height: 1.6;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-mocha);
+  margin: 0 0 1.5rem 0;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  color: #b0bec5;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-sage);
 }
 
-.dummy-login {
-  margin: 1.25rem 0;
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.project-card {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-}
-
-.dummy-login > * {
-  margin: 0;
-}
-
-.carousel {
-  width: 50%;
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  scroll-snap-type: x mandatory;
-}
-
-.carousel-track img {
-  width: 45vw;
-  height: auto;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.carousel-track img.contain-image {
-  object-fit: contain;
+  background-color: var(--color-linen);
+  border: 1px solid var(--color-sage);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .auto-carousel {
   overflow: hidden;
-  width: 45vw;
-  border-radius: 8px;
+  width: 100%;
+  border-bottom: 1px solid var(--color-sage);
+  flex-shrink: 0;
 }
 
 .carousel-track {
   display: flex;
   animation: scroll 20s linear infinite;
+}
+
+.carousel-track img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+.carousel-track img.contain-image {
+  object-fit: contain;
+  background-color: var(--color-linen);
 }
 
 @keyframes scroll {
@@ -98,29 +71,82 @@
   }
 }
 
-.project-links {
-  margin-top: 1rem;
+.project-body {
+  padding: 1rem 1.25rem 1.25rem;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.project-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.project-description {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: var(--color-espresso);
+  margin: 0;
+  flex: 1;
+}
+
+.project-tech {
+  font-size: 0.8rem;
+  color: var(--color-mocha);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  margin: 0;
+}
+
+.dummy-login {
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-sage);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-espresso);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+}
+
+.dummy-login strong {
+  color: var(--color-mocha);
+  font-weight: 600;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .project-link-button {
-  color: white;
-  padding: 0.3rem 1rem;
-  border: 2px solid white;
-  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-espresso);
+  padding: 0.3rem 0.9rem;
+  border: 1.5px solid var(--color-mocha);
+  border-radius: 4px;
   background: transparent;
   text-decoration: none;
   transition:
-    transform 0.3s ease,
-    color 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease;
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .project-link-button:hover {
-  transform: scale(1.05);
-  background: rgba(0, 255, 200, 0.2);
-  color: #7eb8d6ff;
-  border-color: #7eb8d6ff;
+  background-color: var(--color-cream);
+  border-color: var(--color-tan);
+  color: var(--color-espresso);
 }

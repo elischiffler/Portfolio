@@ -1,25 +1,27 @@
 .work {
   position: relative;
-  padding: 0 2rem 2rem 2rem;
-  color: white;
+  padding: 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: var(--color-cream);
+  box-sizing: border-box;
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 3rem;
-  font-weight: 700;
+.page-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-mocha);
+  margin: 0 0 2rem 0;
   font-family: 'Poppins', sans-serif;
-  color: #93a6c0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-sage);
 }
 
 .work-item {
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -32,28 +34,49 @@
 }
 
 .work-title {
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
   font-family: 'Poppins', sans-serif;
+  color: var(--color-espresso);
+}
+
+.work-subtitle {
+  font-size: 0.9rem;
   font-weight: 600;
-  color: #93a6c0;
+  color: var(--color-mocha);
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .work-description {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.7;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  color: #b0bec5;
+  color: var(--color-espresso);
 }
 
-.carousel {
-  width: 50%;
+.work-skills {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-mocha);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+/* Carousel */
+.auto-carousel {
+  overflow: hidden;
+  width: 45vw;
+  border-radius: 8px;
+  border: 1px solid var(--color-sage);
+  flex-shrink: 0;
+}
+
+.carousel-track {
   display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  scroll-snap-type: x mandatory;
+  animation: scroll 20s linear infinite;
 }
 
 .carousel-track img {
@@ -61,17 +84,7 @@
   height: auto;
   object-fit: cover;
   flex-shrink: 0;
-}
-
-.auto-carousel {
-  overflow: hidden;
-  width: 45vw;
-  border-radius: 8px;
-}
-
-.carousel-track {
-  display: flex;
-  animation: scroll 20s linear infinite;
+  display: block;
 }
 
 @keyframes scroll {
