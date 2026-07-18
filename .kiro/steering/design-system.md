@@ -21,7 +21,7 @@ These variables are defined in `src/index.css` under `:root`.
 
 ## Typography
 
-- **Font**: `'Poppins', sans-serif` — loaded from Google Fonts in `LandingPage.css`
+- **Font**: `'Poppins', sans-serif` — loaded from Google Fonts in both `index.css` and `LandingPage.css`
 - **Headings**: `font-weight: 700`, color `var(--color-espresso)`
 - **Subheadings / labels**: `font-weight: 600`, color `var(--color-mocha)`
 - **Body text**: `font-weight: 400`, color `var(--color-espresso)`, line-height `1.6`
@@ -35,9 +35,9 @@ These variables are defined in `src/index.css` under `:root`.
 
 ## Components
 
-### Navigation (Landing page)
+### Navigation (Sidebar)
 
-Simple text links or minimal icon buttons. No 3D glass effects. Use `var(--color-mocha)` for icons, `var(--color-tan)` on hover.
+A fixed left sidebar (`72px` wide) contains two groups: section nav buttons at the top and social/resume links at the bottom (GitHub, LinkedIn, Resume — email link removed). On hover, the icon fades out and a label fades in (CSS opacity + scale transition, `0.15s`). Active section icon is `var(--color-espresso)` at `1.25rem`; inactive icons are `var(--color-mocha)` at `1.1rem`. Social icons use `var(--color-mocha)`, turning `var(--color-espresso)` on hover. The sidebar uses `border-right: 1px solid var(--color-linen)` and the main content area has `margin-left: 72px`. The `.sidebar-line` element exists in the DOM but is `display: none` — do not re-enable it.
 
 ### Cards / ProfileCard
 
@@ -51,10 +51,9 @@ Simple text links or minimal icon buttons. No 3D glass effects. Use `var(--color
 - Keep the draggable Stack interaction — it's subtle and functional
 - Card border: `2px solid var(--color-mocha)`
 
-### Auto-scrolling Carousel (Work + Projects)
+### Crossfade (Work + Projects images)
 
-- Keep — it's useful and unobtrusive
-- Border-radius: `8px`
+The `Crossfade` component cycles through images using CSS opacity transitions (`0.8s ease`). It is **not** a scroll carousel. Images can use `object-fit: cover` (default) or `object-fit: contain` with `var(--color-linen)` background for screenshots. Border-radius applied via the parent context (e.g., `8px` on project cards).
 
 ### Buttons / Links
 
@@ -66,11 +65,20 @@ Simple text links or minimal icon buttons. No 3D glass effects. Use `var(--color
 ### Skill Tags (Landing page)
 
 - Plain inline text with icon, no shimmer animation
-- Color: `var(--color-espresso)`
+- Color: `var(--color-espresso)`, icon color `var(--color-mocha)`
+- 21 skills total as of current implementation
+
+### Dummy Login (Projects page)
+
+The Roadtrip Planner and UMami cards show a credential hint block (`.dummy-login`) with test credentials for the live demo. Style: `background var(--color-cream)`, `border 1px solid var(--color-sage)`, `border-radius 4px`. Only used on cards that have a live demo requiring login.
 
 ## Animations
 
 - **Keep**: Stack drag (Framer Motion) — subtle and interactive
+- **Keep**: Crossfade image transitions (`opacity 0.8s ease`)
+- **Keep**: Section scroll — CSS `scroll-snap-type: y proximity` with `scroll-snap-stop: always` on sections. Scroll dampening (100px max per wheel event) prevents skipping sections. Sections fade in/out via JS `IntersectionObserver` with 20 thresholds: invisible below 20% visible, ramps to full opacity by 60% visible. Sidebar nav uses native `scrollIntoView({ behavior: 'smooth' })`.
+- **Keep**: Projects swipe hint — one-time overlay with cursor icon dragging left, triggered at 10% section visibility (overlay only), animation starts at 50%. Dismissed by interaction or after 3s.
+- **Keep**: Projects down-arrow bounce — subtle 5px vertical bounce on 2s loop, stops on hover.
 - **Remove**: CosmicDust background, Beams WebGL, ShinyText shimmer sweep, BlurText blur-in stagger on every word
 - **Allowed**: Simple CSS `transition` on hover (color, opacity, border-color). Max duration `0.2s`.
 - **No**: particles, WebGL canvases, infinite background animations, shimmer effects

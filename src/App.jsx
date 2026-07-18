@@ -12,117 +12,104 @@ function App() {
     if (!container) return;
 
     const sections = Array.from(container.querySelectorAll('.snap-section'));
-    let isAnimating = false;
-    let currentIndex = 0;
-    let cancelAnimation = null;
 
-    // Easing function — ease in-out
-    const easeInOut = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+    // Track whether the projects section is fully in view for horizontal scroll gating
+    let projectsFullyVisible = false;
+    const projectsSection = document.getElementById('section-projects');
 
-    const animateTo = (targetScrollTop, targetSection, targetIndex) => {
-      // Cancel any in-progress animation
-      if (cancelAnimation) cancelAnimation();
+    const projectsObserver = new IntersectionObserver(
+      ([entry]) => {
+        projectsFullyVisible = entry.isIntersecting;
+      },
+      { root: container, threshold: 0.9 }
+    );
 
-      isAnimating = true;
-      currentIndex = targetIndex;
-      let cancelled = false;
-      cancelAnimation = () => {
-        cancelled = true;
-      };
+    if (projectsSection) projectsObserver.observe(projectsSection);
 
-      // Fade out all sections
-      sections.forEach((s) => s.classList.remove('is-visible'));
+    // IntersectionObserver smoothly fades sections based on how visible they are
+    const thresholds = Array.from({ length: 20 }, (_, i) => i / 19);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const ratio = entry.intersectionRatio;
+          // Stay faded until 20% visible, then ramp to full by 60%
+          const fadeStart = 0.2;
+          const fadeEnd = 0.6;
+          let opacity;
+          if (ratio <= fadeStart) {
+            opacity = 0;
+          } else if (ratio >= fadeEnd) {
+            opacity = 1;
+          } else {
+            opacity = (ratio - fadeStart) / (fadeEnd - fadeStart);
+          }
+          entry.target.style.opacity = opacity;
 
-      const startScrollTop = container.scrollTop;
-      const distance = targetScrollTop - startScrollTop;
-      const duration = 2000;
-      const startTime = performance.now();
+          if (ratio > 0.25) {
+            entry.target.classList.add('is-visible');
+          } else {
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      },
+      { root: container, threshold: thresholds }
+    );
 
-      const step = (now) => {
-        if (cancelled) return;
+    sections.forEach((section) => observer.observe(section));
 
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = easeInOut(progress);
-
-        container.scrollTop = startScrollTop + distance * eased;
-
-        if (progress >= 0.4) {
-          targetSection.classList.add('is-visible');
-        }
-
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        } else {
-          container.scrollTop = targetScrollTop;
-          targetSection.classList.add('is-visible');
-          isAnimating = false;
-          cancelAnimation = null;
-        }
-      };
-
-      requestAnimationFrame(step);
-    };
-
+    // Handle horizontal lane scroll on Projects section (only when fully in view)
     const handleWheel = (e) => {
-      if (isAnimating) return;
-
-      const direction = e.deltaY > 0 ? 1 : -1;
-      const viewportHeight = container.clientHeight;
-      const scrollTop = container.scrollTop;
-      const currentSection = sections[currentIndex];
-
-      // Check if the current section has internal scroll room
-      const sectionTop = currentSection.offsetTop;
-      const sectionBottom = sectionTop + currentSection.offsetHeight;
-      const scrolledIntoSection = scrollTop - sectionTop;
-      const remainingInSection = sectionBottom - (scrollTop + viewportHeight);
-
-      const isTallSection = currentSection.offsetHeight > viewportHeight * 1.1;
-
-      const downThreshold = isTallSection ? viewportHeight * 0.5 : 2;
-      if (direction > 0 && remainingInSection > -downThreshold) {
+      // --- Scroll dampening: cap deltaY so fast scrolls can't skip sections ---
+      const maxDelta = 100; // max pixels per wheel event
+      if (Math.abs(e.deltaY) > maxDelta) {
+        e.preventDefault();
+        const capped = Math.sign(e.deltaY) * maxDelta;
+        container.scrollTop += capped;
         return;
       }
 
-      const upThreshold = isTallSection ? viewportHeight * 0.5 : 2;
-      if (direction < 0 && scrolledIntoSection > upThreshold) {
-        return;
+      if (!projectsFullyVisible) return;
+
+      const currentSection = sections.find((s) => {
+        const rect = s.getBoundingClientRect();
+        return (
+          rect.top <= window.innerHeight / 2 &&
+          rect.bottom > window.innerHeight / 2
+        );
+      });
+      if (!currentSection) return;
+
+      const lane = currentSection.querySelector('.project-lane');
+      if (lane) {
+        const laneRect = lane.getBoundingClientRect();
+        const isOverLane =
+          e.clientY >= laneRect.top &&
+          e.clientY <= laneRect.bottom &&
+          e.clientX >= laneRect.left &&
+          e.clientX <= laneRect.right;
+
+        if (isOverLane) {
+          e.preventDefault();
+          const direction = e.deltaY > 0 ? 1 : -1;
+          lane.scrollBy({ left: direction * 350, behavior: 'smooth' });
+        }
       }
-
-      e.preventDefault();
-
-      const targetIndex = Math.min(
-        Math.max(currentIndex + direction, 0),
-        sections.length - 1
-      );
-      if (targetIndex === currentIndex) return;
-      const targetSection = sections[targetIndex];
-
-      animateTo(targetSection.offsetTop, targetSection, targetIndex);
     };
 
-    // Expose navigateTo via a custom event so Sidebar can trigger animated transitions
+    // Sidebar navigation — scroll to section using native smooth scroll
     const handleNavigate = (e) => {
       const targetId = e.detail;
-      const targetIdx = sections.findIndex((s) => s.id === targetId);
-      if (targetIdx === -1) return;
-      const targetSection = sections[targetIdx];
-      // If already on this section, just ensure it's visible
-      if (targetIdx === currentIndex) {
-        targetSection.classList.add('is-visible');
-        return;
-      }
-      animateTo(targetSection.offsetTop, targetSection, targetIdx);
+      const targetSection = sections.find((s) => s.id === targetId);
+      if (!targetSection) return;
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
     window.addEventListener('navigate-section', handleNavigate);
-
-    // Show first section on load
-    if (sections[0]) sections[0].classList.add('is-visible');
-
     container.addEventListener('wheel', handleWheel, { passive: false });
+
     return () => {
+      observer.disconnect();
+      projectsObserver.disconnect();
       container.removeEventListener('wheel', handleWheel);
       window.removeEventListener('navigate-section', handleNavigate);
     };

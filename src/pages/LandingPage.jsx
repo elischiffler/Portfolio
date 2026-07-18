@@ -19,6 +19,7 @@ import {
   SiFastapi,
   SiJest,
   SiGithubactions,
+  SiOpenai,
 } from 'react-icons/si';
 import { FiLayers, FiRepeat } from 'react-icons/fi';
 import { GiAtom } from 'react-icons/gi';
@@ -46,6 +47,7 @@ const skills = [
   { icon: <SiNodedotjs />, label: 'Node' },
   { icon: <SiFastapi />, label: 'FastAPI' },
   { icon: <SiJest />, label: 'Jest' },
+  { icon: <SiOpenai />, label: 'LLM APIs' },
 ];
 
 const LandingPage = () => {

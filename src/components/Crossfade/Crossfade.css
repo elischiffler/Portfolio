@@ -1,0 +1,28 @@
+/* ── Crossfade slideshow ── */
+.crossfade {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* height must be set by the parent context via a wrapper class */
+}
+
+.crossfade-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+.crossfade-img--contain {
+  object-fit: contain;
+  background-color: var(--color-linen);
+}
+
+.crossfade-img--visible {
+  opacity: 1;
+}

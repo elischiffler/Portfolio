@@ -9,33 +9,38 @@
 - **Routing**: None — single page, vertical scroll-snap layout
 - **Deploy**: GitHub Pages via `gh-pages`, deployed to `elischiffler.github.io/Portfolio`
 
+### Installed but unused packages
+
+Several packages exist in `node_modules` from earlier experiments but are **not used in any source file**. Do not introduce them into new code without discussion:
+`@mui/material`, `@emotion/react`, `@emotion/styled`, `@react-three/drei`, `@react-three/fiber`, `three`, `cobe`, `animated-backgrounds`, `react-tsparticles`, `react-router-dom`, `lucide-react`, `motion` (separate from `framer-motion`)
+
 ## Project Structure
 
 ```
 src/
-  pages/          # Full-screen snap sections (LandingPage, Work, Projects, AboutMe)
+  pages/          # Full-screen sections (LandingPage, Work, Projects, AboutMe)
   components/     # Reusable UI pieces
     Stack/        # Draggable stacked photo cards (Framer Motion)
-    ProfileCard/  # Headshot card with social links
-    BlurText/     # Text with blur-in animation (currently minimized/removed)
-    ShinyText/    # Shimmer text (deprecated in favor of plain text)
-    GlassIcons/   # 3D glass icon buttons (deprecated in favor of plain nav)
-    Backgrounds/  # CosmicDust + Beams (deprecated — use plain background)
+    Crossfade/    # Image crossfade slideshow used in Work and Projects
+    Sidebar/      # Fixed left navigation with section links and social icons (GitHub, LinkedIn, Resume)
   lib/
     utils.ts      # Tailwind cn() helper
 public/
+  favicon.svg     # ES monogram favicon (transparent, Poppins bold espresso)
   images/         # Project screenshots, About Me photos, Headshot
+    projects/     # thumb/ and full/ subdirectories for project card images
+    work/         # Work experience screenshots
   EliSchifflerResume.pdf
 ```
 
 ## Pages
 
-| Page        | Purpose                                                                         |
-| ----------- | ------------------------------------------------------------------------------- |
-| LandingPage | Intro, headshot/profile card, navigation to other sections, skills list         |
-| Work        | Sandia National Labs quantum engineering internship with carousel + description |
-| Projects    | 4 featured projects with auto-scrolling carousels and GitHub/live links         |
-| AboutMe     | Bio text, draggable photo stack, contact icons (email, LinkedIn, GitHub)        |
+| Page        | Purpose                                                                                                                                                                                                                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| LandingPage | Headshot, name/tagline, 21-skill grid with icons, decorative "ES" watermark                                                                                                                                                                                                                                   |
+| Work        | Two work entries (Robert Half — Summer 2025, Sandia National Labs — Summer 2024), each with a Crossfade and text description. Has a bottom snap anchor for scroll-up entry.                                                                                                                                   |
+| Projects    | Infinite horizontal carousel of 4 project cards with drag-to-scroll, lightbox image viewer, swipe hint animation on first visit, and a bouncing down-arrow nav hint. Each card has a Crossfade, description, tech stack, and links. Two cards (Roadtrip Planner, UMami) show `dummy-login` credential blocks. |
+| AboutMe     | Bio paragraphs (3) and draggable photo Stack (5 images)                                                                                                                                                                                                                                                       |
 
 ## Build & Dev Commands
 

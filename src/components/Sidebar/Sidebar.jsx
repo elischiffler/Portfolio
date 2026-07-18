@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import {
   FaGithub,
   FaLinkedin,
-  FaEnvelope,
   FaFileDownload,
   FaHome,
   FaBriefcase,
@@ -31,12 +30,7 @@ const socials = [
     label: 'LinkedIn',
     external: true,
   },
-  {
-    href: 'mailto:schifflereli@gmail.com',
-    icon: <FaEnvelope />,
-    label: 'Email',
-    external: false,
-  },
+
   {
     href: '/EliSchifflerResume.pdf',
     icon: <FaFileDownload />,
@@ -77,10 +71,10 @@ const Sidebar = () => {
     setActiveSection(id);
     isNavigating.current = true;
     window.dispatchEvent(new CustomEvent('navigate-section', { detail: id }));
-    // Release the lock after the animation completes (2s duration + buffer)
+    // Release the lock after the scroll completes
     setTimeout(() => {
       isNavigating.current = false;
-    }, 2200);
+    }, 800);
   };
 
   return (
