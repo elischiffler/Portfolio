@@ -66,7 +66,7 @@ The `Crossfade` component cycles through images using CSS opacity transitions (`
 
 - Plain inline text with icon, no shimmer animation
 - Color: `var(--color-espresso)`, icon color `var(--color-mocha)`
-- 21 skills total as of current implementation
+- 22 skills total as of current implementation
 
 ### Dummy Login (Projects page)
 
