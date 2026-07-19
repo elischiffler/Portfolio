@@ -3,7 +3,7 @@
 ## Tech Stack
 
 - **Framework**: React 19 + Vite
-- **Styling**: Plain CSS (per-component CSS files) + Tailwind v4 (utility only)
+- **Styling**: Plain CSS (per-component CSS files) with a custom design-token system (no Tailwind)
 - **Animations**: Framer Motion (used minimally — only for the draggable Stack component)
 - **Icons**: react-icons
 - **Routing**: None — single page, vertical scroll-snap layout
@@ -24,8 +24,7 @@ src/
     Crossfade/    # Image crossfade slideshow used in Work and Projects
     MusicPlayer/  # Waveform audio player with crossfade looping (About Me)
     Sidebar/      # Fixed left navigation with section links and social icons (GitHub, LinkedIn, Resume)
-  lib/
-    utils.ts      # Tailwind cn() helper
+  lib/            # (currently empty — reserved for shared utilities)
 public/
   favicon.svg     # ES monogram favicon (transparent, Poppins bold espresso)
   audio/          # MP3 loops for the MusicPlayer (PortfolioLoop1–3.mp3)

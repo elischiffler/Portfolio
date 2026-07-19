@@ -1,24 +1,47 @@
-# Eli Schiffler - Portfolio
+# Eli Schiffler — Portfolio
 
-Welcome to my personal portfolio website! This project is a showcase of my journey as a Computer Science student at Cal Poly, focusing on Software Engineering and Quantum Computing.
+My personal portfolio site, built as a single-page React app with scroll-snap navigation.
 
-[**View Live Site**](https://elischiffler.github.io/Portfolio/)
+[**elischiffler.dev**](https://elischiffler.dev)
 
-## About The Project
+## Sections
 
-This application is a single-page React portfolio designed with a focus on interactivity and visual appeal. It utilizes a scroll-snapping layout to guide visitors through different sections:
+- **Landing** — Headshot, name, tagline, and a 22-skill icon grid
+- **Work Experience** — Robert Half (Summer 2026, present) and Sandia National Laboratories (Summer 2025), each with clickable image slideshows and a lightbox viewer
+- **Projects** — Infinite horizontal carousel (desktop) / vertical stack (mobile) of 4 project cards with lightbox, drag-to-scroll, and swipe hint
+- **About Me** — Bio, draggable photo stack, and a 3-track music player with waveform visualization
 
-- **Landing Page**: A quick introduction and overview of my technical skills.
-- **Work Experience**: Highlights from my time as a Quantum Engineering Intern.
-- **Projects**: A carousel display of my key projects, including a full-stack Roadtrip Planner and C++ file compression tools.
-- **About Me**: A glimpse into my personal interests and background.
+## Tech Stack
 
-## Built With
+- **React 19** + **Vite**
+- **Plain CSS** with a custom design-token system (colors, spacing, typography, radii, transitions)
+- **Framer Motion** — used only for the draggable Stack component
+- **react-icons** — icon library
+- **GitHub Actions** — auto-deploys to GitHub Pages on push to `main`
 
-- **[React](https://reactjs.org/)** - For building the user interface.
-- **[Vite](https://vitejs.dev/)** - For fast development and building.
-- **[Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)** - For immersive 3D backgrounds and effects.
-- **[Framer Motion](https://www.framer.com/motion/)** - For smooth animations and transitions.
-- **CSS3** - Custom styling and scroll-snap implementation.
+## Getting Started
 
-Feel free to explore the code and reach out if you have any questions!
+```bash
+npm install
+npm run dev       # local dev server
+npm run build     # production build
+npm run lint      # ESLint
+npm run format    # Prettier
+```
+
+## Deployment
+
+Pushes to `main` automatically trigger a GitHub Actions workflow that builds and deploys to GitHub Pages. No manual deploy step needed.
+
+## Project Structure
+
+```
+src/
+  pages/          # LandingPage, Work, Projects, AboutMe
+  components/     # Stack, Crossfade, MusicPlayer, Sidebar
+  index.css       # Global tokens & shared styles
+public/
+  audio/          # MP3 loops for MusicPlayer
+  images/         # Project screenshots, work photos, About Me photos
+  EliSchifflerResume.pdf
+```
