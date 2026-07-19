@@ -1,0 +1,138 @@
+.music-player {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.music-player-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.music-player-header-icon {
+  font-size: 0.9rem;
+  color: var(--color-mocha);
+}
+
+.music-player-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-mocha);
+}
+
+.music-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.music-track {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  background: var(--color-linen);
+  border: 1px solid var(--color-sage);
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.music-track--active {
+  border-color: var(--color-mocha);
+}
+
+.music-track-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 50% !important;
+  border: 1.5px solid var(--color-mocha) !important;
+  background: transparent !important;
+  color: var(--color-espresso);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+  padding: 0 !important;
+  line-height: 1;
+  overflow: visible;
+}
+
+.music-track-btn svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  fill: var(--color-mocha);
+}
+
+.music-track-btn .music-icon-play {
+  transform: none;
+}
+
+.music-track-btn:hover {
+  background: var(--color-cream) !important;
+  border-color: var(--color-tan) !important;
+}
+
+.music-track-btn:hover svg {
+  fill: var(--color-tan);
+}
+
+.music-track-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-espresso);
+  white-space: nowrap;
+  min-width: 90px;
+}
+
+.music-track-progress {
+  flex: 1;
+  height: 4px;
+  background: var(--color-sage);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.music-track-progress-fill {
+  height: 100%;
+  background: var(--color-mocha);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.music-waveform {
+  flex: 1;
+  height: 32px;
+  cursor: pointer;
+  display: block;
+}
+
+.waveform-bar {
+  fill: var(--color-sage);
+}
+
+.waveform-bar-played {
+  fill: var(--color-mocha);
+}
+
+.music-track-time {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--color-mocha);
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: right;
+}

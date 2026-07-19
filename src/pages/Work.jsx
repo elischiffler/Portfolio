@@ -66,11 +66,14 @@ const Work = () => (
             thorough Jest tests against production-quality,
             single-responsibility code. Delivered an end-to-end CI/CD pipeline
             in Azure DevOps and deployed the application to AWS Lightsail using
-            Node.js.
+            Node.js. Also building a chat agent in Microsoft Copilot Studio to
+            replace the existing contact form, routing validated inquiries
+            through Drupal to Salesforce for more detailed lead generation.
           </p>
           <p className="work-skills">
             Node.js · AWS Lightsail · Azure DevOps · Microsoft Entra ID ·
-            HTML/CSS · CI/CD · Jest
+            Microsoft Copilot Studio · Drupal · Salesforce · HTML/CSS · CI/CD ·
+            Jest
           </p>
         </div>
       </div>

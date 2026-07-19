@@ -9,44 +9,43 @@ import {
   SiCplusplus,
   SiAmazon,
   SiPostman,
-  SiQiskit,
-  SiVite,
+  SiTypescript,
   SiGithub,
-  SiJson,
   SiHtml5,
-  SiLinux,
   SiNodedotjs,
   SiFastapi,
   SiJest,
   SiGithubactions,
   SiOpenai,
+  SiExpress,
+  SiPostgresql,
+  SiCypress,
 } from 'react-icons/si';
-import { FiLayers, FiRepeat } from 'react-icons/fi';
-import { GiAtom } from 'react-icons/gi';
+import { FiLayers, FiRepeat, FiCloud } from 'react-icons/fi';
 import './LandingPage.css';
 
 const skills = [
   { icon: <DiPython />, label: 'Python' },
+  { icon: <SiTypescript />, label: 'TypeScript' },
   { icon: <DiJavascript1 />, label: 'JavaScript' },
   { icon: <SiCplusplus />, label: 'C/C++' },
   { icon: <DiJava />, label: 'Java' },
   { icon: <DiDatabase />, label: 'SQL' },
   { icon: <DiReact />, label: 'React' },
-  { icon: <SiVite />, label: 'Vite' },
-  { icon: <SiQiskit />, label: 'Qiskit' },
-  { icon: <SiGithub />, label: 'GitHub' },
+  { icon: <SiNodedotjs />, label: 'Node.js' },
+  { icon: <SiExpress />, label: 'Express' },
+  { icon: <SiFastapi />, label: 'FastAPI' },
   { icon: <SiAmazon />, label: 'AWS' },
+  { icon: <FiCloud />, label: 'Azure' },
+  { icon: <SiPostgresql />, label: 'PostgreSQL' },
+  { icon: <SiGithub />, label: 'GitHub' },
+  { icon: <SiGithubactions />, label: 'CI/CD' },
   { icon: <FiLayers />, label: 'Full-Stack' },
   { icon: <FiRepeat />, label: 'Agile' },
   { icon: <SiPostman />, label: 'REST APIs' },
-  { icon: <SiJson />, label: 'JSON' },
-  { icon: <GiAtom />, label: 'Ion Trapping' },
-  { icon: <SiGithubactions />, label: 'CI/CD' },
-  { icon: <SiHtml5 />, label: 'HTML' },
-  { icon: <SiLinux />, label: 'Unix' },
-  { icon: <SiNodedotjs />, label: 'Node' },
-  { icon: <SiFastapi />, label: 'FastAPI' },
+  { icon: <SiHtml5 />, label: 'HTML/CSS' },
   { icon: <SiJest />, label: 'Jest' },
+  { icon: <SiCypress />, label: 'Cypress' },
   { icon: <SiOpenai />, label: 'LLM APIs' },
 ];
 
@@ -78,7 +77,7 @@ const LandingPage = () => {
               Schiffler
             </h1>
             <p className="landing-tagline">
-              Software Engineer · Quantum Computing
+              Software Engineer · Full-Stack Developer
             </p>
           </div>
 

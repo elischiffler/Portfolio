@@ -18,7 +18,7 @@ const projects = [
   {
     title: 'RoadtripsAreFun',
     description:
-      'Full-stack web application that generates personalized road trip itineraries. Integrated Google Maps, TripAdvisor, and other APIs to recommend destinations, lodging, and attractions.',
+      'Full-stack road trip planner with a conversational chat interface that builds personalized itineraries in real time. Pulls from Google Maps, TripAdvisor, and lodging APIs to recommend stops, routes, and attractions based on your preferences.',
     tech: 'React · AWS · Python · FastAPI · REST API · SQL · CI/CD',
     images: [
       {
@@ -60,7 +60,7 @@ const projects = [
     title: 'UMami',
     description:
       'Student-run "Yelp for Cal Poly dining" with verified student reviews, nutrition labels, allergen info, and real-time restaurant hours. Features an interactive campus map with one-click Google Maps directions, automated menu scrapers, photo uploads, and a social following system.',
-    tech: 'React · Vite · Node.js · Express · Supabase · PostgreSQL · Jest · Cypress · CI/CD · Azure',
+    tech: 'React · Node.js · Express · Supabase · PostgreSQL · Jest · Cypress · CI/CD · Azure',
     images: [
       {
         src: '/images/projects/thumb/UMamiLanding.png',
@@ -100,7 +100,7 @@ const projects = [
   {
     title: 'Mentro',
     description:
-      'Chrome extension that analyzes AI prompts in real-time across ChatGPT, Gemini, Perplexity, and Claude. Scores prompts on Ownership, Depth, Critical thinking, and Clarity using a two-layer hybrid engine — instant heuristic scoring blended with async LLM feedback. Surfaces actionable suggestion pills before the user hits send.',
+      'Chrome extension that scores your AI prompts in real time across ChatGPT, Gemini, Perplexity, and Claude. Uses a hybrid engine combining instant heuristic analysis with async LLM feedback to surface actionable suggestions before you hit send.',
     tech: 'TypeScript · React · Chrome MV3 · Vite · Supabase · LLM APIs · Vitest · Playwright · CI/CD',
     images: [
       {
@@ -140,8 +140,8 @@ const projects = [
   {
     title: 'IBM Quantum Benchmarking Tool',
     description:
-      'Python CLI tool to automate randomized benchmarking experiments on IBM Quantum computers. Integrated IBM Quantum API to securely run jobs and export data to CSV.',
-    tech: 'Python · Qiskit · IBM Quantum API · CLI',
+      'Python CLI tool that automates randomized benchmarking across IBM Quantum superconducting processors. Measured gate fidelity and Error Per Clifford scores on ibm_marrakesh, ibm_fez, and ibm_torino, identifying optimal run windows (lowest error near 11 PM, spikes at 7 AM and 8 PM) and discovering that marrakesh is best suited for complex, time-intensive calculations due to its stability under extended runtimes.',
+    tech: 'Python · Qiskit · IBM Quantum API · Data Analysis · CLI',
     images: [
       {
         src: '/images/projects/thumb/QCCTerminal.png',

@@ -51,6 +51,16 @@ A fixed left sidebar (`72px` wide) contains two groups: section nav buttons at t
 - Keep the draggable Stack interaction — it's subtle and functional
 - Card border: `2px solid var(--color-mocha)`
 
+### MusicPlayer (About Me)
+
+- Background per track row: `var(--color-linen)`, border `1px solid var(--color-sage)`
+- Active track border becomes `var(--color-mocha)`
+- Play/pause button: circular, `1.5px solid var(--color-mocha)`, icon fill `var(--color-mocha)`
+- Waveform bars: unplayed `var(--color-sage)`, played `var(--color-mocha)`
+- Labels/time: `var(--color-mocha)`, `font-weight: 500–600`
+- 3 tracks with seamless crossfade looping (audio-only overlap, no visual transition)
+- Pauses and resets when user scrolls away from About Me section
+
 ### Crossfade (Work + Projects images)
 
 The `Crossfade` component cycles through images using CSS opacity transitions (`0.8s ease`). It is **not** a scroll carousel. Images can use `object-fit: cover` (default) or `object-fit: contain` with `var(--color-linen)` background for screenshots. Border-radius applied via the parent context (e.g., `8px` on project cards).
@@ -76,6 +86,7 @@ The Roadtrip Planner and UMami cards show a credential hint block (`.dummy-login
 
 - **Keep**: Stack drag (Framer Motion) — subtle and interactive
 - **Keep**: Crossfade image transitions (`opacity 0.8s ease`)
+- **Keep**: MusicPlayer waveform progress — real-time `requestAnimationFrame` update of played bar fills, no CSS animation
 - **Keep**: Section scroll — CSS `scroll-snap-type: y proximity` with `scroll-snap-stop: always` on sections. Scroll dampening (100px max per wheel event) prevents skipping sections. Sections fade in/out via JS `IntersectionObserver` with 20 thresholds: invisible below 20% visible, ramps to full opacity by 60% visible. Sidebar nav uses native `scrollIntoView({ behavior: 'smooth' })`.
 - **Keep**: Projects swipe hint — one-time overlay with cursor icon dragging left, triggered at 10% section visibility (overlay only), animation starts at 50%. Dismissed by interaction or after 3s.
 - **Keep**: Projects down-arrow bounce — subtle 5px vertical bounce on 2s loop, stops on hover.

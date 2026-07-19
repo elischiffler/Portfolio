@@ -22,32 +22,34 @@ src/
   components/     # Reusable UI pieces
     Stack/        # Draggable stacked photo cards (Framer Motion)
     Crossfade/    # Image crossfade slideshow used in Work and Projects
+    MusicPlayer/  # Waveform audio player with crossfade looping (About Me)
     Sidebar/      # Fixed left navigation with section links and social icons (GitHub, LinkedIn, Resume)
   lib/
     utils.ts      # Tailwind cn() helper
 public/
   favicon.svg     # ES monogram favicon (transparent, Poppins bold espresso)
+  audio/          # MP3 loops for the MusicPlayer (PortfolioLoop1–3.mp3)
   images/         # Project screenshots, About Me photos, Headshot
     projects/     # thumb/ and full/ subdirectories for project card images
-    work/         # Work experience screenshots
+    work/         # Work experience screenshots (Protiviti, Robert Half, Sandia)
   EliSchifflerResume.pdf
 ```
 
 ## Pages
 
-| Page        | Purpose                                                                                                                                                                                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| LandingPage | Headshot, name/tagline, 22-skill grid with icons, decorative "ES" watermark                                                                                                                                                                                                                                   |
-| Work        | Two work entries (Robert Half — Summer 2025, Sandia National Laboratories — Summer 2024), each with a Crossfade and text description. Robert Half shows 6 screenshots; Sandia shows a single laser optics photo. Has a bottom snap anchor for scroll-up entry.                                                |
-| Projects    | Infinite horizontal carousel of 4 project cards with drag-to-scroll, lightbox image viewer, swipe hint animation on first visit, and a bouncing down-arrow nav hint. Each card has a Crossfade, description, tech stack, and links. Two cards (Roadtrip Planner, UMami) show `dummy-login` credential blocks. |
-| AboutMe     | Bio paragraphs (3) and draggable photo Stack (5 images)                                                                                                                                                                                                                                                       |
+| Page        | Purpose                                                                                                                                                                                                                                                                                                                              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| LandingPage | Headshot, name/tagline, 22-skill grid with icons, decorative "ES" watermark                                                                                                                                                                                                                                                          |
+| Work        | Two work entries (Robert Half — Summer 2025, Sandia National Laboratories — Summer 2024), each with a Crossfade and text description. Robert Half shows 6 screenshots (3 Protiviti verification portal + 3 Robert Half verification portal); Sandia shows a single laser optics photo. Has a bottom snap anchor for scroll-up entry. |
+| Projects    | Infinite horizontal carousel of 4 project cards with drag-to-scroll, lightbox image viewer, swipe hint animation on first visit, and a bouncing down-arrow nav hint. Each card has a Crossfade, description, tech stack, and links. Two cards (Roadtrip Planner, UMami) show `dummy-login` credential blocks.                        |
+| AboutMe     | Bio paragraphs (3), draggable photo Stack (8 images), and a MusicPlayer component with 3 looping tracks displayed as waveforms                                                                                                                                                                                                       |
 
 ## Build & Dev Commands
 
 ```bash
 npm run dev       # local dev server (Vite)
-npm run build     # production build
-npm run deploy    # build + push to gh-pages branch
+npm run build     # production build (NODE_OPTIONS=--max-old-space-size=4096)
+npm run deploy    # build + push to gh-pages branch (HUSKY=0 to skip hooks)
 npm run format    # Prettier
 npm run lint      # ESLint
 ```
