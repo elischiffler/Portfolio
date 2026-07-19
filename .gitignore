@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Resume generation
+scripts/.env
+scripts/__pycache__/
+tailored_resumes/
