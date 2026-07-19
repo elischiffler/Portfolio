@@ -65,7 +65,11 @@ button:not(.sidebar-nav-item):not(.lightbox-close):not(.lightbox-arrow):hover {
   border-color: var(--color-tan);
 }
 
-button:focus,
-button:focus-visible {
+button:focus {
   outline: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-mocha);
+  outline-offset: 2px;
 }

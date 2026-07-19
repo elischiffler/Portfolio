@@ -26,8 +26,15 @@ function App() {
 
     if (projectsSection) projectsObserver.observe(projectsSection);
 
+    // Track mobile breakpoint reactively via matchMedia
+    const mq = window.matchMedia('(max-width: 768px)');
+    let isMobile = mq.matches;
+    const handleMqChange = (e) => {
+      isMobile = e.matches;
+    };
+    mq.addEventListener('change', handleMqChange);
+
     // IntersectionObserver smoothly fades sections based on how visible they are
-    const isMobile = window.innerWidth <= 768;
     const thresholds = Array.from({ length: 20 }, (_, i) => i / 19);
     const observer = new IntersectionObserver(
       (entries) => {
@@ -119,6 +126,7 @@ function App() {
       projectsObserver.disconnect();
       container.removeEventListener('wheel', handleWheel);
       window.removeEventListener('navigate-section', handleNavigate);
+      mq.removeEventListener('change', handleMqChange);
     };
   }, []);
 

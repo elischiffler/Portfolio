@@ -20,7 +20,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: calc(var(--fade-progress) * 80%);
+  height: calc(var(--fade-progress, 0) * 80%);
   background: linear-gradient(to bottom, transparent, var(--color-cream));
   pointer-events: none;
   z-index: 2;
@@ -31,7 +31,7 @@
   position: absolute;
   bottom: -0.25em;
   right: -0.1em;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: clamp(18rem, 40vw, 38rem);
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -92,7 +92,7 @@
   text-transform: uppercase;
   color: var(--color-mocha);
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 .landing-name {
@@ -101,7 +101,7 @@
   color: var(--color-espresso);
   margin: 0;
   line-height: 1;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 .landing-name-first,
@@ -130,7 +130,7 @@
   text-transform: uppercase;
   color: var(--color-mocha);
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 .skills-grid {
@@ -143,7 +143,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--color-espresso);

@@ -32,7 +32,7 @@ const socials = [
   },
 
   {
-    href: '/EliSchifflerResume.pdf',
+    href: `${import.meta.env.BASE_URL}EliSchifflerResume.pdf`,
     icon: <FaFileDownload />,
     label: 'Resume',
     external: false,

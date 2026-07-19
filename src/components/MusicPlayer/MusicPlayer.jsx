@@ -222,6 +222,7 @@ const MusicPlayer = () => {
       // Stop any crossfade in progress
       stopCrossfade();
       getNextAudio().pause();
+      stopProgressLoop();
       audio.volume = 1;
 
       setActiveIndex(index);
@@ -243,6 +244,7 @@ const MusicPlayer = () => {
     if (activeIndex !== index) {
       stopCrossfade();
       getNextAudio().pause();
+      stopProgressLoop();
       audio.volume = 1;
 
       setActiveIndex(index);
@@ -358,9 +360,18 @@ const MusicPlayer = () => {
           <div
             key={i}
             className={`music-track${activeIndex === i ? ' music-track--active' : ''}`}
+            role="button"
+            tabIndex={0}
             onClick={() => handlePlay(i)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handlePlay(i);
+              }
+            }}
           >
             <button
+              type="button"
               className="music-track-btn"
               onClick={(e) => {
                 e.stopPropagation();

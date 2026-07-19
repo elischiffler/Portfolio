@@ -16,7 +16,7 @@
 }
 
 .music-player-label {
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-mocha);
@@ -87,7 +87,7 @@
 }
 
 .music-track-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--color-espresso);
@@ -128,7 +128,7 @@
 }
 
 .music-track-time {
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   color: var(--color-mocha);

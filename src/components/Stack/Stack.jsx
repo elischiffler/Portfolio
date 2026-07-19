@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './Stack.css';
 
 function CardRotate({ children, onSendToBack, sensitivity }) {
@@ -77,6 +77,16 @@ export default function Stack({
     });
   };
 
+  // Memoize random rotations keyed by card id so re-renders don't generate new angles
+  const rotationsRef = useRef({});
+  const getRotation = (id) => {
+    if (!randomRotation) return 0;
+    if (!(id in rotationsRef.current)) {
+      rotationsRef.current[id] = Math.random() * 6 - 3;
+    }
+    return rotationsRef.current[id];
+  };
+
   return (
     <div
       className="stack-container"
@@ -87,8 +97,6 @@ export default function Stack({
       }}
     >
       {cards.map((card, index) => {
-        const randomRotate = randomRotation ? Math.random() * 6 - 3 : 0;
-
         return (
           <CardRotate
             key={card.id}
@@ -99,7 +107,7 @@ export default function Stack({
               className="card"
               onClick={() => sendToBackOnClick && sendToBack(card.id)}
               animate={{
-                rotateZ: (cards.length - index - 1) * 2 + randomRotate,
+                rotateZ: (cards.length - index - 1) * 2 + getRotation(card.id),
                 scale: 1,
                 transformOrigin: '90% 90%',
               }}

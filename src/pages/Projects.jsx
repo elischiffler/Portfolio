@@ -366,10 +366,21 @@ const Projects = () => {
       <div key={`${keyPrefix}-${i}`} className="project-card">
         <div
           className="project-crossfade-wrapper"
+          role="button"
+          tabIndex={0}
+          aria-label={`View ${project.title} images`}
           onClick={() => {
             if (laneRef.current?._hasDragged && laneRef.current._hasDragged())
               return;
             openLightbox(project.images);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              if (laneRef.current?._hasDragged && laneRef.current._hasDragged())
+                return;
+              openLightbox(project.images);
+            }
           }}
         >
           <Crossfade
@@ -453,7 +464,19 @@ const Projects = () => {
         )}
       </div>
 
-      <div className="projects-nav-hint" onClick={handleArrowClick}>
+      <div
+        className="projects-nav-hint"
+        role="button"
+        tabIndex={0}
+        aria-label="Scroll to next section"
+        onClick={handleArrowClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleArrowClick();
+          }
+        }}
+      >
         <svg
           className="projects-nav-arrow"
           width="32"

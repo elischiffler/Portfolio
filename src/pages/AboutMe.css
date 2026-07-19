@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 .page-header-icon {
@@ -66,7 +66,7 @@
   font-size: 0.975rem;
   line-height: 1.75;
   color: var(--color-espresso);
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 400;
   margin: 0 0 0.75rem 0;
 }
