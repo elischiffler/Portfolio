@@ -8,7 +8,6 @@
   background-color: var(--color-cream);
   border-right: 1px solid var(--color-linen);
   box-sizing: border-box;
-  /* Make sidebar itself the space-between flex container */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +27,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0 var(--space-md);
     border-right: none;
     border-bottom: 1px solid var(--color-linen);
   }
@@ -83,12 +82,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   color: var(--color-mocha);
   transition:
-    opacity 0.15s ease,
-    transform 0.15s ease,
-    color 0.15s ease;
+    opacity var(--transition-fast),
+    transform var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .sidebar-nav-item:hover .sidebar-nav-icon {
@@ -105,9 +104,8 @@
 .sidebar-label {
   position: absolute;
   white-space: nowrap;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-size: var(--text-2xs);
+  font-weight: var(--font-semi);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   pointer-events: none;
@@ -117,8 +115,8 @@
   opacity: 0;
   transform: scale(0.85);
   transition:
-    opacity 0.15s ease,
-    transform 0.15s ease;
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .sidebar-nav-item:hover .sidebar-label {
@@ -153,14 +151,14 @@
   color: var(--color-mocha);
   font-size: 1.25rem;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-normal);
 }
 
 @media (max-width: 768px) {
   .sidebar-social-link {
     width: 44px;
     height: 44px;
-    font-size: 1.1rem;
+    font-size: var(--text-md);
   }
 }
 
@@ -177,8 +175,8 @@
   background-color: var(--color-cream);
   padding: 2px 3px;
   transition:
-    opacity 0.15s ease,
-    transform 0.15s ease;
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .sidebar-social-link:hover .sidebar-social-icon {
@@ -190,9 +188,8 @@
 .sidebar-social-label {
   position: absolute;
   white-space: nowrap;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-size: var(--text-2xs);
+  font-weight: var(--font-semi);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   pointer-events: none;
@@ -202,8 +199,8 @@
   opacity: 0;
   transform: scale(0.85);
   transition:
-    opacity 0.15s ease,
-    transform 0.15s ease;
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .sidebar-social-link:hover .sidebar-social-label {

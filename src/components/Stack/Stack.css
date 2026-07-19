@@ -9,7 +9,7 @@
 }
 
 .card {
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   border: 2px solid var(--color-mocha);
   overflow: hidden;
 }

@@ -25,7 +25,7 @@ const socials = [
     external: true,
   },
   {
-    href: 'https://linkedin.com/in/eli-schiffler-93a69a298',
+    href: 'https://www.linkedin.com/in/eli-schiffler/',
     icon: <FaLinkedin />,
     label: 'LinkedIn',
     external: true,
