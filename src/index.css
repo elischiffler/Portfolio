@@ -57,7 +57,7 @@
   --section-padding-x: var(--space-xl);
 
   /* ── Global defaults ── */
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   line-height: var(--leading-normal);
   font-weight: var(--font-normal);
   color: var(--color-espresso);
