@@ -56,7 +56,7 @@ def compile_resume():
       <table class="entry-table">
         <tr>
           <td class="entry-left"><span class="entry-title">Robert Half</span><br><span class="entry-subtitle">Software Engineering Intern (Remote)</span></td>
-          <td class="entry-right">Summer 2025</td>
+          <td class="entry-right">Summer 2026</td>
         </tr>
       </table>
       <ul>
@@ -69,7 +69,7 @@ def compile_resume():
       <table class="entry-table">
         <tr>
           <td class="entry-left"><span class="entry-title">Sandia National Laboratories</span><br><span class="entry-subtitle">Quantum Engineering Intern (Albuquerque, NM)</span></td>
-          <td class="entry-right">Summer 2024</td>
+          <td class="entry-right">Summer 2025</td>
         </tr>
       </table>
       <ul>

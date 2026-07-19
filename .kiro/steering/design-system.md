@@ -24,8 +24,23 @@ These variables are defined in `src/index.css` under `:root`.
 - **Font**: `'Poppins', sans-serif` — loaded from Google Fonts in both `index.css` and `LandingPage.css`
 - **Headings**: `font-weight: 700`, color `var(--color-espresso)`
 - **Subheadings / labels**: `font-weight: 600`, color `var(--color-mocha)`
-- **Body text**: `font-weight: 400`, color `var(--color-espresso)`, line-height `1.6`
+- **Body text**: `font-weight: 400`, color `var(--color-espresso)`, line-height `1.5`
 - **Muted text**: color `var(--color-sage)`
+
+### Font Size Tokens
+
+Defined in `:root` and responsive-adjusted at `≤768px`:
+
+| Token         | Desktop                      | Mobile                        | Usage                              |
+| ------------- | ---------------------------- | ----------------------------- | ---------------------------------- |
+| `--text-2xs`  | `0.65rem`                    | —                             | Sidebar labels                     |
+| `--text-xs`   | `0.7rem`                     | `0.6rem`                      | Timestamps, small meta             |
+| `--text-sm`   | `0.8rem`                     | `0.75rem`                     | Descriptions, tech stacks, buttons |
+| `--text-base` | `0.95rem`                    | `0.875rem`                    | Body text                          |
+| `--text-md`   | `1.1rem`                     | —                             | Card titles, nav icons             |
+| `--text-lg`   | `1.4rem`                     | `1.2rem`                      | Section sub-headings, header icons |
+| `--text-xl`   | `2rem`                       | `1.5rem`                      | Page titles                        |
+| `--text-2xl`  | `clamp(3.5rem, 6vw, 5.5rem)` | `clamp(2.5rem, 10vw, 3.5rem)` | Landing name                       |
 
 ## Backgrounds
 
@@ -98,6 +113,38 @@ The Roadtrip Planner and UMami cards show a credential hint block (`.dummy-login
 
 ## Spacing
 
-- Section padding: `2rem` sides, sections are full viewport height (`100vh`)
+All spacing uses CSS custom properties defined in `:root`:
+
+| Token         | Value     | Usage                       |
+| ------------- | --------- | --------------------------- |
+| `--space-2xs` | `0.25rem` | Tight inner gaps            |
+| `--space-xs`  | `0.5rem`  | Small gaps, tight padding   |
+| `--space-sm`  | `0.75rem` | Component inner gaps        |
+| `--space-md`  | `1rem`    | Standard gap                |
+| `--space-lg`  | `1.5rem`  | Card gaps, between elements |
+| `--space-xl`  | `2rem`    | Section padding, major gaps |
+| `--space-2xl` | `3rem`    | Large separations           |
+| `--space-3xl` | `5rem`    | Landing layout gaps         |
+
+- Section padding: `var(--space-xl)` (2rem), reduced to `var(--space-lg)` on mobile
+- Sections are full viewport height (`100vh`)
 - Gap between major layout elements: `3rem`
 - Gap within content groups: `1rem`–`2rem`
+
+## Border Radius
+
+| Token           | Value  | Usage                          |
+| --------------- | ------ | ------------------------------ |
+| `--radius-sm`   | `4px`  | Buttons, small elements        |
+| `--radius-md`   | `6px`  | Cards, images                  |
+| `--radius-lg`   | `8px`  | Project cards, larger surfaces |
+| `--radius-xl`   | `12px` | Stack cards                    |
+| `--radius-full` | `50%`  | Circles                        |
+
+## Transitions
+
+| Token                 | Value        | Usage            |
+| --------------------- | ------------ | ---------------- |
+| `--transition-fast`   | `0.15s ease` | Sidebar hover    |
+| `--transition-normal` | `0.2s ease`  | Buttons, links   |
+| `--transition-slow`   | `0.8s ease`  | Crossfade images |

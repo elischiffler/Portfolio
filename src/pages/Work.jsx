@@ -13,7 +13,7 @@ const workEntries = [
   {
     title: 'Robert Half',
     subtitle: 'Software Engineering Intern',
-    date: 'Summer 2025 · Remote',
+    date: 'Summer 2026 · Present',
     description:
       'Built an employee verification portal serving both Robert Half and Protiviti with dynamic brand switching and full internationalization support. Implemented Microsoft Entra ID authentication, designed responsive HTML/CSS interfaces for mobile and desktop, and wrote thorough Jest tests against production-quality, single-responsibility code. Delivered an end-to-end CI/CD pipeline in Azure DevOps and deployed the application to AWS Lightsail using Node.js. Also building a chat agent in Microsoft Copilot Studio to replace the existing contact form, routing validated inquiries through Drupal to Salesforce for more detailed lead generation.',
     skills:
@@ -54,7 +54,7 @@ const workEntries = [
   {
     title: 'Sandia National Laboratories',
     subtitle: 'Quantum Engineering Intern',
-    date: 'Summer 2024 · Albuquerque, NM',
+    date: 'Summer 2025 · Albuquerque, NM',
     description:
       'Focused on the precise alignment of optical systems used for trapping and cooling barium ions. Managed laser beam paths to maintain experimental stability and specialized in optimization of optical fibers, achieving 80% efficiency. Collaborated daily with doctoral researchers to troubleshoot technical issues and enhance quantum hardware performance.',
     skills:
