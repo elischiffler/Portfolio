@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Update Steering Docs",
+  "description": "Analyzes the current codebase and updates the steering docs (project.md and design-system.md) to reflect any changes in structure, components, colors, or design decisions.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Analyze the current state of the portfolio codebase and update the steering docs if anything has changed. Follow these steps:\n\n1. Read all source files: src/App.jsx, src/App.css, src/index.css, src/pages/*.jsx, src/pages/*.css, src/components/**/*.jsx, src/components/**/*.css, and package.json.\n\n2. Compare what you find against the existing steering docs at .kiro/steering/project.md and .kiro/steering/design-system.md.\n\n3. Update .kiro/steering/project.md if any of the following have changed:\n   - Page structure or what each page contains\n   - Component inventory (added, removed, or renamed components)\n   - Libraries in use (check package.json dependencies)\n   - File/folder structure\n   - Build or deploy commands\n\n4. Update .kiro/steering/design-system.md if any of the following have changed:\n   - Color palette or CSS variables (check index.css :root)\n   - Typography choices\n   - Which components or effects are deprecated vs active\n   - Animation rules (what is kept vs removed)\n   - Layout/spacing conventions\n   - Any new UI patterns introduced\n\nOnly update sections that have actually changed. Keep the tone and format consistent with the existing docs. Do not rewrite sections that are still accurate."
+  }
+}

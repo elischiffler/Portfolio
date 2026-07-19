@@ -1,0 +1,239 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 72px;
+  z-index: 100;
+  background-color: var(--color-cream);
+  border-right: 1px solid var(--color-linen);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem 0;
+}
+
+/* ── Mobile: top header bar ── */
+@media (max-width: 768px) {
+  .sidebar {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: 100%;
+    height: 56px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-md);
+    border-right: none;
+    border-bottom: 1px solid var(--color-linen);
+  }
+}
+
+/* ── Vertical line ── */
+.sidebar-line {
+  display: none;
+}
+
+/* ── Nav dots ── */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .sidebar-nav {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.sidebar-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none !important;
+  border: none !important;
+  width: 72px;
+  height: 44px;
+  outline: none;
+  padding: 0;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .sidebar-nav-item {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Nav icon */
+.sidebar-nav-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-md);
+  color: var(--color-mocha);
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.sidebar-nav-item:hover .sidebar-nav-icon {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.sidebar-nav-item.active .sidebar-nav-icon {
+  color: var(--color-espresso);
+  font-size: 1.25rem;
+}
+
+/* ── Nav label ── */
+.sidebar-label {
+  position: absolute;
+  white-space: nowrap;
+  font-size: var(--text-2xs);
+  font-weight: var(--font-semi);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  color: var(--color-espresso);
+  background-color: var(--color-cream);
+  padding: 0 4px;
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.sidebar-nav-item:hover .sidebar-label {
+  opacity: 1;
+  transform: scale(1);
+  color: var(--color-espresso);
+}
+
+/* ── Social icons ── */
+.sidebar-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .sidebar-socials {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.sidebar-social-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 44px;
+  color: var(--color-mocha);
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+@media (max-width: 768px) {
+  .sidebar-social-link {
+    width: 44px;
+    height: 44px;
+    font-size: var(--text-md);
+  }
+}
+
+.sidebar-social-link:hover {
+  color: var(--color-espresso);
+}
+
+/* Icon — cream background punches through the line */
+.sidebar-social-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-cream);
+  padding: 2px 3px;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.sidebar-social-link:hover .sidebar-social-icon {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+/* Label fades in on hover */
+.sidebar-social-label {
+  position: absolute;
+  white-space: nowrap;
+  font-size: var(--text-2xs);
+  font-weight: var(--font-semi);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  color: var(--color-espresso);
+  background-color: var(--color-cream);
+  padding: 0 4px;
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.sidebar-social-link:hover .sidebar-social-label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Mobile: hide hover labels entirely ── */
+@media (max-width: 768px) {
+  .sidebar-label,
+  .sidebar-social-label {
+    display: none;
+  }
+
+  /* Disable hover-to-hide-icon behavior on touch */
+  .sidebar-nav-item:hover .sidebar-nav-icon,
+  .sidebar-social-link:hover .sidebar-social-icon {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sidebar-nav-icon {
+    position: relative;
+    font-size: 1.2rem;
+  }
+
+  .sidebar-nav-item.active .sidebar-nav-icon {
+    font-size: 1.35rem;
+  }
+
+  .sidebar-social-icon {
+    position: relative;
+    background-color: transparent;
+    padding: 0;
+  }
+}

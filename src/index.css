@@ -1,73 +1,169 @@
-@import 'tw-animate-css';
-
-@custom-variant dark (&:is(.dark *));
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* ── Colors ── */
+  --color-espresso: #3a2d28;
+  --color-mocha: #a48374;
+  --color-tan: #cbad8d;
+  --color-sage: #d1c7bd;
+  --color-linen: #ebe3db;
+  --color-cream: #f1ede6;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* ── Typography — Font Sizes ── */
+  --text-2xs: 0.65rem; /* sidebar labels */
+  --text-xs: 0.7rem; /* timestamps, small meta */
+  --text-sm: 0.8rem; /* descriptions, tech stacks, buttons */
+  --text-base: 0.95rem; /* body text */
+  --text-md: 1.1rem; /* card titles, nav icons */
+  --text-lg: 1.4rem; /* section sub-headings, header icons */
+  --text-xl: 2rem; /* page titles */
+  --text-2xl: clamp(3.5rem, 6vw, 5.5rem); /* landing name */
 
+  /* ── Typography — Font Weights ── */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semi: 600;
+  --font-bold: 700;
+
+  /* ── Typography — Line Heights ── */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* ── Spacing ── */
+  --space-2xs: 0.25rem; /* 4px — tight inner gaps */
+  --space-xs: 0.5rem; /* 8px — small gaps, tight padding */
+  --space-sm: 0.75rem; /* 12px — component inner gaps */
+  --space-md: 1rem; /* 16px — standard gap */
+  --space-lg: 1.5rem; /* 24px — card gaps, between elements */
+  --space-xl: 2rem; /* 32px — section padding, major gaps */
+  --space-2xl: 3rem; /* 48px — large separations */
+  --space-3xl: 5rem; /* 80px — landing layout gaps */
+
+  /* ── Border Radius ── */
+  --radius-sm: 4px; /* buttons, small elements */
+  --radius-md: 6px; /* cards, images */
+  --radius-lg: 8px; /* project cards, larger surfaces */
+  --radius-xl: 12px; /* stack cards */
+  --radius-full: 50%; /* circles */
+
+  /* ── Transitions ── */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.8s ease;
+
+  /* ── Section Spacing (responsive) ── */
+  --section-padding: var(--space-xl);
+  --section-padding-x: var(--space-xl);
+
+  /* ── Global defaults ── */
+  font-family: Poppins, sans-serif;
+  line-height: var(--leading-normal);
+  font-weight: var(--font-normal);
+  color: var(--color-espresso);
+  background-color: var(--color-cream);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* ── Mobile token overrides ── */
+@media (max-width: 768px) {
+  :root {
+    --text-xl: 1.5rem;
+    --text-lg: 1.2rem;
+    --text-base: 0.875rem;
+    --text-sm: 0.75rem;
+    --text-xs: 0.6rem;
+    --text-2xl: clamp(2.5rem, 10vw, 3.5rem);
+    --section-padding: var(--space-lg);
+    --section-padding-x: 1.25rem;
+  }
 }
-a:hover {
-  color: #535bf2;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-cream);
+  color: var(--color-espresso);
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+a {
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: var(--color-espresso);
+  text-decoration: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+a:hover {
+  color: var(--color-tan);
+}
+
+button:not(.sidebar-nav-item):not(.lightbox-close):not(.lightbox-arrow) {
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-mocha);
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  font-weight: var(--font-medium);
+  font-family: inherit;
+  background-color: transparent;
+  color: var(--color-espresso);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-normal),
+    border-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+button:not(.sidebar-nav-item):not(.lightbox-close):not(.lightbox-arrow):hover {
+  background-color: var(--color-linen);
+  border-color: var(--color-tan);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-mocha);
+  outline-offset: 2px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Shared page-header styles (used by Work, Projects, AboutMe)
+   ══════════════════════════════════════════════════════ */
+.page-header {
+  padding-bottom: var(--space-md);
+  flex-shrink: 0;
+}
+
+.page-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-espresso);
+  margin: 0 0 var(--space-sm) 0;
+  line-height: var(--leading-tight);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.page-header-icon {
+  color: var(--color-espresso);
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+}
+
+.page-header-line {
+  height: 1px;
+  background: var(--color-sage);
+  width: 100%;
 }
