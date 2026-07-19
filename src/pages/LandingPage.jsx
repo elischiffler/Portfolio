@@ -1,11 +1,4 @@
 import {
-  FiBriefcase,
-  FiFileText,
-  FiUser,
-  FiLayers,
-  FiRepeat,
-} from 'react-icons/fi';
-import {
   DiReact,
   DiPython,
   DiJava,
@@ -16,158 +9,88 @@ import {
   SiCplusplus,
   SiAmazon,
   SiPostman,
-  SiQiskit,
-  SiVite,
+  SiTypescript,
   SiGithub,
-  SiJson,
   SiHtml5,
-  SiLinux,
   SiNodedotjs,
   SiFastapi,
   SiJest,
   SiGithubactions,
+  SiOpenai,
+  SiExpress,
+  SiPostgresql,
+  SiCypress,
 } from 'react-icons/si';
-import { GiAtom } from 'react-icons/gi';
-import ProfileCard from '../components/ProfileCard/ProfileCard';
-import ShinyText from '../components/ShinyText/ShinyText';
-import GlassIcons from '../components/GlassIcons/GlassIcons';
-import BlurText from '../components/BlurText/BlurText';
+import { FiLayers, FiRepeat, FiCloud } from 'react-icons/fi';
 import './LandingPage.css';
 
-const LandingPage = ({ onWorkClick, onProjectsClick, onAboutClick }) => {
-  const items = [
-    {
-      icon: <FiBriefcase />,
-      color: 'blue',
-      label: 'Work',
-      onClick: onWorkClick,
-    },
-    {
-      icon: <FiFileText />,
-      color: 'blue',
-      label: 'Projects',
-      onClick: onProjectsClick,
-    },
-    {
-      icon: <FiUser />,
-      color: 'blue',
-      label: 'About Me',
-      onClick: onAboutClick,
-    },
-  ];
+const skills = [
+  { icon: <DiPython />, label: 'Python' },
+  { icon: <SiTypescript />, label: 'TypeScript' },
+  { icon: <DiJavascript1 />, label: 'JavaScript' },
+  { icon: <SiCplusplus />, label: 'C/C++' },
+  { icon: <DiJava />, label: 'Java' },
+  { icon: <DiDatabase />, label: 'SQL' },
+  { icon: <DiReact />, label: 'React' },
+  { icon: <SiNodedotjs />, label: 'Node.js' },
+  { icon: <SiExpress />, label: 'Express' },
+  { icon: <SiFastapi />, label: 'FastAPI' },
+  { icon: <SiAmazon />, label: 'AWS' },
+  { icon: <FiCloud />, label: 'Azure' },
+  { icon: <SiPostgresql />, label: 'PostgreSQL' },
+  { icon: <SiGithub />, label: 'GitHub' },
+  { icon: <SiGithubactions />, label: 'CI/CD' },
+  { icon: <FiLayers />, label: 'Full-Stack' },
+  { icon: <FiRepeat />, label: 'Agile' },
+  { icon: <SiPostman />, label: 'REST APIs' },
+  { icon: <SiHtml5 />, label: 'HTML/CSS' },
+  { icon: <SiJest />, label: 'Jest' },
+  { icon: <SiCypress />, label: 'Cypress' },
+  { icon: <SiOpenai />, label: 'LLM APIs' },
+];
 
+const LandingPage = () => {
   return (
-    <div className="snap-section">
-      <div className="landing-page">
-        <div className="title">
-          <BlurText
-            text="Nice to Meet You — Let’s Get Started"
-            delay={30}
-            animateBy="letters"
-            direction="top"
-            className="text-2xl mb-8"
+    <div className="landing-page">
+      {/* Decorative watermark */}
+      <span className="landing-watermark" aria-hidden="true">
+        ES
+      </span>
+
+      {/* Main layout */}
+      <div className="landing-inner">
+        {/* Left: photo */}
+        <div className="landing-photo-col">
+          <img
+            src="/images/Headshot.png"
+            alt="Eli Schiffler"
+            className="landing-headshot"
           />
         </div>
-        <div className="header-section">
-          <div className="profile-card">
-            <ProfileCard
-              name="Eli Schiffler"
-              title="Software Engineer / Quantum Computing"
-              avatarUrl="/images/Headshot.png"
-              showUserInfo={true}
-              enableTilt={true}
-              onContactClick={() => console.log('Contact clicked')}
-            />
+
+        {/* Right: identity + skills */}
+        <div className="landing-content-col">
+          <div className="landing-intro">
+            <h1 className="landing-name">
+              <span className="landing-name-first">Eli</span>{' '}
+              <span className="landing-name-last">Schiffler</span>
+            </h1>
+            <p className="landing-tagline">
+              Software Engineer · Full-Stack Developer
+            </p>
           </div>
-          <div className="skills-nav-column">
-            <GlassIcons items={items} />
-            <div className="skills-list">
-              <p>
-                <span className="item">
-                  <DiPython />
-                  <ShinyText text="Python" disabled={false} speed={3} />
+
+          <div className="landing-divider" />
+
+          <div className="landing-skills-section">
+            <p className="landing-skills-label">Skills</p>
+            <div className="skills-grid">
+              {skills.map(({ icon, label }) => (
+                <span key={label} className="skill-tag">
+                  {icon}
+                  {label}
                 </span>
-                <span className="item">
-                  <DiJavascript1 />
-                  <ShinyText text="JavaScript" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiCplusplus />
-                  <ShinyText text="C/C++" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <DiJava />
-                  <ShinyText text="Java" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <DiDatabase />
-                  <ShinyText text="SQL" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <DiReact />
-                  <ShinyText text="React" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiVite />
-                  <ShinyText text="Vite" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiQiskit />
-                  <ShinyText text="Qiskit" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiGithub />
-                  <ShinyText text="Github" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiAmazon />
-                  <ShinyText text="AWS" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <FiLayers />
-                  <ShinyText text="Full-Stack" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <FiRepeat />
-                  <ShinyText text="AGILE" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiPostman />
-                  <ShinyText text="REST APIs" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiJson />
-                  <ShinyText text="JSON" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <GiAtom />
-                  <ShinyText text="Ion Trapping" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiGithubactions />
-                  <ShinyText text="CI/CD" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiHtml5 />
-                  <ShinyText text="HTML" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiLinux />
-                  <ShinyText text="UNIX" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiNodedotjs />
-                  <ShinyText text="Node" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiFastapi />
-                  <ShinyText text="FastAPI" disabled={false} speed={3} />
-                </span>
-                <span className="item">
-                  <SiJest />
-                  <ShinyText text="Jest" disabled={false} speed={3} />
-                </span>
-              </p>
+              ))}
             </div>
           </div>
         </div>

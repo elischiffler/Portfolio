@@ -9,8 +9,8 @@
 }
 
 .card {
-  border-radius: 20px;
-  border: 5px solid #93a6c0;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--color-mocha);
   overflow: hidden;
 }
 
