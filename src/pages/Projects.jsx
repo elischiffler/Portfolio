@@ -14,6 +14,19 @@ import { SiGooglechrome } from 'react-icons/si';
 import Crossfade from '../components/Crossfade/Crossfade';
 import './Projects.css';
 
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(
+    () => window.innerWidth <= breakpoint
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, [breakpoint]);
+  return isMobile;
+}
+
 const projects = [
   {
     title: 'RoadtripsAreFun',
@@ -178,9 +191,11 @@ const Projects = () => {
   const [lightbox, setLightbox] = useState(null); // { images, index }
   const [showSwipeHint, setShowSwipeHint] = useState(false);
   const swipeHintShown = useRef(false);
+  const isMobile = useIsMobile();
 
-  // Show swipe hint once when section becomes visible
+  // Show swipe hint once when section becomes visible (desktop only)
   useEffect(() => {
+    if (isMobile) return;
     const section = document.getElementById('section-projects');
     if (!section) return;
 
@@ -214,7 +229,7 @@ const Projects = () => {
       earlyObserver.disconnect();
       animObserver.disconnect();
     };
-  }, []);
+  }, [isMobile]);
 
   // Dismiss swipe hint on any lane interaction
   const dismissSwipeHint = useCallback(() => {
@@ -257,6 +272,7 @@ const Projects = () => {
 
   // Infinite loop: when we scroll near a cloned boundary, jump seamlessly
   useEffect(() => {
+    if (isMobile) return; // No infinite loop or drag on mobile
     const lane = laneRef.current;
     if (!lane) return;
 
@@ -336,7 +352,7 @@ const Projects = () => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
     };
-  }, []);
+  }, [isMobile]);
 
   const handleArrowClick = () => {
     window.dispatchEvent(
@@ -412,13 +428,13 @@ const Projects = () => {
           onMouseDown={dismissSwipeHint}
           onTouchStart={dismissSwipeHint}
         >
-          {renderCards(projects, 'clone-before')}
+          {!isMobile && renderCards(projects, 'clone-before')}
           {renderCards(projects, 'real')}
-          {renderCards(projects, 'clone-after')}
+          {!isMobile && renderCards(projects, 'clone-after')}
         </div>
 
-        {/* Swipe hint overlay */}
-        {showSwipeHint && (
+        {/* Swipe hint overlay — desktop only */}
+        {!isMobile && showSwipeHint && (
           <div
             className={`swipe-hint${showSwipeHint === 'animating' ? ' swipe-hint--animating' : ''}`}
             aria-hidden="true"
@@ -426,7 +442,11 @@ const Projects = () => {
             {showSwipeHint === 'animating' && (
               <>
                 <FaMousePointer className="swipe-hint-icon" />
-                <span className="swipe-hint-text">Drag to explore</span>
+                <span className="swipe-hint-text">
+                  {'ontouchstart' in window
+                    ? 'Swipe to explore'
+                    : 'Drag to explore'}
+                </span>
               </>
             )}
           </div>
@@ -455,21 +475,13 @@ const Projects = () => {
           <div className="lightbox-overlay" onClick={closeLightbox}>
             <button
               className="lightbox-close"
-              onClick={closeLightbox}
+              onClick={(e) => {
+                e.stopPropagation();
+                closeLightbox();
+              }}
               aria-label="Close lightbox"
             >
               <FaTimes />
-            </button>
-
-            <button
-              className="lightbox-arrow lightbox-arrow--left"
-              onClick={(e) => {
-                e.stopPropagation();
-                lightboxPrev();
-              }}
-              aria-label="Previous image"
-            >
-              <FaChevronLeft />
             </button>
 
             <img
@@ -482,19 +494,29 @@ const Projects = () => {
               onClick={(e) => e.stopPropagation()}
             />
 
-            <button
-              className="lightbox-arrow lightbox-arrow--right"
-              onClick={(e) => {
-                e.stopPropagation();
-                lightboxNext();
-              }}
-              aria-label="Next image"
+            <div
+              className="lightbox-controls"
+              onClick={(e) => e.stopPropagation()}
             >
-              <FaChevronRight />
-            </button>
+              <button
+                className="lightbox-arrow lightbox-arrow--left"
+                onClick={lightboxPrev}
+                aria-label="Previous image"
+              >
+                <FaChevronLeft />
+              </button>
 
-            <div className="lightbox-counter">
-              {lightbox.index + 1} / {lightbox.images.length}
+              <div className="lightbox-counter">
+                {lightbox.index + 1} / {lightbox.images.length}
+              </div>
+
+              <button
+                className="lightbox-arrow lightbox-arrow--right"
+                onClick={lightboxNext}
+                aria-label="Next image"
+              >
+                <FaChevronRight />
+              </button>
             </div>
           </div>,
           document.body

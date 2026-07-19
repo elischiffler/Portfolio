@@ -44,7 +44,7 @@ a:hover {
   color: var(--color-tan);
 }
 
-button:not(.sidebar-nav-item) {
+button:not(.sidebar-nav-item):not(.lightbox-close):not(.lightbox-arrow) {
   border-radius: 6px;
   border: 1.5px solid var(--color-mocha);
   padding: 0.5em 1.2em;
@@ -60,7 +60,7 @@ button:not(.sidebar-nav-item) {
     color 0.2s ease;
 }
 
-button:not(.sidebar-nav-item):hover {
+button:not(.sidebar-nav-item):not(.lightbox-close):not(.lightbox-arrow):hover {
   background-color: var(--color-linen);
   border-color: var(--color-tan);
 }

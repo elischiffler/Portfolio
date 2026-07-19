@@ -39,6 +39,8 @@ These variables are defined in `src/index.css` under `:root`.
 
 A fixed left sidebar (`72px` wide) contains two groups: section nav buttons at the top and social/resume links at the bottom (GitHub, LinkedIn, Resume — email link removed). On hover, the icon fades out and a label fades in (CSS opacity + scale transition, `0.15s`). Active section icon is `var(--color-espresso)` at `1.25rem`; inactive icons are `var(--color-mocha)` at `1.1rem`. Social icons use `var(--color-mocha)`, turning `var(--color-espresso)` on hover. The sidebar uses `border-right: 1px solid var(--color-linen)` and the main content area has `margin-left: 72px`. The `.sidebar-line` element exists in the DOM but is `display: none` — do not re-enable it.
 
+**Mobile (≤768px):** The sidebar converts to a fixed top bar (`56px` tall, full width) with `flex-direction: row`. Nav icons and social icons sit side by side. The hover-to-show-label behavior is disabled on touch — icons remain visible at all times. The snap container gets `margin-top: 56px` instead of `margin-left: 72px`. Labels (`.sidebar-label`, `.sidebar-social-label`) are `display: none` on mobile.
+
 ### Cards / ProfileCard
 
 - Background: `var(--color-linen)`
@@ -87,9 +89,9 @@ The Roadtrip Planner and UMami cards show a credential hint block (`.dummy-login
 - **Keep**: Stack drag (Framer Motion) — subtle and interactive
 - **Keep**: Crossfade image transitions (`opacity 0.8s ease`)
 - **Keep**: MusicPlayer waveform progress — real-time `requestAnimationFrame` update of played bar fills, no CSS animation
-- **Keep**: Section scroll — CSS `scroll-snap-type: y proximity` with `scroll-snap-stop: always` on sections. Scroll dampening (100px max per wheel event) prevents skipping sections. Sections fade in/out via JS `IntersectionObserver` with 20 thresholds: invisible below 20% visible, ramps to full opacity by 60% visible. Sidebar nav uses native `scrollIntoView({ behavior: 'smooth' })`.
-- **Keep**: Projects swipe hint — one-time overlay with cursor icon dragging left, triggered at 10% section visibility (overlay only), animation starts at 50%. Dismissed by interaction or after 3s.
-- **Keep**: Projects down-arrow bounce — subtle 5px vertical bounce on 2s loop, stops on hover.
+- **Keep**: Section scroll — CSS `scroll-snap-type: y proximity` with `scroll-snap-stop: always` on sections. Scroll dampening (100px max per wheel event) prevents skipping sections. Sections fade in/out via JS `IntersectionObserver` with 20 thresholds: invisible below 20% visible, ramps to full opacity by 60% visible. Sidebar nav uses native `scrollIntoView({ behavior: 'smooth' })`. **Mobile:** scroll-snap is disabled (`scroll-snap-type: none`), sections use `min-height: auto` (except Landing and Projects which keep `min-height: calc(100vh - 56px)`), and opacity is forced to 1 (no fade effect).
+- **Keep**: Projects swipe hint — one-time overlay with cursor icon dragging left, triggered at 10% section visibility (overlay only), animation starts at 50%. Dismissed by interaction or after 3s. Hidden on mobile.
+- **Keep**: Projects down-arrow bounce — subtle 5px vertical bounce on 2s loop, stops on hover. Hidden on mobile.
 - **Remove**: CosmicDust background, Beams WebGL, ShinyText shimmer sweep, BlurText blur-in stagger on every word
 - **Allowed**: Simple CSS `transition` on hover (color, opacity, border-color). Max duration `0.2s`.
 - **No**: particles, WebGL canvases, infinite background animations, shimmer effects

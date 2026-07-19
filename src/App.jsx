@@ -27,10 +27,17 @@ function App() {
     if (projectsSection) projectsObserver.observe(projectsSection);
 
     // IntersectionObserver smoothly fades sections based on how visible they are
+    const isMobile = window.innerWidth <= 768;
     const thresholds = Array.from({ length: 20 }, (_, i) => i / 19);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          if (isMobile) {
+            // On mobile, sections are taller than viewport — just show them fully
+            entry.target.style.opacity = 1;
+            entry.target.classList.add('is-visible');
+            return;
+          }
           const ratio = entry.intersectionRatio;
           // Stay faded until 20% visible, then ramp to full by 60%
           const fadeStart = 0.2;

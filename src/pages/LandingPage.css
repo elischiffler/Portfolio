@@ -104,6 +104,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.landing-name-first,
+.landing-name-last {
+  display: block;
+}
+
 /* ── Divider ── */
 .landing-divider {
   height: 1px;
@@ -148,4 +153,68 @@
   font-size: 1rem;
   color: var(--color-mocha);
   flex-shrink: 0;
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+  .landing-page {
+    padding: 1.5rem;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .landing-inner {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .landing-photo-col {
+    align-self: center;
+  }
+
+  .landing-headshot {
+    width: 200px;
+    height: 260px;
+  }
+
+  .landing-content-col {
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .landing-intro {
+    align-items: flex-start;
+  }
+
+  .landing-name {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .landing-name-first,
+  .landing-name-last {
+    display: inline;
+  }
+
+  .landing-tagline {
+    font-size: 0.75rem;
+    text-align: left;
+  }
+
+  .skills-grid {
+    justify-content: flex-start;
+    gap: 0.4rem 1rem;
+  }
+
+  .skill-tag {
+    font-size: 0.8rem;
+  }
+
+  .landing-watermark {
+    font-size: clamp(10rem, 30vw, 18rem);
+    bottom: 0.5em;
+  }
 }

@@ -320,6 +320,11 @@
   opacity: 0.7;
 }
 
+/* On desktop, the controls wrapper is invisible — arrows position absolutely */
+.lightbox-controls {
+  display: contents;
+}
+
 /* ── Swipe hint overlay ── */
 .swipe-hint {
   position: absolute;
@@ -371,5 +376,127 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+  .projects {
+    padding: 1.5rem 1rem;
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  /* Switch lane from horizontal scroll to vertical stack */
+  .project-lane-wrapper {
+    flex: none;
+  }
+
+  .project-lane {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: visible;
+    height: auto;
+    scroll-snap-type: none;
+    cursor: auto;
+    user-select: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .project-card {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .project-crossfade-wrapper {
+    flex: none;
+    height: 200px;
+  }
+
+  .project-crossfade {
+    height: 200px;
+  }
+
+  .project-body {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .project-title {
+    font-size: 1rem;
+  }
+
+  .project-description {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .project-tech {
+    font-size: 0.75rem;
+  }
+
+  .project-link-button {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+  }
+
+  .dummy-login {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  /* Hide swipe hint and nav arrow on mobile */
+  .swipe-hint,
+  .projects-nav-hint {
+    display: none;
+  }
+
+  /* Lightbox: stack image + controls vertically */
+  .lightbox-overlay {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .lightbox-image {
+    max-width: 95vw;
+    max-height: 60vh;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .lightbox-arrow {
+    position: static;
+    transform: none;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+
+  .lightbox-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .lightbox-counter {
+    position: static;
+    transform: none;
   }
 }

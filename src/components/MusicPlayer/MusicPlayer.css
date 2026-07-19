@@ -136,3 +136,37 @@
   min-width: 70px;
   text-align: right;
 }
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+  .music-track {
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .music-track-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+
+  .music-track-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .music-track-title {
+    font-size: 0.75rem;
+    min-width: 60px;
+  }
+
+  .music-waveform {
+    height: 26px;
+  }
+
+  .music-track-time {
+    font-size: 0.6rem;
+    min-width: 55px;
+  }
+}

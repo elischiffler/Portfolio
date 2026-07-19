@@ -17,6 +17,15 @@ body {
   margin-left: 72px;
 }
 
+@media (max-width: 768px) {
+  .snap-container {
+    margin-left: 0;
+    margin-top: 56px;
+    height: calc(100vh - 56px);
+    scroll-snap-type: none;
+  }
+}
+
 .snap-container::-webkit-scrollbar {
   display: none;
 }
@@ -26,6 +35,18 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .snap-section {
+    min-height: auto;
+  }
+
+  /* Landing and Projects should stay full viewport height on mobile */
+  #section-landing,
+  #section-projects {
+    min-height: calc(100vh - 56px);
+  }
 }
 
 .snap-section.is-visible {

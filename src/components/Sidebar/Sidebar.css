@@ -16,6 +16,24 @@
   padding: 2.5rem 0;
 }
 
+/* ── Mobile: top header bar ── */
+@media (max-width: 768px) {
+  .sidebar {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: 100%;
+    height: 56px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    border-right: none;
+    border-bottom: 1px solid var(--color-linen);
+  }
+}
+
 /* ── Vertical line ── */
 .sidebar-line {
   display: none;
@@ -28,6 +46,13 @@
   align-items: center;
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .sidebar-nav {
+    flex-direction: row;
+    gap: 0;
+  }
 }
 
 .sidebar-nav-item {
@@ -43,6 +68,13 @@
   outline: none;
   padding: 0;
   border-radius: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .sidebar-nav-item {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* Nav icon */
@@ -104,6 +136,13 @@
   z-index: 1;
 }
 
+@media (max-width: 768px) {
+  .sidebar-socials {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
 .sidebar-social-link {
   position: relative;
   display: flex;
@@ -115,6 +154,14 @@
   font-size: 1.25rem;
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .sidebar-social-link {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
 }
 
 .sidebar-social-link:hover {
@@ -162,4 +209,34 @@
 .sidebar-social-link:hover .sidebar-social-label {
   opacity: 1;
   transform: scale(1);
+}
+
+/* ── Mobile: hide hover labels entirely ── */
+@media (max-width: 768px) {
+  .sidebar-label,
+  .sidebar-social-label {
+    display: none;
+  }
+
+  /* Disable hover-to-hide-icon behavior on touch */
+  .sidebar-nav-item:hover .sidebar-nav-icon,
+  .sidebar-social-link:hover .sidebar-social-icon {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sidebar-nav-icon {
+    position: relative;
+    font-size: 1.2rem;
+  }
+
+  .sidebar-nav-item.active .sidebar-nav-icon {
+    font-size: 1.35rem;
+  }
+
+  .sidebar-social-icon {
+    position: relative;
+    background-color: transparent;
+    padding: 0;
+  }
 }

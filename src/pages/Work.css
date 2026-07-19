@@ -117,3 +117,46 @@
   height: 0;
   flex-shrink: 0;
 }
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+  .work {
+    padding: 2rem 1.25rem;
+    min-height: auto;
+    height: auto;
+    gap: 1.5rem;
+  }
+
+  .work-item {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .work-crossfade {
+    width: 100%;
+    height: 220px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .work-title {
+    font-size: 1.2rem;
+  }
+
+  .work-description {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .work-skills {
+    font-size: 0.8rem;
+  }
+
+  .work-entries {
+    gap: 1.5rem;
+  }
+
+  .work-section-title {
+    font-size: 1.5rem;
+  }
+}

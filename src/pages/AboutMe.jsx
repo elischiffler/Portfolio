@@ -7,7 +7,11 @@ import './AboutMe.css';
 function useCardDimensions() {
   const calc = () => {
     const vw = window.innerWidth;
-    const width = Math.min(Math.max(vw * 0.18, 200), 280);
+    // Mobile: use smaller cards that fit the stacked layout
+    const width =
+      vw <= 768
+        ? Math.min(Math.max(vw * 0.35, 160), 220)
+        : Math.min(Math.max(vw * 0.18, 200), 280);
     const height = width * 1.32;
     return { width: Math.round(width), height: Math.round(height) };
   };

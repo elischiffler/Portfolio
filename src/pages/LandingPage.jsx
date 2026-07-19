@@ -72,9 +72,8 @@ const LandingPage = () => {
         <div className="landing-content-col">
           <div className="landing-intro">
             <h1 className="landing-name">
-              Eli
-              <br />
-              Schiffler
+              <span className="landing-name-first">Eli</span>{' '}
+              <span className="landing-name-last">Schiffler</span>
             </h1>
             <p className="landing-tagline">
               Software Engineer · Full-Stack Developer
