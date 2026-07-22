@@ -1,0 +1,228 @@
+/* ══════════════════════════════════════════════════════
+   LinkedIn Header — 1584 × 396 CSS px
+   Exported at 2x (3168×792) via html-to-image
+   Sandbox: ?sandbox=linkedin-header
+   ══════════════════════════════════════════════════════ */
+
+.linkedin-header-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: #555;
+  overflow: auto;
+}
+
+.linkedin-header {
+  --lh-olive: #7a8c6e;
+  --lh-sage-green: #8b9e7c;
+
+  width: 1584px;
+  height: 396px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: var(--color-cream);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  flex-shrink: 0;
+}
+
+/* ── Subtle background gradient for depth ── */
+.lh-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    var(--color-cream) 0%,
+    var(--color-cream) 40%,
+    var(--color-linen) 100%
+  );
+  z-index: 0;
+}
+
+/* ── Tagline — top right area, clear of ring ── */
+.lh-tagline {
+  position: absolute;
+  top: 30px;
+  right: 100px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-espresso);
+  margin: 0;
+  z-index: 2;
+}
+
+/* ── Download button ── */
+.lh-download-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-cream);
+  background: var(--color-espresso);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.lh-download-btn:hover {
+  background: var(--color-mocha);
+}
+
+/* ── Closing brace — right side, visible ── */
+.lh-bracket-close {
+  position: absolute;
+  font-size: 16rem;
+  font-weight: 200;
+  color: var(--color-espresso);
+  opacity: 0.22;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* ── Code snippets — 4 total, larger, bolder ──
+   Zones:
+   1: top-left (above avatar zone)
+   2: mid-right
+   3: bottom-right
+   4: bottom-center
+*/
+.lh-snippet {
+  position: absolute;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lh-snippet .lh-kw {
+  color: var(--lh-olive);
+  font-weight: 700;
+}
+
+.lh-snippet .lh-fn {
+  color: var(--color-espresso);
+  font-weight: 600;
+}
+
+.lh-snippet .lh-op {
+  color: var(--color-tan);
+  font-weight: 700;
+}
+
+.lh-snippet .lh-str {
+  color: var(--color-mocha);
+  font-weight: 600;
+}
+
+/* Top-left area (above where avatar sits) */
+.lh-snippet-1 {
+  top: 30px;
+  left: 300px;
+  font-size: 1rem;
+  color: var(--color-espresso);
+  opacity: 0.75;
+}
+
+/* Mid-right */
+.lh-snippet-2 {
+  top: 170px;
+  right: 200px;
+  font-size: 0.95rem;
+  color: var(--color-espresso);
+  opacity: 0.65;
+}
+
+/* Bottom-right */
+.lh-snippet-3 {
+  bottom: 50px;
+  right: 250px;
+  font-size: 0.95rem;
+  color: var(--color-espresso);
+  opacity: 0.7;
+}
+
+/* Bottom-center */
+.lh-snippet-4 {
+  bottom: 60px;
+  left: 550px;
+  font-size: 0.95rem;
+  color: var(--color-espresso);
+  opacity: 0.6;
+}
+
+/* ── Circuit SVG ── */
+.lh-circuits {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Dot grid — upper center ── */
+.lh-dot-grid {
+  position: absolute;
+  top: 80px;
+  left: 620px;
+  width: 200px;
+  height: 110px;
+  background-image: radial-gradient(
+    circle,
+    var(--color-mocha) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 20px 20px;
+  opacity: 0.35;
+  z-index: 1;
+}
+
+/* ── Single geometric ring — mid-right, below tagline ── */
+.lh-geo-ring {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--lh-olive);
+  top: 120px;
+  right: 380px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Left accent strip — thick and visible ── */
+.lh-accent-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 5%,
+    var(--lh-sage-green) 20%,
+    var(--lh-olive) 45%,
+    var(--color-mocha) 70%,
+    var(--color-espresso) 90%,
+    transparent 100%
+  );
+  opacity: 0.85;
+  z-index: 2;
+}
