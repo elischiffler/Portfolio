@@ -12,12 +12,12 @@ import './Work.css';
 const workEntries = [
   {
     title: 'Robert Half',
-    subtitle: 'Software Engineering Intern',
+    subtitle: 'Software Engineering Intern · Part-time',
     date: 'Summer 2026 · Present',
     description:
-      'Built an employee verification portal serving both Robert Half and Protiviti with dynamic brand switching and full internationalization support. Implemented Microsoft Entra ID authentication, designed responsive HTML/CSS interfaces for mobile and desktop, and wrote thorough Jest tests against production-quality, single-responsibility code. Delivered an end-to-end CI/CD pipeline in Azure DevOps and deployed the application to AWS Lightsail using Node.js. Also building a chat agent in Microsoft Copilot Studio to replace the existing contact form, routing validated inquiries through Drupal to Salesforce for more detailed lead generation.',
+      'Built an employee verification portal for Robert Half and Protiviti with dynamic brand switching, i18n, Microsoft Entra ID auth, and responsive HTML/CSS, all shipped through an Azure DevOps CI/CD pipeline to AWS Lightsail. Replaced the contact form with an Azure AI Foundry agent (mini model) paired with a two-way logic-based validation system to reliably collect inquirer details, and optimized Salesforce to store and display them. Now building a multi-layered, agent-based GEO system that runs a matrix of prompts across LLMs, scores performance with equations plus an AI insight layer, and auto-benchmarks to flag optimization targets, with a future human-in-the-loop agent to propose page fixes.',
     skills:
-      'Node.js · AWS Lightsail · Azure DevOps · Microsoft Entra ID · Microsoft Copilot Studio · Drupal · Salesforce · HTML/CSS · CI/CD · Jest',
+      'Azure AI Foundry · LLM Agents · Prompt Engineering · GEO · Salesforce · Node.js · AWS Lightsail · Azure DevOps · Microsoft Entra ID · Drupal · HTML/CSS · CI/CD · Jest',
     images: [
       {
         src: '/images/work/ProtivitiHome.png',
