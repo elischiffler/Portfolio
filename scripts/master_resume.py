@@ -50,14 +50,14 @@ COURSEWORK = [
 WORK_EXPERIENCE = [
     {
         "company": "Robert Half",
-        "title": "Software Engineering Intern (Remote)",
+        "title": "Software Engineering Intern, Part-time (Remote)",
         "dates": "Summer 2026 \u2013 Present",
         "bullets": [
+            "Shipped an inquiry-collection agent replacing the contact form: an Azure AI Foundry mini-model agent paired with a two-way logic-based validation system, and optimized Salesforce to capture and display the collected lead data.",
+            "Building a multi-layered agent-based GEO (Generative Engine Optimization) system that runs a matrix of prompts across LLM models, scores company performance with equations plus a second AI insight-extraction layer, and auto-benchmarks to issue optimization targets.",
             "Built an employee verification portal serving Robert Half and Protiviti with dynamic brand switching and full internationalization support.",
             "Implemented Microsoft Entra ID authentication with custom role-based access control for secure enterprise user management.",
-            "Designed responsive HTML/CSS interfaces for mobile and desktop, writing production-quality, single-responsibility code with thorough Jest test coverage.",
-            "Delivered an end-to-end CI/CD pipeline in Azure DevOps, deploying Jest-tested Node.js applications to AWS Lightsail.",
-            "Built a chat agent in Microsoft Copilot Studio replacing the existing contact form, routing validated inquiries through Drupal to Salesforce for lead generation.",
+            "Delivered an end-to-end CI/CD pipeline in Azure DevOps, deploying Jest-tested, single-responsibility Node.js applications to AWS Lightsail.",
         ],
     },
     {
@@ -75,8 +75,8 @@ WORK_EXPERIENCE = [
 SKILLS = {
     "Languages": "Python, TypeScript, JavaScript, C/C++, Java, SQL, HTML/CSS",
     "Frameworks & Tools": "React, Node.js, Express, FastAPI, Vite, Jest, Cypress, Playwright, Qiskit",
-    "Cloud & Platforms": "AWS (Lightsail, Cognito), Azure (DevOps, Static Web Apps), Supabase, PostgreSQL, GitHub Actions",
-    "Methodologies": "Full-Stack Development, CI/CD Pipelines, Agile/Scrum, RESTful APIs, AI/LLM Integration",
+    "Cloud & Platforms": "AWS (Lightsail, Cognito), Azure (AI Foundry, DevOps, Static Web Apps), Supabase, PostgreSQL, Salesforce, GitHub Actions",
+    "Methodologies": "Full-Stack Development, CI/CD Pipelines, Agile/Scrum, RESTful APIs, AI/LLM Integration, LLM Agents, GEO/Prompt Engineering",
 }
 
 PROJECTS = [
