@@ -1,0 +1,49 @@
+name: Validate Portfolio
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality-and-container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PORTFOLIO_REVISION: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run format:check
+
+      - run: npm run lint
+
+      - run: npm run build
+
+      - run: npm run test:hook
+
+      - name: Build and start production container
+        run: docker compose up --build --detach --wait --wait-timeout 60
+
+      - name: Check production HTTP responses
+        run: npm run test:smoke
+
+      - name: Show container logs on failure
+        if: failure()
+        run: docker compose logs --no-color
+
+      - name: Stop local preview
+        if: always()
+        run: docker compose down

@@ -1,0 +1,29 @@
+name: portfolio-local
+
+services:
+  portfolio-web:
+    build:
+      context: .
+      args:
+        VCS_REF: ${PORTFOLIO_REVISION:?Set PORTFOLIO_REVISION to the current Git commit SHA}
+    image: portfolio-local:${PORTFOLIO_REVISION:?Set PORTFOLIO_REVISION to the current Git commit SHA}
+    ports:
+      - '127.0.0.1:${PORTFOLIO_PORT:-8080}:8080'
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m,mode=1777
+    user: '101:101'
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    cpus: 0.5
+    mem_limit: 128m
+    restart: unless-stopped
+    stop_grace_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+        max-file: '3'

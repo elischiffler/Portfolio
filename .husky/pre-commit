@@ -1,2 +1,11 @@
 npm run lint
-npm run format
+lint_status=$?
+if [ "$lint_status" -ne 0 ]; then
+  exit "$lint_status"
+fi
+
+npm run format:check
+format_status=$?
+if [ "$format_status" -ne 0 ]; then
+  exit "$format_status"
+fi

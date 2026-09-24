@@ -17,21 +17,32 @@ My personal portfolio site, built as a single-page React app with scroll-snap na
 - **Plain CSS** with a custom design-token system (colors, spacing, typography, radii, transitions)
 - **Framer Motion** — used only for the draggable Stack component
 - **react-icons** — icon library
-- **GitHub Actions** — auto-deploys to GitHub Pages on push to `main`
+- **GitHub Actions** — validates changes; the Pages publishing workflow is retired by this PR
 
 ## Getting Started
 
+From the repository root with Node 24 and npm:
+
 ```bash
-npm install
+npm ci
 npm run dev       # local dev server
 npm run build     # production build
 npm run lint      # ESLint
 npm run format    # Prettier
+npm run format:check # read-only formatting check
 ```
 
 ## Deployment
 
-Pushes to `main` automatically trigger a GitHub Actions workflow that builds and deploys to GitHub Pages. No manual deploy step needed.
+See the [container runbook](docs/container-runbook.md) for the local Docker preview,
+HTTP behavior, validation commands, and the future production boundary. The
+[validation record](docs/validation.md) distinguishes tested behavior from pending
+checks.
+
+Merging this PR retires Pages deployment automation: subsequent pushes run
+validation and do not update the live site. The existing published Pages site,
+DNS, and `CNAME` remain intact while replacement hosting is prepared. Do not
+unpublish Pages before the approved cutover and observation window.
 
 ## Project Structure
 

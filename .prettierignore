@@ -1,0 +1,7 @@
+# Generated build output and local development files.
+dist/
+dist-ssr/
+node_modules/
+tailored_resumes/
+scripts/.venv/
+scripts/__pycache__/
