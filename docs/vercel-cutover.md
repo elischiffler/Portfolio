@@ -14,13 +14,19 @@ is `npm run build`, and its output directory is `dist`.
    and audio. Check browser console and mobile layout.
 3. Add `elischiffler.dev` and `www.elischiffler.dev` to the Vercel project.
    Use `vercel domains inspect` to record the exact required DNS targets.
-4. Record the current GoDaddy apex A records and `www` CNAME. Keep unrelated
-   records, especially mail and verification records, unchanged.
+4. Record the current GoDaddy apex A records and `www` CNAME. As checked on
+   September 26, 2026, the apex uses GitHub Pages addresses `185.199.108.153`
+   through `185.199.111.153`, and `www` points to
+   `elischiffler.github.io`. Keep unrelated records, especially mail and
+   verification records, unchanged.
 
 ## DNS switch
 
-At GoDaddy, change only the apex A records and `www` CNAME to the values shown
-for the Vercel project. Do not change the domain's nameservers. Confirm both
+At GoDaddy, change only the apex A records and `www` record to the values shown
+for the Vercel project. On September 26, 2026, Vercel recommended
+`A elischiffler.dev 76.76.21.21` and `A www.elischiffler.dev 76.76.21.21`;
+inspect again immediately before cutover. Do not change the domain's
+nameservers. Confirm both
 hostnames resolve to the intended targets, TLS certificates are active, and
 the site works at both names. Keep GitHub Pages available until verification
 is complete.
