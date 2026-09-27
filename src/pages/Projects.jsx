@@ -57,7 +57,7 @@ const projects = [
     ],
     links: [
       {
-        href: 'https://roadtripsarefun.vercel.app/',
+        href: 'https://roadtrips.elischiffler.dev/',
         icon: <FaExternalLinkAlt />,
         label: 'Live Site',
       },
@@ -73,7 +73,7 @@ const projects = [
     title: 'UMami',
     description:
       'Student-run "Yelp for Cal Poly dining" with verified student reviews, nutrition labels, allergen info, and real-time restaurant hours. Features an interactive campus map with one-click Google Maps directions, automated menu scrapers, photo uploads, and a social following system.',
-    tech: 'React · Node.js · Express · Supabase · PostgreSQL · Jest · Cypress · CI/CD · Azure',
+    tech: 'React · Node.js · Express · Supabase · PostgreSQL · Jest · Cypress · CI/CD · Vercel',
     images: [
       {
         src: '/images/projects/thumb/UMamiLanding.png',
@@ -98,12 +98,12 @@ const projects = [
     ],
     links: [
       {
-        href: 'https://thankful-hill-0f3846d10.7.azurestaticapps.net/',
+        href: 'https://umami.elischiffler.dev/',
         icon: <FaExternalLinkAlt />,
         label: 'Live Site',
       },
       {
-        href: 'https://github.com/Calpoly-Yelp/UMami',
+        href: 'https://github.com/elischiffler/UMami',
         icon: <FaGithub />,
         label: 'GitHub',
       },
@@ -133,6 +133,11 @@ const projects = [
       },
     ],
     links: [
+      {
+        href: 'https://mentro.elischiffler.dev/',
+        icon: <FaExternalLinkAlt />,
+        label: 'Live App',
+      },
       {
         href: 'https://chromewebstore.google.com/detail/oknpipjgkmhngeehonojkmeioigiiljb',
         icon: <SiGooglechrome />,
