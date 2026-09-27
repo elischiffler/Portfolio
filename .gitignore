@@ -28,3 +28,6 @@ scripts/.env
 scripts/__pycache__/
 scripts/.venv/
 tailored_resumes/
+
+# Local Vercel project link and downloaded settings
+.vercel/
