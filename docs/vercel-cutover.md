@@ -28,14 +28,15 @@ for the Vercel project. On September 26, 2026, Vercel recommended
 inspect again immediately before cutover. Do not change the domain's
 nameservers. Confirm both
 hostnames resolve to the intended targets, TLS certificates are active, and
-the site works at both names. Keep GitHub Pages available until verification
-is complete.
+the site works at both names. The last published GitHub Pages site remains
+available as a rollback target until Pages hosting is disabled separately.
 
 ## Recovery
 
 If the Vercel domain fails, restore the recorded GitHub Pages apex A records
-and `www` CNAME, then verify DNS and HTTPS again. The old Pages workflow should
-only be retired in a later PR after the new domain has remained healthy.
+and `www` CNAME, then verify DNS and HTTPS again. This restores the last
+published Pages version. To publish newer content to Pages again, restore the
+Pages deployment workflow in a separate PR.
 
 ## Local checks
 

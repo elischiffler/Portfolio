@@ -17,7 +17,7 @@ My personal portfolio site, built as a single-page React app with scroll-snap na
 - **Plain CSS** with a custom design-token system (colors, spacing, typography, radii, transitions)
 - **Framer Motion** — used only for the draggable Stack component
 - **react-icons** — icon library
-- **GitHub Actions** — currently auto-deploys to GitHub Pages on push to `main`
+- **GitHub Actions** — validates changes on pull requests and pushes to `main`
 
 ## Getting Started
 
@@ -34,9 +34,10 @@ npm run format    # Prettier
 The live domain currently uses GitHub Pages. A separate Vercel project named
 `portfolio` is connected to this repository and builds with `npm ci` and
 `npm run build`, serving `dist/`. Its deployment URL can be tested before the
-domain is moved. See [the Vercel cutover runbook](docs/vercel-cutover.md) for
-the DNS switch, verification, and rollback steps. Keep the Pages workflow
-until the domain cutover has been verified.
+domain is moved. GitHub Pages still serves its last published version, but
+pushes to `main` no longer publish updates there. See
+[the Vercel cutover runbook](docs/vercel-cutover.md) for the DNS switch,
+verification, and rollback steps.
 
 ## Project Structure
 
