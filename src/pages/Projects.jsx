@@ -31,18 +31,13 @@ const projects = [
   {
     title: 'RoadtripsAreFun',
     description:
-      'Full-stack road trip planner with a conversational chat interface that builds personalized itineraries in real time. Pulls from Google Maps, TripAdvisor, and lodging APIs to recommend stops, routes, and attractions based on your preferences.',
-    tech: 'React · AWS · Python · FastAPI · REST API · SQL · CI/CD',
+      'Full-stack road trip planner using a database-only places catalog in Neon Postgres and CP-SAT planning with opening-hours and access constraints to build personalized itineraries. Deployed and hosted the FastAPI backend on AWS EC2, with the React frontend on Vercel.',
+    tech: 'React · Python · FastAPI · Neon Postgres · CP-SAT · AWS EC2 · Vercel · CI/CD',
     images: [
       {
         src: '/images/projects/thumb/RoadTripsAreFunLanding.png',
         full: '/images/projects/full/RoadTripsAreFunLanding.png',
         alt: 'RoadtripsAreFun landing page',
-      },
-      {
-        src: '/images/projects/thumb/RoadTripsAreFunChat.png',
-        full: '/images/projects/full/RoadTripsAreFunChat.png',
-        alt: 'RoadtripsAreFun chat interface',
       },
       {
         src: '/images/projects/thumb/RoadTripsAreFunItinerary.png',
@@ -133,11 +128,6 @@ const projects = [
       },
     ],
     links: [
-      {
-        href: 'https://mentro.elischiffler.dev/',
-        icon: <FaExternalLinkAlt />,
-        label: 'Live App',
-      },
       {
         href: 'https://chromewebstore.google.com/detail/oknpipjgkmhngeehonojkmeioigiiljb',
         icon: <SiGooglechrome />,

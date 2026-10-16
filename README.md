@@ -31,13 +31,12 @@ npm run format    # Prettier
 
 ## Deployment
 
-The live domain currently uses GitHub Pages. A separate Vercel project named
-`portfolio` is connected to this repository and builds with `npm ci` and
-`npm run build`, serving `dist/`. Its deployment URL can be tested before the
-domain is moved. GitHub Pages still serves its last published version, but
-pushes to `main` no longer publish updates there. See
-[the Vercel cutover runbook](docs/vercel-cutover.md) for the DNS switch,
-verification, and rollback steps.
+The live site at [elischiffler.dev](https://elischiffler.dev) is served by the
+`portfolio` Vercel project connected to this repository. Pushes to `main`
+automatically build with `npm ci` and `npm run build`, serving `dist/`.
+GitHub Actions runs lint and build validation; pushes no longer publish to
+GitHub Pages. See [the Vercel cutover runbook](docs/vercel-cutover.md) for the
+historical cutover and rollback steps.
 
 ## Project Structure
 

@@ -53,8 +53,8 @@ WORK_EXPERIENCE = [
         "title": "Software Engineering Intern, Part-time (Remote)",
         "dates": "Summer 2026 \u2013 Present",
         "bullets": [
-            "Shipped an inquiry-collection agent replacing the contact form: an Azure AI Foundry mini-model agent paired with a two-way logic-based validation system, and optimized Salesforce to capture and display the collected lead data.",
-            "Building a multi-layered agent-based GEO (Generative Engine Optimization) system that runs a matrix of prompts across LLM models, scores company performance with equations plus a second AI insight-extraction layer, and auto-benchmarks to issue optimization targets.",
+            "Completed an Azure AI Foundry inquiry chatbot with two-way data validation between the chatbot and a server, and integrated collected lead data with Salesforce.",
+            "Building a GEO application to track prompt data and calculate AI visibility, share of voice (SOV), rank, and citation rate to identify website representation opportunities; OpenAI, Claude, Gemini, and Perplexity integrations are in progress.",
             "Built an employee verification portal serving Robert Half and Protiviti with dynamic brand switching and full internationalization support.",
             "Implemented Microsoft Entra ID authentication with custom role-based access control for secure enterprise user management.",
             "Delivered an end-to-end CI/CD pipeline in Azure DevOps, deploying Jest-tested, single-responsibility Node.js applications to AWS Lightsail.",
@@ -75,8 +75,8 @@ WORK_EXPERIENCE = [
 SKILLS = {
     "Languages": "Python, TypeScript, JavaScript, C/C++, Java, SQL, HTML/CSS",
     "Frameworks & Tools": "React, Node.js, Express, FastAPI, Vite, Jest, Cypress, Playwright, Qiskit",
-    "Cloud & Platforms": "AWS (Lightsail, Cognito), Azure (AI Foundry, DevOps, Static Web Apps), Supabase, PostgreSQL, Salesforce, GitHub Actions",
-    "Methodologies": "Full-Stack Development, CI/CD Pipelines, Agile/Scrum, RESTful APIs, AI/LLM Integration, LLM Agents, GEO/Prompt Engineering",
+    "Cloud & Platforms": "AWS (EC2, Lightsail, Cognito), Azure (AI Foundry, DevOps, Static Web Apps), Supabase, PostgreSQL, Salesforce, GitHub Actions",
+    "Methodologies": "Full-Stack Development, CI/CD Pipelines, Agile/Scrum, DevOps, RESTful APIs, AI/LLM Integration, LLM Agents, GEO/Prompt Engineering",
 }
 
 PROJECTS = [
@@ -103,11 +103,11 @@ PROJECTS = [
     {
         "name": "RoadtripsAreFun",
         "subtitle": "Travel Planner",
-        "tech": "React, Python, FastAPI, AWS Cognito, SQL, REST APIs",
+        "tech": "React, Python, FastAPI, Neon Postgres, CP-SAT, EC2, Vercel",
         "bullets": [
-            "Built a full-stack road trip planner with conversational chat interface that generates personalized itineraries in real time.",
-            "Integrated Google Maps, TripAdvisor, and lodging APIs for route recommendations and attraction discovery.",
-            "Deployed frontend to Vercel with AWS Cognito authentication and a Python FastAPI backend.",
+            "Built a full-stack road trip planner backed by a database-only places catalog in Neon Postgres.",
+            "Implemented CP-SAT itinerary planning with opening-hours and access constraints.",
+            "Deployed and hosted the FastAPI backend on AWS EC2, with the React frontend on Vercel.",
         ],
     },
     {

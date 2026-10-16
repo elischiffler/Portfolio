@@ -7,7 +7,7 @@
 - **Animations**: Framer Motion (used minimally — only for the draggable Stack component)
 - **Icons**: react-icons
 - **Routing**: None — single page, vertical scroll-snap layout
-- **Deploy**: GitHub Pages via GitHub Actions (`deploy.yml` — builds with Vite, deploys to `elischiffler.github.io/Portfolio`)
+- **Deploy**: Vercel Git integration — pushes to `main` build with Vite and serve `dist/` at `elischiffler.dev`; GitHub Actions runs lint and build validation
 
 ### Installed but unused packages
 
@@ -53,4 +53,4 @@ npm run lint      # ESLint
 npm run preview   # preview production build locally
 ```
 
-Deploy happens automatically via GitHub Actions on push to `main`.
+Deploy happens automatically via Vercel on push to `main`; GitHub Actions validates lint and build.

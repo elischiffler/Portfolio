@@ -15,7 +15,7 @@ const workEntries = [
     subtitle: 'Software Engineering Intern · Part-time',
     date: 'Summer 2026 · Present',
     description:
-      'Built an employee verification portal for Robert Half and Protiviti with dynamic brand switching, i18n, Microsoft Entra ID auth, and responsive HTML/CSS, all shipped through an Azure DevOps CI/CD pipeline to AWS Lightsail. Replaced the contact form with an Azure AI Foundry agent (mini model) paired with a two-way logic-based validation system to reliably collect inquirer details, and optimized Salesforce to store and display them. Now building a multi-layered, agent-based GEO system that runs a matrix of prompts across LLMs, scores performance with equations plus an AI insight layer, and auto-benchmarks to flag optimization targets, with a future human-in-the-loop agent to propose page fixes.',
+      'Built an employee verification portal for Robert Half and Protiviti with dynamic brand switching, i18n, Microsoft Entra ID auth, and responsive HTML/CSS, shipped through Azure DevOps CI/CD to AWS Lightsail. Completed an Azure AI Foundry inquiry chatbot with two-way data validation between the chatbot and a server, and optimized Salesforce to store and display collected lead data. Now building a GEO (Generative Engine Optimization) application to track prompt data and calculate AI visibility, share of voice (SOV), rank, and citation rate to identify how a website can improve its representation in AI answers. OpenAI, Claude, Gemini, and Perplexity integrations are in progress.',
     skills:
       'Azure AI Foundry · LLM Agents · Prompt Engineering · GEO · Salesforce · Node.js · AWS Lightsail · Azure DevOps · Microsoft Entra ID · Drupal · HTML/CSS · CI/CD · Jest',
     images: [
