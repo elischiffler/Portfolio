@@ -105,8 +105,8 @@ PROJECTS = [
         "subtitle": "Travel Planner",
         "tech": "React, Python, FastAPI, Neon Postgres, CP-SAT, EC2, Vercel",
         "bullets": [
-            "Built a full-stack road trip planner backed by a database-only places catalog in Neon Postgres.",
-            "Implemented CP-SAT itinerary planning with opening-hours and access constraints.",
+            "Built an AI-assisted road trip planner matching AI-estimated stop attributes to traveler interests using a database-only Neon Postgres catalog.",
+            "Combined Mapbox road routes with CP-SAT stop selection and scheduling under opening-hours and access constraints.",
             "Deployed and hosted the FastAPI backend on AWS EC2, with the React frontend on Vercel.",
         ],
     },

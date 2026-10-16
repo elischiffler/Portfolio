@@ -4,7 +4,6 @@ import {
   FaExternalLinkAlt,
   FaGithub,
   FaLaptopCode,
-  FaYoutube,
   FaChevronLeft,
   FaChevronRight,
   FaTimes,
@@ -31,7 +30,7 @@ const projects = [
   {
     title: 'RoadtripsAreFun',
     description:
-      'Full-stack road trip planner using a database-only places catalog in Neon Postgres and CP-SAT planning with opening-hours and access constraints to build personalized itineraries. Deployed and hosted the FastAPI backend on AWS EC2, with the React frontend on Vercel.',
+      'Full-stack road trip planner that uses AI to estimate stop attributes, then matches them to traveler interests to prioritize relevant places from a database-only Neon Postgres catalog. Mapbox supplies road routes; CP-SAT selects and schedules stops around opening-hours and access constraints. Deployed and hosted the FastAPI backend on AWS EC2, with the React frontend on Vercel.',
     tech: 'React · Python · FastAPI · Neon Postgres · CP-SAT · AWS EC2 · Vercel · CI/CD',
     images: [
       {
@@ -132,11 +131,6 @@ const projects = [
         href: 'https://chromewebstore.google.com/detail/oknpipjgkmhngeehonojkmeioigiiljb',
         icon: <SiGooglechrome />,
         label: 'Chrome Store',
-      },
-      {
-        href: 'https://youtu.be/BZ1z3NZ_uEU',
-        icon: <FaYoutube />,
-        label: 'Demo',
       },
       {
         href: 'https://github.com/orgs/Mentro-PromptAnalyzer/repositories',
