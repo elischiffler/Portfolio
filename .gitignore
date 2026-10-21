@@ -25,7 +25,7 @@ dist-ssr
 
 # Resume generation
 scripts/.env
-scripts/__pycache__/
+scripts/**/__pycache__/
 scripts/.venv/
 tailored_resumes/
 

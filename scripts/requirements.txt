@@ -1,3 +1,4 @@
-anthropic>=0.34.0
-xhtml2pdf>=0.2.11
-python-dotenv>=1.0.0
+openai>=1.68.0,<3
+xhtml2pdf>=0.2.11,<1
+python-dotenv>=1.0.0,<2
+pypdf>=5,<7

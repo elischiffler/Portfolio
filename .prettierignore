@@ -1,0 +1,4 @@
+# Local environments and private resume inputs/outputs
+scripts/.venv/
+tailored_resumes/
+dist/

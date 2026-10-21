@@ -52,7 +52,7 @@ public/
 scripts/
   master_resume.py          # Single source of truth for all resume content
   generateResume.py         # Generates the base PDF (public/EliSchifflerResume.pdf)
-  generateTailoredResume.py # AI-tailored resume generation using Claude
+  generateTailoredResume.py # AI-tailored resume generation using OpenAI
   requirements.txt          # Python dependencies
   .env.example              # Template for API key config
 tailored_resumes/           # Generated output (gitignored)
@@ -65,9 +65,11 @@ The `scripts/` folder contains a resume pipeline that generates both a base PDF 
 ### Setup
 
 ```bash
-pip install -r scripts/requirements.txt
+python -m venv scripts/.venv
+scripts/.venv/bin/pip install -r scripts/requirements.txt
 cp scripts/.env.example scripts/.env
-# Add your Anthropic API key to scripts/.env
+# Use your existing OPENAI_API_KEY environment variable, or add it to scripts/.env.
+# Never commit scripts/.env.
 ```
 
 ### Base Resume
@@ -75,7 +77,7 @@ cp scripts/.env.example scripts/.env
 Regenerate the portfolio's base resume PDF from `master_resume.py`:
 
 ```bash
-python scripts/generateResume.py
+scripts/.venv/bin/python scripts/generateResume.py
 ```
 
 ### Tailored Resume
@@ -84,10 +86,10 @@ Generate a one-page resume tailored to a specific job description:
 
 ```bash
 # From a JD file
-python scripts/generateTailoredResume.py tailored_resumes/jd_company.txt -n "Company"
+scripts/.venv/bin/python scripts/generateTailoredResume.py tailored_resumes/jd_company.txt -n "Company"
 
 # Or paste interactively (press Enter twice when done)
-python scripts/generateTailoredResume.py -n "Company"
+scripts/.venv/bin/python scripts/generateTailoredResume.py -n "Company"
 ```
 
 Output goes to `tailored_resumes/` with:
@@ -95,4 +97,43 @@ Output goes to `tailored_resumes/` with:
 - `EliSchiffler_Resume_Company.pdf` — the tailored PDF
 - `EliSchiffler_Resume_Company.json` — raw data showing what was changed
 
-The tailoring script uses Claude to reorder sections, rephrase bullets for keyword matching, and select relevant coursework — while staying truthful and fitting on one page.
+The tailoring script uses OpenAI to rephrase and select source-backed content. Contact information and core education fields stay local. Review the JSON for factual accuracy before sharing the PDF; validation preserves source identities but cannot prove rewritten bullets are true.
+
+The default model is `gpt-4.1-mini-2025-04-14`. Use `--model`, `--max-input-tokens`, `--max-output-tokens`, and `--max-cost-usd` (or `RESUME_MODEL`, `RESUME_MAX_INPUT_TOKENS`, `RESUME_MAX_OUTPUT_TOKENS`, `RESUME_MAX_COST_USD`) to configure a run. Defaults are 24,000 input tokens, 4,096 output tokens, and a **$0.02 per invocation** budget. Models without a reviewed price in `scripts/resume_openai.py` are rejected. The pricing table uses standard uncached USD rates; verify [OpenAI pricing](https://developers.openai.com/api/docs/pricing) before use and update the table if rates change. These controls bound one invocation, not account-wide spend.
+
+Preflight is entirely local and works without an API key:
+
+```bash
+scripts/.venv/bin/python scripts/generateTailoredResume.py tailored_resumes/jd_company.txt --dry-run
+```
+
+Before sending, the script prints the provider, model, conservative input token bound, output limit, and worst-case cost at the configured rates. Input is bounded by UTF-8 bytes plus a framing allowance; oversized inputs and over-budget requests are rejected without truncation. It makes one request to `https://api.openai.com/v1`, with no automatic retries, provider fallback, or SDK response storage. `OPENAI_BASE_URL` does not redirect this generator. Failures do not automatically generate again. Successful API usage is saved to a private `.usage.json` file.
+
+Optional interests stay local and render verbatim in an **Interests** section. Supply a gitignored JSON file containing up to three entries, each with `text` and `url` (HTTPS or an empty string):
+
+```json
+[
+  {
+    "text": "Music: I create songs and learn production and mastering in my free time.",
+    "url": "https://soundcloud.com/eli-schiffler"
+  }
+]
+```
+
+```bash
+scripts/.venv/bin/python scripts/generateTailoredResume.py tailored_resumes/jd_company.txt -n Company --interests-file tailored_resumes/interests.json
+```
+
+The renderer escapes model text and checks the actual PDF page count. If it overflows, the response JSON is already saved. Edit that private JSON and render again with a new name, without paying for another request:
+
+```bash
+scripts/.venv/bin/python scripts/generateTailoredResume.py --from-json tailored_resumes/EliSchiffler_Resume_Company.json -n CompanyReviewed --interests-file tailored_resumes/interests.json
+```
+
+Existing outputs are never overwritten. Keep job inputs, tailored JSON, usage reports, and private PDFs under the gitignored `tailored_resumes/` directory. The base resume source and public PDF are unchanged by tailoring.
+
+Run the offline tests (no API calls or credentials required):
+
+```bash
+scripts/.venv/bin/python -m unittest discover -s scripts/tests -v
+```

@@ -1,5 +1,5 @@
 """
-Generate a tailored resume PDF for a specific job description using Claude.
+Generate a tailored resume PDF for a specific job description using OpenAI.
 
 Usage:
     python generateTailoredResume.py                  # paste JD interactively
@@ -8,20 +8,26 @@ Usage:
 
 The script:
 1. Reads your master resume data
-2. Sends it + the job description to Claude
-3. Claude returns a JSON structure with tailored bullets, reordered sections, and adjusted skills
+2. Sends it + the job description to OpenAI
+3. OpenAI returns a JSON structure with tailored bullets, reordered sections, and adjusted skills
 4. Compiles the result to PDF (same visual style as your base resume)
 
-Requires: ANTHROPIC_API_KEY in environment or .env file
+Requires: OPENAI_API_KEY in environment or .env file
 """
 
 import argparse
+import io
+from decimal import Decimal, InvalidOperation
+from html import escape
+from pathlib import Path
+from urllib.parse import urlsplit
 import json
 import os
 import sys
 from datetime import datetime
 
-import anthropic
+from pypdf import PdfReader
+from resume_openai import GenerationLimits, MODEL_PRICES, generate_tailored, prepare_request
 from dotenv import load_dotenv
 from xhtml2pdf import pisa
 
@@ -55,7 +61,11 @@ and relevance to the job description while remaining 100% truthful. You may:
 
 You MUST NOT:
 - Invent experience the candidate doesn't have
-- Change company names, dates, school, GPA, or contact info
+- Change company names, role titles, dates, school, GPA, or contact info
+- Treat requirements in the job description as facts about the candidate
+- Invent years of experience, conversion/revenue metrics, subscriptions, billing, A/B tests, US work eligibility, or relocation commitments
+- Change the context of metrics (club membership growth is not product growth)
+- Present in-progress work as completed
 - Add technologies the candidate has never used (infer only from their actual projects)
 - Exceed the original number of bullets per entry (you can reduce, not add)
 - Exceed one page. This is CRITICAL. The resume must fit on a single 8.5x11 page.
@@ -102,7 +112,8 @@ Return ONLY valid JSON matching this exact schema (no markdown, no explanation):
   ]
 }
 
-Keep the same number of work entries and campus entries. You may reorder projects and drop at most one if needed to fit one page.
+Reserve two lines at the bottom for optional locally supplied interests. Do not generate interests.
+Keep the same work and campus entries in their original order and preserve role titles. You may reorder projects and drop at most one if needed to fit one page.
 """
 
 
@@ -144,57 +155,102 @@ def build_master_json() -> str:
     return json.dumps(data, indent=2)
 
 
-def call_claude(job_description: str) -> dict:
-    """Send master resume + JD to Claude, return tailored JSON."""
-    client = anthropic.Anthropic()
-
-    user_message = f"""Here is my master resume data:
-
-```json
-{build_master_json()}
-```
-
-Here is the job description I'm applying to:
-
-```
-{job_description}
-```
-
-Tailor my resume for this position. Return only the JSON."""
-
-    print("Calling Claude to tailor resume...")
-    response = client.messages.create(
-        model="claude-sonnet-5",
-        max_tokens=4096,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": user_message}],
-    )
-
-    text = ""
-    for block in response.content:
-        if hasattr(block, "text"):
-            text = block.text.strip()
-            break
-
-    if not text:
-        raise ValueError("No text content in Claude response")
-
-    # Handle case where Claude wraps in ```json ... ```
-    if text.startswith("```"):
-        text = text.split("\n", 1)[1]
-        text = text.rsplit("```", 1)[0]
-
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError as e:
-        print(f"JSON parse error: {e}")
-        print(f"Raw response (first 500 chars):\n{text[:500]}")
-        print(f"Raw response (last 500 chars):\n{text[-500:]}")
-        sys.exit(1)
+def validate_tailored(data):
+    """Check structure and preserve source identities before rendering model text."""
+    if not isinstance(data, dict):
+        raise ValueError("Resume must be a JSON object.")
+    for section, source, keys in [
+        ("work_experience", WORK_EXPERIENCE, ("company", "title", "dates")),
+        ("campus_involvement", CAMPUS_INVOLVEMENT, ("org", "role", "dates")),
+    ]:
+        entries = data.get(section)
+        if not isinstance(entries, list) or len(entries) != len(source):
+            raise ValueError(f"Invalid {section} entries.")
+        for entry, original in zip(entries, source):
+            if not isinstance(entry, dict) or any(entry.get(k) != original[k] for k in keys):
+                raise ValueError(f"Changed source identity in {section}.")
+            validate_bullets(entry.get("bullets"), len(original["bullets"]))
+    projects = data.get("projects")
+    if not isinstance(projects, list) or not 1 <= len(projects) <= 3:
+        raise ValueError("Expected one to three source projects.")
+    names = set()
+    for project in projects:
+        if not isinstance(project, dict):
+            raise ValueError("Invalid project entry.")
+        original = next((p for p in PROJECTS if p["name"] == project.get("name")), None)
+        if original is None or project["name"] in names or project.get("subtitle") != original["subtitle"]:
+            raise ValueError("Unknown, duplicate, or renamed project.")
+        names.add(project["name"])
+        if not isinstance(project.get("tech"), str) or len(project["tech"]) > 250:
+            raise ValueError("Invalid project technologies.")
+        validate_bullets(project.get("bullets"), len(original["bullets"]))
+    skills = data.get("skills")
+    if not isinstance(skills, dict) or not 1 <= len(skills) <= 4 or any(
+        not isinstance(k, str) or not isinstance(v, str) or len(k) > 80 or len(v) > 500
+        for k, v in skills.items()
+    ):
+        raise ValueError("Invalid skills section.")
+    for key, allowed, maximum in [
+        ("coursework", COURSEWORK, 6),
+        ("education_extras", EDUCATION.get("extras", []), len(EDUCATION.get("extras", []))),
+    ]:
+        values = data.get(key, [])
+        if not isinstance(values, list) or len(values) > maximum or any(v not in allowed for v in values):
+            raise ValueError(f"Unsupported {key}.")
+    return data
 
 
-def build_tailored_html(tailored: dict) -> str:
+def validate_bullets(bullets, maximum):
+    if not isinstance(bullets, list) or not 2 <= len(bullets) <= maximum or any(
+        not isinstance(b, str) or not b.strip() or len(b) > 600 for b in bullets
+    ):
+        raise ValueError("Invalid source bullet count or text.")
+
+
+def load_interests(path):
+    """Local-only candidate facts, rendered verbatim; never sent to OpenAI."""
+    if not path:
+        return []
+    interests = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(interests, list) or len(interests) > 3:
+        raise ValueError("Interests must be a JSON list with at most three entries.")
+    for entry in interests:
+        if not isinstance(entry, dict) or set(entry) != {"text", "url"}:
+            raise ValueError("Each interest needs text and url (empty url allowed).")
+        if not isinstance(entry["text"], str) or not 1 <= len(entry["text"]) <= 400:
+            raise ValueError("Interest text must contain 1–400 characters.")
+        url = entry["url"]
+        if not isinstance(url, str) or len(url) > 2048:
+            raise ValueError("Invalid interest URL.")
+        if url:
+            parsed = urlsplit(url)
+            if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+                raise ValueError("Interest links must use HTTPS without credentials.")
+    return interests
+
+
+def escape_values(value):
+    if isinstance(value, str):
+        return escape(value, quote=True)
+    if isinstance(value, list):
+        return [escape_values(v) for v in value]
+    if isinstance(value, dict):
+        return {escape(k, quote=True): escape_values(v) for k, v in value.items()}
+    return value
+
+
+def build_tailored_html(tailored: dict, interests=None) -> str:
     """Build HTML resume using tailored data + unchanged fields (education, contact)."""
+
+    tailored = escape_values(tailored)
+    interests = escape_values(interests or [])
+    interests_html = ""
+    if interests:
+        lines = []
+        for item in interests:
+            link = f' <a href="{item["url"]}">{item["url"].replace("https://", "")}</a>' if item["url"] else ""
+            lines.append(f'<div class="skills-row">{item["text"]}{link}</div>')
+        interests_html = "<h2>Interests</h2>" + "".join(lines)
 
     work_experience = tailored["work_experience"]
     skills = tailored["skills"]
@@ -203,7 +259,7 @@ def build_tailored_html(tailored: dict) -> str:
     education_extras = tailored.get("education_extras", [])
     coursework = tailored.get("coursework", [])
 
-    # Hard caps to guarantee one-page fit
+    # Bullet caps reduce overflow; render_pdf verifies the actual page count.
     MAX_WORK_BULLETS = {0: 4, 1: 3}  # first job: 4, second: 3
     MAX_PROJECT_BULLETS = 2
     MAX_CAMPUS_BULLETS = 3
@@ -335,66 +391,90 @@ def build_tailored_html(tailored: dict) -> str:
 
       <h2>Campus Involvement</h2>
       {campus_html}
+      {interests_html}
     </body>
     </html>"""
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Generate a tailored resume PDF using Claude")
-    parser.add_argument("input", nargs="?", help="Path to a .txt file containing the job description")
-    parser.add_argument("-o", "--output-dir", default=os.path.join(os.path.dirname(__file__), "..", "tailored_resumes"),
-                        help="Directory to save the output PDF (default: ../tailored_resumes/)")
-    parser.add_argument("-n", "--name", default=None,
-                        help="Output filename (without extension). Default: resume_YYYY-MM-DD_HHMMSS")
-    args = parser.parse_args()
-
-    # Validate API key
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("Error: ANTHROPIC_API_KEY not set. Add it to scripts/.env or export it.")
-        sys.exit(1)
-
-    # Get job description
-    jd = get_job_description(args)
-    if not jd:
-        print("Error: Empty job description.")
-        sys.exit(1)
-
-    print(f"Job description length: {len(jd)} chars")
-
-    # Call Claude
-    tailored = call_claude(jd)
-
-    # Build HTML and compile to PDF
-    html = build_tailored_html(tailored)
-
-    # Ensure output directory exists
-    output_dir = os.path.normpath(args.output_dir)
-    os.makedirs(output_dir, exist_ok=True)
-
-    # Generate filename
-    if args.name:
-        filename = f"EliSchiffler_Resume_{args.name}.pdf"
-    else:
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
-        filename = f"EliSchiffler_Resume_{timestamp}.pdf"
-
-    output_path = os.path.join(output_dir, filename)
-
-    with open(output_path, "w+b") as output:
-        status = pisa.CreatePDF(html, dest=output)
-
+def render_pdf(tailored, interests):
+    buffer = io.BytesIO()
+    status = pisa.CreatePDF(build_tailored_html(tailored, interests), dest=buffer)
     if status.err:
-        print(f"Error generating PDF: {status.err}")
-        sys.exit(1)
+        raise ValueError("PDF renderer reported an error.")
+    pdf = buffer.getvalue()
+    if len(PdfReader(io.BytesIO(pdf)).pages) != 1:
+        raise ValueError("Resume exceeds one page. Edit the saved JSON and use --from-json to render without another API call.")
+    return pdf
 
-    print(f"\nTailored resume saved to: {output_path}")
 
-    # Also save the raw JSON for inspection
-    json_path = output_path.replace(".pdf", ".json")
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(tailored, f, indent=2)
+def parse_args():
+    parser = argparse.ArgumentParser(description="Generate a one-page tailored resume using OpenAI")
+    parser.add_argument("input", nargs="?", help="Job description text file")
+    parser.add_argument("-o", "--output-dir", default=str(Path(__file__).resolve().parent.parent / "tailored_resumes"))
+    parser.add_argument("-n", "--name", help="Filename suffix, without extension")
+    parser.add_argument("--model", choices=sorted(MODEL_PRICES), default=os.environ.get("RESUME_MODEL", "gpt-4.1-mini-2025-04-14"))
+    parser.add_argument("--max-input-tokens", type=int, default=os.environ.get("RESUME_MAX_INPUT_TOKENS", "24000"))
+    parser.add_argument("--max-output-tokens", type=int, default=os.environ.get("RESUME_MAX_OUTPUT_TOKENS", "4096"))
+    parser.add_argument("--max-cost-usd", type=Decimal, default=os.environ.get("RESUME_MAX_COST_USD", "0.02"))
+    parser.add_argument("--interests-file", help="Local JSON list of {text, url}; not sent to OpenAI")
+    parser.add_argument("--dry-run", action="store_true", help="Report model, input bound and cost without a request or output files")
+    parser.add_argument("--from-json", help="Validate and render saved tailored JSON without an API request")
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    if args.from_json and args.dry_run:
+        raise ValueError("Use --dry-run for request preflight or --from-json for offline rendering.")
+    interests = load_interests(args.interests_file)
+    filename = args.name or datetime.now().strftime("%Y-%m-%d_%H%M%S")
+    if not filename or any(c not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-" for c in filename):
+        raise ValueError("Name may contain only letters, digits, underscores and hyphens.")
+    output_dir = Path(args.output_dir)
+    base = output_dir / f"EliSchiffler_Resume_{filename}"
+    json_path = base.with_suffix(".json")
+    pdf_path = base.with_suffix(".pdf")
+    usage_path = base.with_suffix(".usage.json")
+    if not args.dry_run and any(p.exists() for p in [json_path, pdf_path, usage_path]):
+        raise ValueError("Output already exists; choose a new name to preserve prior files.")
+    usage = None
+    if args.from_json:
+        tailored = json.loads(Path(args.from_json).read_text(encoding="utf-8"))
+    else:
+        if args.input and not Path(args.input).is_file():
+            raise ValueError("Job description file does not exist.")
+        jd = get_job_description(args)
+        if not jd:
+            raise ValueError("Empty job description.")
+        limits = GenerationLimits(args.model, args.max_input_tokens, args.max_output_tokens, args.max_cost_usd)
+        messages, preflight = prepare_request(SYSTEM_PROMPT, build_master_json(), jd, limits)
+        print(json.dumps(preflight, indent=2), flush=True)
+        if args.dry_run:
+            return
+        tailored, usage = generate_tailored(messages, limits, os.environ.get("OPENAI_API_KEY"))
+        print("OpenAI usage: " + json.dumps(usage), flush=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    # Save the response before validation/rendering so a local fix never needs a paid retry.
+    with json_path.open("x", encoding="utf-8") as output:
+        output.write(json.dumps(tailored, indent=2) + "\n")
+    if usage:
+        with usage_path.open("x", encoding="utf-8") as output:
+            output.write(json.dumps({"preflight": preflight, "usage": usage}, indent=2) + "\n")
+    validate_tailored(tailored)
+    pdf = render_pdf(tailored, interests)
+    with pdf_path.open("xb") as output:
+        output.write(pdf)
+    print(f"Tailored resume saved to: {pdf_path}")
     print(f"Raw tailored data saved to: {json_path}")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (ValueError, InvalidOperation) as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as exc:
+        # SDK/network/renderer exceptions may contain private request text or credentials.
+        print(f"Error: {type(exc).__name__}; no automatic retry. Private details omitted.", file=sys.stderr)
+        sys.exit(1)
